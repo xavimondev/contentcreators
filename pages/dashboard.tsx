@@ -15,9 +15,9 @@ const Dashboard = () => {
   return (
     <div className='p-4 h-screen bg-gradient-to-l from-[#39497e] to-[#1d184e] w-full'>
       <FormSearch nameClass='mb-8' />
-      <div className='flex flex-row gap-4'>
-        <aside className='w-64'>
-          <div className='overflow-y-auto py-4 px-3 bg-gray-50 rounded-2xl dark:bg-slate-900'>
+      <div className='flex flex-col md:flex-row gap-4'>
+        <aside className='hidden md:block w-64'>
+          <div className='overflow-y-auto py-4 px-3 rounded-2xl dark:bg-slate-900'>
             <a href='https://flowbite.com/' className='flex items-center pl-2.5 mb-5'>
               <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
                 Tecnologías
@@ -80,11 +80,49 @@ const Dashboard = () => {
             </ul>
           </div>
         </aside>
-        <section className='flex flex-col gap-4'>
+        {/* Technologies slider */}
+        <div className='w-full rounded-2xl dark:bg-slate-900 overflow-y-auto py-4 px-3 block md:hidden'>
+          <a href='https://flowbite.com/' className='flex items-center pl-2.5 mb-5'>
+            <span className='self-center text-xl font-semibold whitespace-nowrap dark:text-white'>
+              Tecnologías
+            </span>
+          </a>
+          <ul className='flex gap-4'>
+            <li className='flex flex-col items-center gap-1'>
+              <div className='w-14 h-14 p-1 rounded-full bg-gradient-to-tr from-[#8e1d9e] to-[#bc6cc9]'>
+                <div className='h-full p-2 bg-white text-white rounded-full'>
+                  <Image
+                    className='rounded-full'
+                    src='/technologies/frontend.webp'
+                    alt='frontend'
+                    width='256'
+                    height='256'
+                  />
+                </div>
+              </div>
+              <span className='text-white font-semibold'>frontend</span>
+            </li>
+            <li className='flex flex-col items-center gap-1'>
+              <div className='w-14 h-14 p-1 rounded-full bg-gradient-to-tr from-[#8e1d9e] to-[#bc6cc9]'>
+                <div className='h-full p-2 bg-white text-white rounded-full'>
+                  <Image
+                    className='rounded-full'
+                    src='/technologies/backend.webp'
+                    alt='backend'
+                    width='256'
+                    height='256'
+                  />
+                </div>
+              </div>
+              <span className='text-white font-semibold'>backend</span>
+            </li>
+          </ul>
+        </div>
+        <section className='flex flex-col gap-4 w-full'>
           <article className='rounded-2xl border-none dark:bg-slate-900'>
-            <div className='flex flex-row items-center gap-4 p-6'>
+            <div className='flex flex-col md:flex-row md:items-center gap-4 p-4 md:p-6'>
               {/* Photo section */}
-              <div className='object-cover w-32 h-auto rounded-xl'>
+              <div className='object-cover w-24 md:w-32 h-auto rounded-xl'>
                 <Image
                   className='rounded-xl'
                   src='https://unavatar.io/github/midudev'
@@ -95,127 +133,61 @@ const Dashboard = () => {
                 />
               </div>
               {/* Description section */}
-              <div className='flex flex-col gap-2 w-3/4'>
-                <h5 className='text-3xl font-bold tracking-tight dark:text-white'>
+              <div className='flex flex-col gap-2 w-full md:w-3/4'>
+                <h2 className='text-lg md:text-3xl font-bold tracking-tight dark:text-white'>
                   Miguel Angel Durán García
-                </h5>
+                </h2>
                 <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
                   Soy Desarrollador Full Stack JavaScript con 15 años de experiencia. ⭐ Reconocido
                   como Google Developer Expert y GitHub Star.
                 </p>
                 {/* Tags area */}
                 <div className='flex flex-row gap-2 w-full'>
-                  <span className='bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800'>
+                  <span className='bg-blue-100 text-blue-800 text-sm font-medium px-2 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800'>
                     Desarrollo Web
                   </span>
-                  <span className='bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900'>
-                    Inteligencia Artificial
+                  <span className='bg-green-100 text-green-800 text-sm font-medium px-2 py-0.5 rounded dark:bg-green-200 dark:text-green-900'>
+                    Ciencia de datos
                   </span>
                 </div>
               </div>
               {/* Social section */}
-              <div className='flex flex-col gap-2'>
-                <h5 className='text-xl text-white font-semibold'>Sígueme en: </h5>
-                <ul className='flex gap-4 items-center flex-wrap'>
+              <div className='flex flex-col gap-3 md:gap-2'>
+                <h5 className='text-lg md:text-xl text-white font-semibold'>Sígueme en:</h5>
+                <ul className='flex gap-2 md:gap-4 justify-between md:items-center md:flex-wrap'>
                   <li>
                     <a href='https://twitter.com/midudev'>
-                      <TwitterIc width='24' height='24' color='white' />
+                      <TwitterIc className='w-6 h-6' color='white' />
                     </a>
                   </li>
                   <li>
                     <a href='https://github.com/midudev'>
-                      <GitHubIc width='24' height='24' color='white' />
+                      <GitHubIc className='w-6 h-6' color='white' />
                     </a>
                   </li>
                   <li>
                     <a href='https://www.twitch.tv/midudev'>
-                      <TwitchIc width='24' height='24' color='white' />
+                      <TwitchIc className='w-6 h-6' color='white' />
                     </a>
                   </li>
                   <li>
                     <a href='https://midu.tube/'>
-                      <YoutubeIc width='24' height='24' color='white' />
+                      <YoutubeIc className='w-6 h-6' color='white' />
                     </a>
                   </li>
                   <li>
                     <a href='https://discord.com/invite/midudev'>
-                      <DiscordIc width='24' height='24' color='white' />
+                      <DiscordIc className='w-6 h-6' color='white' />
                     </a>
                   </li>
                   <li>
                     <a href='https://www.instagram.com/midu.dev'>
-                      <InstagramIc width='24' height='24' color='white' />
+                      <InstagramIc className='w-6 h-6' color='white' />
                     </a>
                   </li>
                   <li>
                     <a href='https://midu.dev/'>
-                      <BlogIc width='24' height='24' color='white' />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </article>
-          <article className='rounded-2xl border-none dark:border-gray-700 dark:bg-slate-900'>
-            <div className='flex flex-row items-center gap-4 p-6'>
-              {/* Photo section */}
-              <div className='object-cover w-32 h-auto rounded-xl'>
-                <Image
-                  className='rounded-xl'
-                  src='https://unavatar.io/github/goncy'
-                  width='256'
-                  height='256'
-                  alt='midudev'
-                />
-              </div>
-              {/* Description section */}
-              <div className='flex flex-col gap-2 w-3/4'>
-                <h5 className='text-3xl font-bold tracking-tight dark:text-white'>Goncy Pozzo</h5>
-                <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-                  Solutions architect @ Vercel, Frontend / React ❤
-                </p>
-                {/* Tags area */}
-                <div className='flex flex-row gap-2 w-full'>
-                  <span className='bg-blue-100 text-blue-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800'>
-                    Desarrollo Web
-                  </span>
-                  <span className='bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900'>
-                    Inteligencia Artificial
-                  </span>
-                </div>
-              </div>
-              {/* Social section */}
-              <div className='flex flex-col gap-2'>
-                <h5 className='text-xl text-white font-semibold'>Sígueme en: </h5>
-                <ul className='flex gap-4 items-center flex-wrap'>
-                  <li>
-                    <a href='https://twitter.com/goncy'>
-                      <TwitterIc width='24' height='24' color='white' />
-                    </a>
-                  </li>
-                  <li>
-                    <a href='https://github.com/goncy'>
-                      <GitHubIc width='24' height='24' color='white' />
-                    </a>
-                  </li>
-                  <li>
-                    <a href='https://www.twitch.tv/goncypozzo'>
-                      <TwitchIc width='24' height='24' color='white' />
-                    </a>
-                  </li>
-                  <li>
-                    <a href='https://www.youtube.com/channel/UCCvaRcYdZCZBrBQVnsUBg5Q'>
-                      <YoutubeIc width='24' height='24' color='white' />
-                    </a>
-                  </li>
-                  <li>
-                    <a href='https://discord.gg/QFhdSMTb'>
-                      <DiscordIc width='24' height='24' color='white' />
-                    </a>
-                  </li>
-                  <li>
-                    <a href='https://www.instagram.com/goncy.js/'>
-                      <InstagramIc width='24' height='24' color='white' />
+                      <BlogIc className='w-6 h-6' color='white' />
                     </a>
                   </li>
                 </ul>
