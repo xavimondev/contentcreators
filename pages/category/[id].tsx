@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import FormSearch from '../../components/form-search'
+import HeaderTitle from '../../components/header-title'
 import {
   BlogIc,
   DiscordIc,
@@ -17,7 +18,7 @@ const DashboardCategory = () => {
   const { id } = router.query
   return (
     <Layout>
-      <h1 className='mb-8 text-4xl dark:text-white font-semibold'>{id}</h1>
+      <HeaderTitle msg={id as string} />
       <FormSearch nameClass='mb-8' />
       <div className='flex flex-col md:flex-row gap-4'>
         <aside className='hidden md:block w-64'>
