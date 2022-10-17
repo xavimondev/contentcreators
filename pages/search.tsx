@@ -1,4 +1,4 @@
-import FormSearch from '../components/form-search'
+import FormSearch from 'components/form-search'
 
 const Search = () => {
   return (

@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import HeaderTitle from '../components/header-title'
-import Layout from '../components/layout'
-import { LIST_CATEGORIES } from '../data'
+import HeaderTitle from 'components/header-title'
+import Layout from 'components/layout'
+import { LIST_CATEGORIES } from 'data'
 
 const Categories = () => {
   return (

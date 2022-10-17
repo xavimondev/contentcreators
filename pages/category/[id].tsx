@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import FormSearch from '../../components/form-search'
-import HeaderTitle from '../../components/header-title'
+import FormSearch from 'components/form-search'
+import HeaderTitle from 'components/header-title'
 import {
   BlogIc,
   DiscordIc,
@@ -10,8 +10,8 @@ import {
   TwitchIc,
   TwitterIc,
   YoutubeIc
-} from '../../components/icons'
-import Layout from '../../components/layout'
+} from 'components/icons'
+import Layout from 'components/layout'
 
 const DashboardCategory = () => {
   const router = useRouter()
