@@ -14,7 +14,7 @@ const Categories = () => {
               key={id}
               className={`w-full rounded-xl bg-gradient-to-l ${color} transition duration-200 ease-in-out group hover:-translate-y-1 `}
             >
-              <a href='#' rel='noopener noreferrer'>
+              <a href={`category/${id}`} rel='noopener noreferrer'>
                 <div className='h-auto flex flex-col gap-8 py-8 px-4'>
                   <Image src={image} height='256' width='256' alt='backend' />
                   <p className='max-w-xl font-extrabold text-white/80'>{name}</p>
