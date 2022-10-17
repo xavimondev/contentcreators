@@ -11,7 +11,6 @@ import {
 } from '../components/icons'
 
 const Dashboard = () => {
-  // Ciencia de datos, arquitectura software, infraestructura, cloud computing, diseño web, base de datos
   return (
     <div className='p-4 h-screen bg-gradient-to-l from-[#39497e] to-[#1d184e] w-full'>
       <FormSearch nameClass='mb-8' />
