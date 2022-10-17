@@ -9,10 +9,11 @@ import {
   TwitterIc,
   YoutubeIc
 } from '../components/icons'
+import Layout from '../components/layout'
 
 const Dashboard = () => {
   return (
-    <div className='p-4 h-screen bg-gradient-to-l from-[#39497e] to-[#1d184e] w-full'>
+    <Layout>
       <FormSearch nameClass='mb-8' />
       <div className='flex flex-col md:flex-row gap-4'>
         <aside className='hidden md:block w-64'>
@@ -195,7 +196,7 @@ const Dashboard = () => {
           </article>
         </section>
       </div>
-    </div>
+    </Layout>
   )
 }
 
