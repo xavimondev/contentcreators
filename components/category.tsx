@@ -19,12 +19,12 @@ export const CategoryCard = ({ id, name, colorFrom, colorTo, image }: CategoryPr
           background: `linear-gradient(90deg, ${colorFrom}, ${colorTo})`
         }}
       >
-        <a href={`category/${id}`} rel='noopener noreferrer'>
+        <Link href={`category/${id}`}>
           <div className='h-auto flex flex-col gap-8 py-8 px-4'>
             <Image src={image} height='256' width='256' alt={name} />
             <p className='max-w-xl font-extrabold text-white/80'>{name}</p>
           </div>
-        </a>
+        </Link>
       </article>
     </>
   )
