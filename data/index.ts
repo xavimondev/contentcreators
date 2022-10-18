@@ -24,14 +24,14 @@ export const LIST_CATEGORIES = [
   },
   {
     id: 'cloud',
-    name: 'Cloud Computing',
+    name: 'Cloud',
     image: CloudImg,
     colorFrom: '#ffa585',
     colorTo: '#ffeda0'
   },
   {
     id: 'mobile',
-    name: 'Mobile Development',
+    name: 'Mobile',
     image: MobileImg,
     colorFrom: '#7debf2',
     colorTo: '#60a4ff'

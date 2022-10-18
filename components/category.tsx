@@ -47,7 +47,7 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
                 />
               </div>
             </div>
-            <span className='text-center text-white font-semibold'>{name.toLocaleLowerCase()}</span>
+            <span className='text-center text-white font-semibold'>{name.toLowerCase()}</span>
           </div>
         </Link>
       </li>
