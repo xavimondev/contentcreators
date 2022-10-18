@@ -12,48 +12,56 @@ export const LIST_CATEGORIES = [
     id: 'frontend',
     name: 'Frontend',
     image: FrontendImg,
-    color: 'from-[#42afa1] to-[#78d4a8]'
+    colorFrom: '#42afa1',
+    colorTo: '#78d4a8'
   },
   {
     id: 'backend',
     name: 'Backend',
     image: BackendImg,
-    color: 'from-[#FBBA00] to-[#FF8714]'
+    colorFrom: '#FBBA00',
+    colorTo: '#FF8714'
   },
   {
     id: 'cloud',
     name: 'Cloud Computing',
     image: CloudImg,
-    color: 'from-[#ffa585] to-[#ffeda0]'
+    colorFrom: '#ffa585',
+    colorTo: '#ffeda0'
   },
   {
     id: 'mobile',
     name: 'Mobile Development',
     image: MobileImg,
-    color: 'from-[#7debf2] to-[#60a4ff]'
+    colorFrom: '#7debf2',
+    colorTo: '#60a4ff'
   },
   {
     id: 'database',
     name: 'Database',
     image: DatabaseImg,
-    color: 'from-violet-500 to-orange-300'
+    colorFrom: 'rgb(139 92 246)',
+    colorTo: 'rgb(253 186 116)'
   },
   {
     id: 'datascience',
     name: 'Data Science',
     image: DataScienceImg,
-    color: 'from-[#a0dec3] to-[#3eadcf]'
+    colorFrom: '#a0dec3',
+    colorTo: '#3eadcf'
   },
   {
     id: 'uiux',
     name: 'UI/UX',
     image: UiuxImg,
-    color: 'from-[#d8848b] to-[#cb96da]'
+    colorFrom: '#d8848b',
+    colorTo: '#cb96da'
   },
   {
     id: 'ciberseguridad',
     name: 'Ciberseguridad',
     image: CybersecurityImg,
-    color: 'from-blue-700 to-gray-900'
+    colorFrom: 'rgb(48 83 180)',
+    colorTo: 'rgb(119 142 191)'
   }
 ]

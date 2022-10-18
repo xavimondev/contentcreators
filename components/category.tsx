@@ -4,16 +4,20 @@ import Link from 'next/link'
 type CategoryProps = {
   id: string
   name: string
-  color: string
+  colorFrom: string
+  colorTo: string
   image: any
 }
 
-export const CategoryCard = ({ id, name, color, image }: CategoryProps) => {
+export const CategoryCard = ({ id, name, colorFrom, colorTo, image }: CategoryProps) => {
   return (
     <>
       <article
         key={id}
-        className={`w-full rounded-xl bg-gradient-to-l ${color} transition duration-200 ease-in-out group hover:-translate-y-1 `}
+        className={`w-full rounded-xl transition duration-200 ease-in-out group hover:-translate-y-1 `}
+        style={{
+          background: `linear-gradient(90deg, ${colorFrom}, ${colorTo})`
+        }}
       >
         <a href={`category/${id}`} rel='noopener noreferrer'>
           <div className='h-auto flex flex-col gap-8 py-8 px-4'>
@@ -26,13 +30,13 @@ export const CategoryCard = ({ id, name, color, image }: CategoryProps) => {
   )
 }
 
-export const CategoryItem = ({ id, name, color, image }: CategoryProps) => {
+export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryProps) => {
   return (
     <>
       <li>
         <Link href={`/category/${id}`}>
           <div className='flex flex-col items-center'>
-            <div className={`w-14 h-14 p-1 rounded-full bg-gradient-to-tr ${color}`}>
+            <div className={`w-14 h-14 p-1 rounded-full`}>
               <div className='h-full p-2 bg-white text-white rounded-full'>
                 <Image
                   className='rounded-full'
