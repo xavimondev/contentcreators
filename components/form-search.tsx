@@ -25,7 +25,7 @@ const FormSearch = ({ nameClass }: SearchProps) => {
           type='text'
           id='voice-search'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:placeholder-gray-400 '
-          placeholder='Busca creadores de contenido, tecnologías...'
+          placeholder='Busca creadores de contenido...'
           autoFocus
         />
       </div>
