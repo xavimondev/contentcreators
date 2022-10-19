@@ -21,10 +21,10 @@ const DashboardCategory = () => {
     <Layout>
       <HeaderTitle msg={id as string} />
       <div className='flex flex-col gap-4'>
-        {/* Categorías slider */}
+        {/* Tecnologías slider */}
         <div className='w-full rounded-2xl bg-transparent overflow-y-auto py-4'>
           <div className='mb-5'>
-            <span className='text-md md:text-xl font-semibold text-white mb-10'>Categorías</span>
+            <span className='text-md md:text-xl font-semibold text-white mb-10'>Tecnologías</span>
           </div>
           <ul className='flex gap-4'>
             {LIST_CATEGORIES.map((category) => (
