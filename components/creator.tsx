@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Category, Social } from 'types'
+import CustomLink from './custom-link'
 import SocialLink from './social-link'
 
 type CreatorProps = {
@@ -36,12 +37,11 @@ const Creator = ({ id, name, description, categories, socialLinks }: CreatorProp
           {/* Categories area */}
           <div className='flex flex-row gap-2 flex-wrap w-full'>
             {categories.map((cat) => (
-              <span
-                key={cat}
-                className='bg-blue-100 text-blue-800 text-sm font-medium px-2 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800'
-              >
-                {cat}
-              </span>
+              <CustomLink key={cat} href={`/category/${cat}`}>
+                <span className='bg-blue-100 text-blue-800 text-sm font-medium px-2 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800'>
+                  {cat}
+                </span>
+              </CustomLink>
             ))}
           </div>
         </div>
