@@ -35,14 +35,14 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
     <>
       <li>
         <CustomLink href={`/category/${id}`}>
-          <div className='flex flex-col items-center'>
+          <div className='flex flex-col gap-1 items-center'>
             <div
               className={`w-14 h-14 p-1 rounded-full`}
               style={{
                 background: `linear-gradient(90deg, ${colorFrom}, ${colorTo})`
               }}
             >
-              <div className='h-full p-2 bg-white text-white rounded-full'>
+              <div className='h-full p-1 text-white rounded-full'>
                 <Image
                   className='rounded-full'
                   src={image}
