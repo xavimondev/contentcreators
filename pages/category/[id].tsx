@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 
 import { Category } from 'types'
 import CREATORS_DATA from 'data/creators'
@@ -32,18 +33,21 @@ const DashboardCategory = () => {
           </ul>
         </div>
         <FormSearch nameClass='mb-8' />
-        <section className='flex flex-col gap-4 w-full'>
-          {creatorsList.map(({ id, name, description, categories, social }) => (
-            <Creator
-              key={id}
-              id={id}
-              name={name}
-              description={description}
-              categories={categories}
-              socialLinks={social}
-            />
-          ))}
-        </section>
+        {/* Section */}
+        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
+          <Masonry gutter='10px'>
+            {creatorsList.map(({ id, name, description, categories, social }) => (
+              <Creator
+                key={id}
+                id={id}
+                name={name}
+                description={description}
+                categories={categories}
+                socialLinks={social}
+              />
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
       </div>
     </Layout>
   )
