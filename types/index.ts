@@ -27,4 +27,4 @@ export type SocialMedia =
   | 'instagram'
   | 'blog'
 
-export type Category = 'frontend' | 'backend' | 'cloud'
+export type Category = 'frontend' | 'backend' | 'cloud' | 'mobile' | 'database'
