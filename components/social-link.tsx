@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { SocialLink, SocialMedia } from 'types'
+import CustomLink from './custom-link'
 import { BlogIc, DiscordIc, GitHubIc, InstagramIc, TwitchIc, TwitterIc, YoutubeIc } from './icons'
 
 const SOCIAL_LINKS: Array<SocialLink> = [
@@ -46,9 +46,9 @@ const SocialLink = ({ url, id }: SocialLinkProps) => {
   const Component = data.Component
   return (
     <li>
-      <Link href={url} rel='noopener noreferrer' target='_blank'>
+      <CustomLink href={url} rel='noopener noreferrer' target='_blank'>
         {Component}
-      </Link>
+      </CustomLink>
     </li>
   )
 }
