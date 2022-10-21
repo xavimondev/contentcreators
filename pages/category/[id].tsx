@@ -12,6 +12,7 @@ import { CategoryItem } from 'components/category'
 import { HomeIc } from 'components/icons'
 import Creator from 'components/creator'
 import CustomLink from 'components/custom-link'
+import NoContentCreators from 'components/empty-state'
 
 const DashboardCategory = () => {
   const router = useRouter()
@@ -39,22 +40,28 @@ const DashboardCategory = () => {
             ))}
           </ul>
         </div>
-        <FormSearch nameClass='mb-8' />
-        {/* Section */}
-        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
-          <Masonry gutter='10px'>
-            {creatorsList.map(({ id, name, description, categories, social }) => (
-              <Creator
-                key={id}
-                id={id}
-                name={name}
-                description={description}
-                categories={categories}
-                socialLinks={social}
-              />
-            ))}
-          </Masonry>
-        </ResponsiveMasonry>
+        {creatorsList.length > 0 ? (
+          <>
+            <FormSearch nameClass='mb-8' />
+            {/* Section */}
+            <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
+              <Masonry gutter='10px'>
+                {creatorsList.map(({ id, name, description, categories, social }) => (
+                  <Creator
+                    key={id}
+                    id={id}
+                    name={name}
+                    description={description}
+                    categories={categories}
+                    socialLinks={social}
+                  />
+                ))}
+              </Masonry>
+            </ResponsiveMasonry>
+          </>
+        ) : (
+          <NoContentCreators />
+        )}
       </div>
     </Layout>
   )
