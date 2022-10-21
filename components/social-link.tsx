@@ -1,4 +1,5 @@
 import { SocialLink, SocialMedia } from 'types'
+
 import CustomLink from './custom-link'
 import { BlogIc, DiscordIc, GitHubIc, InstagramIc, TwitchIc, TwitterIc, YoutubeIc } from './icons'
 
@@ -45,7 +46,7 @@ const SocialLink = ({ url, id }: SocialLinkProps) => {
 
   const Component = data.Component
   return (
-    <li>
+    <li className='transition hover:scale-110'>
       <CustomLink href={url} rel='noopener noreferrer' target='_blank'>
         {Component}
       </CustomLink>
