@@ -4,7 +4,7 @@ type HeaderProps = {
 
 const HeaderTitle = ({ msg }: HeaderProps) => {
   return (
-    <h1 className='text-center text-3xl lg:text-5xl bg-clip-text text-transparent from-[#2c3037] to-[#ffffff] bg-gradient-to-r font-semibold'>
+    <h1 className='text-center text-3xl lg:text-5xl bg-clip-text text-transparent dark:text-white font-semibold'>
       {msg}
     </h1>
   )

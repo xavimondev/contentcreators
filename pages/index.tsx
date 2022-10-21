@@ -41,8 +41,9 @@ const Home: NextPage = () => {
             content.[creators]
           </h1>
           <p className='mt-10 mx-auto max-w-2xl font-semibold text-base sm:text-xl lg:text-1xl text-white'>
-            Aquí encontrarás diversos creadores de contenido que aportarán a tu crecimiento como
-            profesional.
+            Hay diversos creadores de contenidos en internet y es difícil encontrar a los mejores.
+            Aquí encontrarás a los que te ayudarán en tu crecimiento como profesional, además están
+            agrupados en categorías para que te enfoques en lo que realmente necesites.
           </p>
         </section>
         <section className='max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6'>
