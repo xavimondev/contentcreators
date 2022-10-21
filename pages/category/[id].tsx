@@ -9,7 +9,9 @@ import FormSearch from 'components/form-search'
 import HeaderTitle from 'components/header-title'
 import Layout from 'components/layout'
 import { CategoryItem } from 'components/category'
+import { HomeIc } from 'components/icons'
 import Creator from 'components/creator'
+import CustomLink from 'components/custom-link'
 
 const DashboardCategory = () => {
   const router = useRouter()
@@ -19,13 +21,18 @@ const DashboardCategory = () => {
   )
   return (
     <Layout>
-      <HeaderTitle msg={id as string} />
+      <div className='flex flex-row gap-2 items-center mb-12'>
+        <CustomLink href='/'>
+          <HomeIc className='h-8 w-8 lg:h-12 lg:w-12 text-white' />
+        </CustomLink>
+        <HeaderTitle msg={id as string} />
+      </div>
       <div className='flex flex-col gap-4'>
         {/* Tecnologías slider */}
         <div className='w-full rounded-2xl bg-transparent overflow-y-auto py-4'>
-          <div className='mb-5'>
+          {/* <div className='mb-5'>
             <span className='text-md md:text-xl font-semibold text-white mb-10'>Tecnologías</span>
-          </div>
+          </div> */}
           <ul className='flex gap-4'>
             {LIST_CATEGORIES.map((category) => (
               <CategoryItem key={category.id} {...category} />
