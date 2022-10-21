@@ -12,43 +12,43 @@ export const LIST_CATEGORIES = [
     id: 'frontend',
     name: 'Frontend',
     image: FrontendImg,
-    colorFrom: '#42afa1',
-    colorTo: '#78d4a8'
+    colorFrom: '#34a193',
+    colorTo: '#8ad4b1'
   },
   {
     id: 'backend',
     name: 'Backend',
     image: BackendImg,
-    colorFrom: '#FBBA00',
+    colorFrom: '#e8af0d',
     colorTo: '#FF8714'
   },
   {
     id: 'cloud',
     name: 'Cloud',
     image: CloudImg,
-    colorFrom: '#ffa585',
-    colorTo: '#ffeda0'
+    colorFrom: '#e27750',
+    colorTo: '#e4a981'
   },
   {
     id: 'mobile',
     name: 'Mobile',
     image: MobileImg,
     colorFrom: '#7debf2',
-    colorTo: '#60a4ff'
+    colorTo: '#85b5f6'
   },
   {
     id: 'database',
     name: 'Database',
     image: DatabaseImg,
-    colorFrom: 'rgb(139 92 246)',
-    colorTo: 'rgb(253 186 116)'
+    colorFrom: '#a887f5',
+    colorTo: '#efb67b'
   },
   {
     id: 'datascience',
     name: 'Data Science',
     image: DataScienceImg,
-    colorFrom: '#a0dec3',
-    colorTo: '#3eadcf'
+    colorFrom: '#637dc6',
+    colorTo: '#44afd0'
   },
   {
     id: 'uiux',
@@ -61,7 +61,7 @@ export const LIST_CATEGORIES = [
     id: 'ciberseguridad',
     name: 'Ciberseguridad',
     image: CybersecurityImg,
-    colorFrom: 'rgb(48 83 180)',
-    colorTo: 'rgb(119 142 191)'
+    colorFrom: '#314b94',
+    colorTo: '#5f7dbd'
   }
 ]
