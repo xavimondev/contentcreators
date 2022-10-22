@@ -1,15 +1,32 @@
+import { FormEvent, useRef } from 'react'
+
+import { CREATORS_DATA } from 'data/creators'
+
 type SearchProps = {
   nameClass?: string
 }
 
 const FormSearch = ({ nameClass }: SearchProps) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    const txtValue = inputRef.current?.value.toLowerCase()
+    if (txtValue) {
+      const data = CREATORS_DATA.filter((creator) => creator.id.toLowerCase().includes(txtValue))
+      console.log(data)
+    }
+  }
   return (
-    <form className={`flex flex-col gap-5 md:flex-row md:items-center w-full ${nameClass ?? ''}`}>
+    <form
+      className={`flex flex-col gap-5 md:flex-row md:items-center w-full ${nameClass ?? ''}`}
+      onSubmit={handleSubmit}
+    >
       <div className='relative w-full'>
         <div className='flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none'>
           <svg
             aria-hidden='true'
-            className='w-5 h-5 text-gray-500 dark:text-gray-400'
+            className='w-5 h-5 text-gray-500'
             fill='currentColor'
             viewBox='0 0 20 20'
             xmlns='http://www.w3.org/2000/svg'
@@ -22,19 +39,16 @@ const FormSearch = ({ nameClass }: SearchProps) => {
           </svg>
         </div>
         <input
+          ref={inputRef}
           type='text'
           id='voice-search'
-          className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:placeholder-gray-400 '
+          className='bg-gradient-to-l from-[#192957] to-[#211d45] border dark:border-gray-500 dark:text-white text-sm rounded-lg block w-full pl-10 p-2.5 dark:placeholder-gray-500 focus:outline-none focus:ring-1 dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
           placeholder='Busca creadores de contenido...'
+          autoComplete='off'
+          autoCorrect='off'
           autoFocus
         />
       </div>
-      <button
-        type='submit'
-        className='bg-gradient-to-tr from-[#8e1d9e] to-[#bc6cc9] py-3 px-7 md:ml-1 text-sm font-semibold text-white bg-blue-700 rounded-lg border-none hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300'
-      >
-        Buscar
-      </button>
     </form>
   )
 }
