@@ -3,7 +3,7 @@ import { Category, Social } from 'types'
 import CustomLink from './custom-link'
 import SocialLink from './social-link'
 
-type CreatorProps = {
+type CreatorCardProps = {
   id: string
   name: string
   description: string
@@ -11,7 +11,7 @@ type CreatorProps = {
   socialLinks: Social[]
 }
 
-const Creator = ({ id, name, description, categories, socialLinks }: CreatorProps) => {
+const CreatorCard = ({ id, name, description, categories, socialLinks }: CreatorCardProps) => {
   return (
     <article className='rounded-2xl border-none dark:bg-slate-900'>
       <div className='flex flex-col gap-4 p-6'>
@@ -59,4 +59,4 @@ const Creator = ({ id, name, description, categories, socialLinks }: CreatorProp
   )
 }
 
-export default Creator
+export default CreatorCard
