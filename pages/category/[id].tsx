@@ -2,17 +2,12 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import { Category } from 'types'
-import { CREATORS_DATA } from 'data/creators'
 import { LIST_CATEGORIES } from 'data'
 
-import FormSearch from 'components/form-search'
 import HeaderTitle from 'components/header-title'
 import Layout from 'components/layout'
-
 import { HomeIc } from 'components/icons'
-
 import CustomLink from 'components/custom-link'
-import NoContentCreators from 'components/empty-state'
 import ListCategory from 'components/list-category'
 import CategoryDetail from 'components/category-detail'
 
