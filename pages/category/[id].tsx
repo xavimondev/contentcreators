@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 
 import { Category } from 'types'
@@ -21,49 +22,54 @@ const DashboardCategory = () => {
     creator.categories?.includes(id as Category)
   )
   return (
-    <Layout>
-      <div className='flex flex-row gap-2 items-center mb-12'>
-        <CustomLink href='/'>
-          <HomeIc className='h-8 w-8 lg:h-12 lg:w-12 text-white' />
-        </CustomLink>
-        <HeaderTitle msg={id as string} />
-      </div>
-      <div className='flex flex-col gap-4'>
-        {/* Tecnologías slider */}
-        <div className='w-full rounded-2xl bg-transparent overflow-y-auto py-4'>
-          {/* <div className='mb-5'>
+    <>
+      <Head>
+        <title>Buscando en: {id}</title>
+      </Head>
+      <Layout>
+        <div className='flex flex-row gap-2 items-center mb-12'>
+          <CustomLink href='/'>
+            <HomeIc className='h-8 w-8 lg:h-12 lg:w-12 text-white' />
+          </CustomLink>
+          <HeaderTitle msg={id as string} />
+        </div>
+        <div className='flex flex-col gap-4'>
+          {/* Tecnologías slider */}
+          <div className='w-full rounded-2xl bg-transparent overflow-y-auto py-4'>
+            {/* <div className='mb-5'>
             <span className='text-md md:text-xl font-semibold text-white mb-10'>Tecnologías</span>
           </div> */}
-          <ul className='flex gap-4'>
-            {LIST_CATEGORIES.map((category) => (
-              <CategoryItem key={category.id} {...category} />
-            ))}
-          </ul>
+            <ul className='flex gap-4'>
+              {LIST_CATEGORIES.map((category) => (
+                <CategoryItem key={category.id} {...category} />
+              ))}
+            </ul>
+          </div>
+          {creatorsList.length > 0 ? (
+            <>
+              <FormSearch nameClass='mb-8' />
+              {/* Section */}
+              <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
+                <Masonry gutter='10px'>
+                  {creatorsList.map(({ id, name, description, categories, social }) => (
+                    <Creator
+                      key={id}
+                      id={id}
+                      name={name}
+                      description={description}
+                      categories={categories}
+                      socialLinks={social}
+                    />
+                  ))}
+                </Masonry>
+              </ResponsiveMasonry>
+            </>
+          ) : (
+            <NoContentCreators />
+          )}
         </div>
-        {creatorsList.length > 0 ? (
-          <>
-            <FormSearch nameClass='mb-8' />
-            {/* Section */}
-            <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4 }}>
-              <Masonry gutter='10px'>
-                {creatorsList.map(({ id, name, description, categories, social }) => (
-                  <Creator
-                    key={id}
-                    id={id}
-                    name={name}
-                    description={description}
-                    categories={categories}
-                    socialLinks={social}
-                  />
-                ))}
-              </Masonry>
-            </ResponsiveMasonry>
-          </>
-        ) : (
-          <NoContentCreators />
-        )}
-      </div>
-    </Layout>
+      </Layout>
+    </>
   )
 }
 
