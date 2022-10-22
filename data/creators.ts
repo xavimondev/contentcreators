@@ -1,6 +1,6 @@
 import { Creator } from 'types'
 
-const CREATORS_DATA: Array<Creator> = [
+export const CREATORS_DATA: Creator[] = [
   {
     id: 'midudev',
     name: 'Miguel Angel Durán García',
@@ -243,4 +243,3 @@ const CREATORS_DATA: Array<Creator> = [
     ]
   }
 ]
-export default CREATORS_DATA

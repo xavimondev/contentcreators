@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 
 import { Category } from 'types'
-import CREATORS_DATA from 'data/creators'
+import { CREATORS_DATA } from 'data/creators'
 import { LIST_CATEGORIES } from 'data'
 
 import FormSearch from 'components/form-search'
