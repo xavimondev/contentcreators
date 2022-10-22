@@ -1,11 +1,11 @@
-import BackendImg from '../public/illutrations/backend.svg'
-import FrontendImg from '../public/illutrations/frontend.svg'
-import CloudImg from '../public/illutrations/cloud.svg'
-import DatabaseImg from '../public/illutrations/database.svg'
-import MobileImg from '../public/illutrations/mobile.svg'
-import DataScienceImg from '../public/illutrations/data-science.svg'
-import UiuxImg from '../public/illutrations/ui-ux.svg'
-import CybersecurityImg from '../public/illutrations/cybersecurity.svg'
+import BackendImg from '../public/illustrations/backend.svg'
+import FrontendImg from '../public/illustrations/frontend.svg'
+import CloudImg from '../public/illustrations/cloud.svg'
+import DatabaseImg from '../public/illustrations/database.svg'
+import MobileImg from '../public/illustrations/mobile.svg'
+import DataScienceImg from '../public/illustrations/data-science.svg'
+import UiuxImg from '../public/illustrations/ui-ux.svg'
+import CybersecurityImg from '../public/illustrations/cybersecurity.svg'
 
 export const LIST_CATEGORIES = [
   {
