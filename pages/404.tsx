@@ -1,7 +1,9 @@
+import { NextPage } from 'next'
+
 import CustomLink from 'components/custom-link'
 import Layout from 'components/layout'
 
-const NotFound = () => {
+const NotFound: NextPage = () => {
   return (
     <Layout>
       <div className='py-32 max-w-4xl mx-auto'>
