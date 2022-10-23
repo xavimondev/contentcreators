@@ -4,6 +4,10 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['unavatar.io']
+  },
+  i18n: {
+    locales: ['es'],
+    defaultLocale: 'es'
   }
 }
 

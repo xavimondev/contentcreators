@@ -29,6 +29,7 @@ const Home: NextPage = () => {
               href='https://github.com/d3vcloud'
               rel='noopener noreferrer'
               target='_blank'
+              aria-label='Go to Repository'
             >
               <GitHubIc className='w-6 h-6' />
             </CustomLink>

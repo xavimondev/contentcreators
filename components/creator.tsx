@@ -22,8 +22,7 @@ const CreatorCard = ({ id, name, description, categories, socialLinks }: Creator
             src={`https://unavatar.io/github/${id}`}
             width='256'
             height='256'
-            // layout='responsive'
-            alt='midudev'
+            alt={name}
           />
         </div>
         {/* Description section */}

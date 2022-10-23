@@ -22,7 +22,7 @@ export const CategoryCard = ({ id, name, colorFrom, colorTo, image }: CategoryPr
         <CustomLink href={`category/${id}`}>
           <div className='h-auto flex flex-col gap-8 py-8 px-4'>
             <Image src={image} height='256' width='256' alt={name} />
-            <p className='max-w-xl font-extrabold text-white/80'>{name}</p>
+            <p className='max-w-xl font-bold text-white/80 text-lg'>{name}</p>
           </div>
         </CustomLink>
       </article>
@@ -47,8 +47,8 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
                   className='rounded-full'
                   src={image}
                   alt='frontend'
-                  width='256'
-                  height='256'
+                  width='100%'
+                  height='100%'
                 />
               </div>
             </div>
