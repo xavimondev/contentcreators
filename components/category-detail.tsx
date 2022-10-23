@@ -4,7 +4,7 @@ import { api } from 'data/api'
 
 import type { Category, Creator } from 'types'
 
-import NoContentCreators from './empty-state'
+import NoDataFound from './no-data-found'
 import FormSearch from './form-search'
 import ListCreator from './list-creator'
 
@@ -16,7 +16,6 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
   const [creators, setCreators] = useState<Creator[]>([])
   const [isSearching, setIsSearching] = useState<boolean>(false)
   const [query, setQuery] = useState<string>('')
-  console.log({ query, isSearching })
 
   // TODO: Check if this useEffect is an anti-pattern
   useEffect(() => {
@@ -42,16 +41,10 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
       {creators.length > 0 ? (
         <ListCreator listCreators={creators} />
       ) : (
-        <NoContentCreators>
-          {!isSearching ? (
-            <>Aún no se han registrado creadores de contenido para esta tecnología.</>
-          ) : (
-            <>
-              No se encontraron resultados para{' '}
-              <span className='text-red-500 text-2xl font-bold'>{query}</span> en esta tecnología.
-            </>
-          )}
-        </NoContentCreators>
+        <NoDataFound
+          message='No se encontraron resultados para'
+          keyword={isSearching ? query : categoryId}
+        />
       )}
     </>
   )
