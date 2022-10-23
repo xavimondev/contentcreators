@@ -9,9 +9,11 @@ import { LoadingIc, SearchIc } from './icons'
 type SearchProps = {
   nameClass?: string
   setCreators: Dispatch<SetStateAction<Creator[]>>
+  setIsSearching: Dispatch<SetStateAction<boolean>>
+  setQuery: Dispatch<SetStateAction<string>>
 }
 
-const FormSearch = ({ nameClass, setCreators }: SearchProps) => {
+const FormSearch = ({ nameClass, setCreators, setIsSearching, setQuery }: SearchProps) => {
   const router = useRouter()
   const { id: categoryId } = router.query
 
@@ -22,6 +24,7 @@ const FormSearch = ({ nameClass, setCreators }: SearchProps) => {
       const data = await api.search(categoryId as string, query)
       setCreators(data)
       setIsTyping(false)
+      setQuery(query)
     }, 250),
     []
   )
@@ -30,6 +33,9 @@ const FormSearch = ({ nameClass, setCreators }: SearchProps) => {
     e.preventDefault()
     const query = e.target.value
     setIsTyping(true)
+    // it's an indicator that tells app whether users is searching or not
+    setIsSearching(true)
+    // trigger debounce
     autoCompleteDebounce(query)
   }
 
@@ -41,7 +47,6 @@ const FormSearch = ({ nameClass, setCreators }: SearchProps) => {
         </div>
         <input
           type='search'
-          id='voice-search'
           className='bg-gradient-to-l from-[#192957] to-[#211d45] border dark:border-gray-500 dark:text-white text-sm rounded-lg block w-full pl-10 p-2.5 dark:placeholder-gray-500 focus:outline-none focus:ring-1 dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
           placeholder='Busca creadores de contenido...'
           autoComplete='off'
