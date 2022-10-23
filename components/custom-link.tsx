@@ -1,5 +1,5 @@
-import Link, { LinkProps } from 'next/link'
 import { ReactNode, forwardRef } from 'react'
+import Link, { LinkProps } from 'next/link'
 
 type CustomLinkProps = {
   children: ReactNode

@@ -2,7 +2,7 @@ import { ChangeEvent, Dispatch, SetStateAction, useState, useCallback } from 're
 import { useRouter } from 'next/router'
 import debounce from 'just-debounce-it'
 
-import { Creator } from 'types'
+import type { Creator } from 'types'
 import { api } from 'data/api'
 import { LoadingIc, SearchIc } from './icons'
 

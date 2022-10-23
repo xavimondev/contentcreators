@@ -1,6 +1,6 @@
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 
-import { Creator } from 'types'
+import type { Creator } from 'types'
 import CreatorCard from 'components/creator'
 
 type PropsListCreator = {

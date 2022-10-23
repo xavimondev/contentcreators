@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { api } from 'data/api'
 
-import { Category, Creator } from 'types'
+import type { Category, Creator } from 'types'
 
 import NoContentCreators from './empty-state'
 import FormSearch from './form-search'

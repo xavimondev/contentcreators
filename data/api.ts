@@ -1,5 +1,5 @@
 import { CREATORS_DATA } from './creators'
-import { Category, Creator } from 'types'
+import type { Category, Creator } from 'types'
 
 export const api = {
   search: (query: string, queryId?: string): Promise<Creator[]> => {

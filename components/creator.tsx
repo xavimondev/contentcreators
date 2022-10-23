@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Category, Social } from 'types'
+import type { Category, Social } from 'types'
 import CustomLink from './custom-link'
 import SocialLink from './social-link'
 
