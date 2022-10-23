@@ -1,6 +1,8 @@
-import { CREATORS_DATA } from 'data/creators'
+import { useEffect, useState } from 'react'
 
-import { Category } from 'types'
+import { api } from 'data/api'
+
+import { Category, Creator } from 'types'
 
 import NoContentCreators from './empty-state'
 import FormSearch from './form-search'
@@ -11,13 +13,18 @@ type PropsCategoryDetail = {
 }
 
 const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
-  const listCreators = CREATORS_DATA.filter((creator) => creator.categories?.includes(categoryId))
+  const [creators, setCreators] = useState<Creator[]>([])
+
+  useEffect(() => {
+    api.search(categoryId).then(setCreators)
+  }, [categoryId])
+
   return (
     <>
-      {listCreators.length > 0 ? (
+      {creators.length > 0 ? (
         <>
-          <FormSearch nameClass='mb-8' />
-          <ListCreator listCreators={listCreators} />
+          <FormSearch nameClass='mb-8' setCreators={setCreators} />
+          <ListCreator listCreators={creators} />
         </>
       ) : (
         <NoContentCreators />
