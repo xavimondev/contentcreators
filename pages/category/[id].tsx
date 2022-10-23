@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import { Category } from 'types'
-import { LIST_CATEGORIES } from 'data'
+import { LIST_CATEGORIES } from 'data/categories'
 
 import HeaderTitle from 'components/header-title'
 import Layout from 'components/layout'

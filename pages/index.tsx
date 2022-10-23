@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 
-import { LIST_CATEGORIES } from 'data'
+import { LIST_CATEGORIES } from 'data/categories'
 
 import Layout from 'components/layout'
 import { CategoryCard } from 'components/category'
