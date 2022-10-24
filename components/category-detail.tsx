@@ -7,6 +7,7 @@ import type { Category, Creator } from 'types'
 import NoDataFound from './no-data-found'
 import FormSearch from './form-search'
 import ListCreator from './list-creator'
+import Placeholder from './placeholder'
 
 type PropsCategoryDetail = {
   categoryId: Category
@@ -15,11 +16,15 @@ type PropsCategoryDetail = {
 const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
   const [creators, setCreators] = useState<Creator[]>([])
   const [isSearching, setIsSearching] = useState<boolean>(false)
+  const [isLoading, setIsLoding] = useState<boolean>(true)
   const [query, setQuery] = useState<string>('')
 
   // TODO: Check if this useEffect is an anti-pattern
   useEffect(() => {
-    api.search(categoryId).then(setCreators)
+    api.search(categoryId).then((data) => {
+      setIsLoding(false)
+      setCreators(data)
+    })
 
     return () => {
       setQuery('')
@@ -29,6 +34,7 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
 
   return (
     <>
+      {isLoading && <Placeholder length={4} />}
       {(creators.length > 0 || isSearching) && (
         <FormSearch
           nameClass='mb-8'
@@ -37,7 +43,7 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
           setQuery={setQuery}
         />
       )}
-
+      {/* TODO: Fix shift fallback error message for seconds */}
       {creators.length > 0 ? (
         <ListCreator listCreators={creators} />
       ) : (
