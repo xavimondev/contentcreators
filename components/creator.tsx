@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useEffect, useRef } from 'react'
 import type { Category, Social } from 'types'
 import CustomLink from './custom-link'
 import SocialLink from './social-link'
@@ -10,10 +11,39 @@ type CreatorCardProps = {
   categories: Category[]
   socialLinks: Social[]
 }
+const options = {
+  threshold: 0.1
+}
 
 const CreatorCard = ({ id, name, description, categories, socialLinks }: CreatorCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0]
+      if (entry.isIntersecting) {
+        console.log(entry)
+        observer.unobserve(entry.target)
+        entry.target.setAttribute('style', 'opacity: 1; transform: translateY(0); transition: 0.4s')
+      }
+    }, options)
+
+    const element = cardRef?.current
+
+    if (element) observer.observe(element)
+
+    return () => observer && observer.disconnect()
+  }, [])
+
   return (
-    <article className='rounded-2xl border-none dark:bg-slate-900'>
+    <article
+      className='rounded-2xl border-none dark:bg-slate-900'
+      style={{
+        opacity: 0,
+        transform: 'translateY(100px)'
+      }}
+      ref={cardRef}
+    >
       <div className='flex flex-col gap-4 p-6'>
         {/* Photo section */}
         <div className='object-cover w-24 md:w-32 h-auto rounded-xl'>
