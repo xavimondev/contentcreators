@@ -17,12 +17,11 @@ const options = {
 
 const CreatorCard = ({ id, name, description, categories, socialLinks }: CreatorCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null)
-
+  // TODO: Convert observer into custom hook
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0]
       if (entry.isIntersecting) {
-        console.log(entry)
         observer.unobserve(entry.target)
         entry.target.setAttribute('style', 'opacity: 1; transform: translateY(0); transition: 0.4s')
       }
