@@ -1,6 +1,8 @@
 {
-  "name": "social-creators",
-  "version": "0.1.0",
+  "name": "content.creators",
+  "description": "Plataforma que reune a los mejores creadores de contenido en un solo lugar.",
+  "version": "1.0.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
