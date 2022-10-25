@@ -14,11 +14,11 @@ import CategoryDetail from 'components/category-detail'
 const DashboardCategory = () => {
   const router = useRouter()
   const { id } = router.query
-
+  const title = `Buscando en: ${id}`
   return (
     <>
       <Head>
-        <title>Buscando en: {id}</title>
+        <title>{title}</title>
       </Head>
       <Layout>
         <div className='flex flex-row gap-2 items-center mb-12'>
