@@ -11,20 +11,7 @@ type CustomLinkProps = {
 // eslint-disable-next-line react/display-name
 const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
   (
-    {
-      as,
-      passHref,
-      prefetch,
-      replace,
-      shallow,
-      scroll,
-      href,
-      children,
-      rel,
-      target,
-      classes,
-      ...rest
-    },
+    { as, passHref, replace, shallow, scroll, href, children, rel, target, classes, ...rest },
     ref
   ) => {
     return (
@@ -32,7 +19,7 @@ const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
         href={href}
         as={as}
         passHref={passHref}
-        prefetch={prefetch}
+        prefetch={false}
         replace={replace}
         shallow={shallow}
         scroll={scroll}
