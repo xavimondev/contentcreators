@@ -21,10 +21,15 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
 
   // TODO: Check if this useEffect is an anti-pattern
   useEffect(() => {
-    api.search(categoryId).then((data) => {
-      setIsLoding(false)
-      setCreators(data)
-    })
+    if (!categoryId) return
+    api
+      .search(categoryId)
+      .then((data) => {
+        setCreators(data)
+      })
+      .finally(() => {
+        setIsLoding(false)
+      })
 
     return () => {
       setQuery('')
@@ -32,9 +37,10 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
     }
   }, [categoryId])
 
+  if (isLoading) return <Placeholder length={4} />
+
   return (
     <>
-      {isLoading && <Placeholder length={4} />}
       {(creators.length > 0 || isSearching) && (
         <FormSearch
           nameClass='mb-8'
@@ -43,7 +49,6 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
           setQuery={setQuery}
         />
       )}
-      {/* TODO: Fix shift fallback error message for seconds */}
       {creators.length > 0 ? (
         <ListCreator listCreators={creators} />
       ) : (
