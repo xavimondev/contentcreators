@@ -8,6 +8,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <DefaultSeo
         title='content.[creators]'
         description='Aquí encontrarás a los mejores creadores de contenido que impulsarán tu carrera en tecnología.'
+        defaultTitle='content.[creators]'
+        titleTemplate='%s | 🚀'
         additionalLinkTags={[
           {
             rel: 'icon',

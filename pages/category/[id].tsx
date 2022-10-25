@@ -14,7 +14,7 @@ import CategoryDetail from 'components/category-detail'
 const DashboardCategory = () => {
   const router = useRouter()
   const { id } = router.query
-  const title = `Buscando en: ${id}`
+  const title = id ? `Dashboard: ${id} 🚀` : 'Loading...'
   return (
     <>
       <Head>
