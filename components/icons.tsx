@@ -1,6 +1,6 @@
-import React from 'react'
+import { SVGProps } from 'react'
 
-export const DiscordIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const DiscordIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg viewBox='0 0 20 20' fill='currentColor' {...props}>
       <path d='M15.545 4.91a13.195 13.195 0 00-3.257-1.01.05.05 0 00-.052.025c-.141.25-.297.577-.406.833a12.181 12.181 0 00-3.658 0 8.426 8.426 0 00-.412-.833.051.051 0 00-.052-.024 13.158 13.158 0 00-3.257 1.01.047.047 0 00-.021.018c-2.074 3.1-2.643 6.122-2.364 9.107.001.015.01.029.02.038a13.268 13.268 0 003.996 2.02.052.052 0 00.056-.02 9.48 9.48 0 00.818-1.329.05.05 0 00-.028-.07 8.746 8.746 0 01-1.248-.595.051.051 0 01-.005-.085c.084-.063.168-.128.248-.194a.05.05 0 01.051-.007c2.619 1.195 5.454 1.195 8.041 0a.05.05 0 01.053.006c.08.066.164.132.248.195a.051.051 0 01-.004.085c-.399.233-.813.43-1.249.594a.051.051 0 00-.027.071c.24.466.514.909.817 1.33a.05.05 0 00.056.018 13.225 13.225 0 004.001-2.02.051.051 0 00.021-.036c.334-3.452-.559-6.45-2.366-9.107a.04.04 0 00-.02-.02zM7.347 12.22c-.789 0-1.438-.724-1.438-1.613s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .889-.637 1.613-1.438 1.613zm5.316 0c-.788 0-1.438-.724-1.438-1.613s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .889-.63 1.613-1.438 1.613z'></path>
@@ -8,7 +8,7 @@ export const DiscordIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const TwitterIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const TwitterIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg fill='currentColor' viewBox='0 0 20 20' {...props}>
       <g>
@@ -18,7 +18,7 @@ export const TwitterIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const FacebookIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const FacebookIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width={16}
@@ -33,7 +33,7 @@ export const FacebookIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const GitHubIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const GitHubIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg viewBox='0 0 16 16' fill='currentColor' {...props}>
       <path
@@ -44,7 +44,7 @@ export const GitHubIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const TwitchIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const TwitchIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg viewBox='0 0 256 268' fill='currentColor' {...props}>
       <path d='M17 0 0 47v186h64v35h35l35-35h52l70-70V0H17Zm24 23h192v128l-41 41h-64l-35 35v-35H41V23Zm64 117h23V70h-23v70Zm64 0h23V70h-23v70Z' />
@@ -52,7 +52,7 @@ export const TwitchIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const YoutubeIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const YoutubeIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg viewBox='0 0 20 20' x='0px' y='0px' {...props} fill='currentColor'>
       <g>
@@ -66,7 +66,7 @@ export const YoutubeIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const InstagramIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const InstagramIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg viewBox='0 0 20 20' fill='currentColor' {...props}>
       <g>
@@ -86,7 +86,7 @@ export const InstagramIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const BlogIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const BlogIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg fill='currentColor' viewBox='0 0 20 20' {...props}>
       <g>
@@ -97,7 +97,7 @@ export const BlogIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const HomeIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const HomeIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg viewBox='0 0 21 21' xmlns='http://www.w3.org/2000/svg' {...props}>
       <g
@@ -115,7 +115,7 @@ export const HomeIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const SearchIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const SearchIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       aria-hidden='true'
@@ -134,7 +134,7 @@ export const SearchIc = (props: React.SVGProps<SVGSVGElement>) => {
   )
 }
 
-export const LoadingIc = (props: React.SVGProps<SVGSVGElement>) => {
+export const LoadingIc = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       className='w-5 h-5 text-gray-200 animate-spin dark:text-gray-500 fill-white'

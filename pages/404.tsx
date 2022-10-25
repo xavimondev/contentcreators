@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import type { NextPage } from 'next'
 
 import CustomLink from 'components/custom-link'
 import Layout from 'components/layout'
