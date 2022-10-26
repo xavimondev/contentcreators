@@ -13,12 +13,12 @@ Es una plataforma web que reune a los mejores creadores de contenido en español
 1. Clona el repositorio.
 2. Instala las dependencias con `npm install`.
 3. Ejecuta el proyecto con `npm run dev`.
-4. En tu navegador, ingresa [localhost:3000](localhost:3000) en la barra de direcciones para ver la web.
+4. En tu navegador, ingresa [localhost:3000](http://localhost:3000) en la barra de direcciones para ver la web.
 
-# Deseo contribuir
+## Deseo contribuir
 
 Puedes contribuir agregando nuevas features, solucionando algún bug, mejorando algo en el código y agregando más creadores de contenido.
-Si deseas hacer lo último, por el momento la única forma de agregarlos es haciéndolo directamente en el código, es decir, necesitas agregar un creador de contenido manualmente. Una vez definido que creadores de contenido agregarás, puedes seguir esta guía:
+Si deseas hacer lo último, por el momento la única forma de agregarlos es haciéndolo directamente en el código. Una vez tengas definido que creadores de contenido agregarás, puedes seguir esta guía:
 
 1. Crea un [fork de este repositorio](https://github.com/d3vcloud/content-creators/fork).
 2. Dirígete a [creators.ts](https://github.com/d3vcloud/content-creators/blob/main/data/creators.ts) y agrega los datos solicitados siguiendo el tipado correspondiente.
