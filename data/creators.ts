@@ -294,5 +294,41 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://gndx.dev/'
       }
     ]
+  },
+  {
+    id: 's4vitar',
+    name: 'S4vitar',
+    description: 'Creador de contenido de Hacking y Ciberseguridad. Hago directo todos los días.',
+    categories: ['ciberseguridad'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/S4vitar'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/s4vitar'
+      },
+      {
+        id: 'twitch',
+        url: 'https://twitch.tv/s4vitaar'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/s4vitar'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/hack4u'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/s4vitarx/'
+      },
+      {
+        id: 'blog',
+        url: 'https://s4vitar.github.io/'
+      }
+    ]
   }
 ]
