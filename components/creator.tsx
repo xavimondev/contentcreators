@@ -54,8 +54,8 @@ const CreatorCard = ({ id, name, description, categories, socialLinks }: Creator
               isLoading ? 'grayscale blur-2xl scale-110' : 'grayscale-0 blur-0 scale-100'
             }`}
             src={`https://unavatar.io/github/${id}`}
-            width={256}
-            height={256}
+            width='256'
+            height='256'
             alt={name}
             onLoadingComplete={() => setLoading(false)}
           />
