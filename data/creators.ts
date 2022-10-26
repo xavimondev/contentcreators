@@ -241,5 +241,58 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://manz.dev/'
       }
     ]
+  },
+  {
+    id: 'teffcode',
+    name: 'Estefany Aguilar',
+    description: 'Friend of CSS · Frontend Developer at La Haus · Teacher at Platzi 🌸',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/teffcode'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/teffcode'
+      }
+    ]
+  },
+  {
+    id: 'gndx',
+    name: 'Oscar Barajas Tavares',
+    description:
+      'Learning Engineer at @platzi - Microsoft MVP - Lead at Developer Circles from Meta.',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/gndx'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/gndx/'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/gndxdev/'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/c/OscarBarajas'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/5mZc7fU5WZ'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/gndx/'
+      },
+      {
+        id: 'blog',
+        url: 'https://gndx.dev/'
+      }
+    ]
   }
 ]
