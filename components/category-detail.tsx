@@ -16,19 +16,21 @@ type PropsCategoryDetail = {
 const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
   const [creators, setCreators] = useState<Creator[]>([])
   const [isSearching, setIsSearching] = useState<boolean>(false)
-  const [isLoading, setIsLoding] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [query, setQuery] = useState<string>('')
 
   // TODO: Check if this useEffect is an anti-pattern
   useEffect(() => {
     if (!categoryId) return
+
+    setIsLoading(true)
     api
       .search(categoryId)
       .then((data) => {
         setCreators(data)
       })
       .finally(() => {
-        setIsLoding(false)
+        setIsLoading(false)
       })
 
     return () => {
