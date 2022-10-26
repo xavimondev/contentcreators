@@ -330,5 +330,100 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://s4vitar.github.io/'
       }
     ]
+  },
+  {
+    id: 'nsdonato',
+    name: 'Noelia',
+    description:
+      '🎯 • Ayudo a los que inician en programación 👩🏻‍💻 • Desarrolladora Frontend 🟣 • Aprendemos tecnologías en Twitch 💬 • Sumate a la comunidad en Discord.',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/vamoacodear'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/nsdonato'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/vamoacodear'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/c/vamoacodear'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/CJdPBeTw6s'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/vamoacodear/'
+      }
+    ]
+  },
+  {
+    id: 'jonmircha',
+    name: 'Jonathan Mircha',
+    description:
+      'Soy tu amigo y docente digital... Jonathan MirCha. Profesor, programador web y creador de contenidos ubicado en México.',
+    categories: ['backend', 'frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/jonmircha'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/jonmircha'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/jonmircha'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/gPgJMUF'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/jonmircha'
+      },
+      {
+        id: 'blog',
+        url: 'https://jonmircha.com/'
+      }
+    ]
+  },
+  {
+    id: 'powerhdeleon',
+    name: 'Héctor de León',
+    description:
+      'Mi nombre es Héctor de León, soy programador y Microsoft MVP, tengo más de 20 años programando.',
+    categories: ['backend', 'database'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/powerhdeleon'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/powerhdeleon'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/hdeleonnet'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/hdeleonnet'
+      },
+      {
+        id: 'blog',
+        url: 'https://hdeleon.net/'
+      }
+    ]
   }
 ]
