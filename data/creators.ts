@@ -202,6 +202,10 @@ export const CREATORS_DATA: Creator[] = [
       {
         id: 'instagram',
         url: 'https://www.instagram.com/carlosazaustre/'
+      },
+      {
+        id: 'blog',
+        url: 'https://carlosazaustre.es'
       }
     ]
   },
