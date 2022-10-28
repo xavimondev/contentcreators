@@ -429,5 +429,71 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://hdeleon.net/'
       }
     ]
+  },
+  {
+    id: 'bluuweb',
+    name: 'bluuweb',
+    description:
+      'Soy Ignacio Gutiérrez y siempre he dicho que la práctica hace al maestro, la programación no es más que repetición y repetición, por lo tanto para comenzar solo tienes que atreverte a escribir tus primeras líneas de código, así perderás el miedo y cada vez será más y más sencillo adquirir la lógica de programación.',
+    categories: ['backend', 'frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/bluuweb'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/bluuweb'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/bluuweb'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/Bluuweb'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/hcG7NBvsGD'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/bluuweb_youtube/'
+      },
+      {
+        id: 'blog',
+        url: 'https://bluuweb.github.io/'
+      }
+    ]
+  },
+  {
+    id: 'DorianDesings',
+    name: 'DorianDesings',
+    description:
+      'Tengo más de 9 años de experiencia en desarrollo web. Soy apasionado de las nuevas tecnologías y en especial del ecosistema de javascript. Mi propósito es trasladar mi pasión por enseñar tecnologías web a todos aquellos que quieran iniciarse o desarrollarse en este campo de una forma actualizada.',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/DorianDesings'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/DorianDesings'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/doriandesings/'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/DorianDesings'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/dorian_desings/'
+      }
+    ]
   }
 ]
