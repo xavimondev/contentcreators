@@ -250,7 +250,7 @@ export const CREATORS_DATA: Creator[] = [
     id: 'teffcode',
     name: 'Estefany Aguilar',
     description: 'Friend of CSS · Frontend Developer at La Haus · Teacher at Platzi 🌸',
-    categories: ['frontend'],
+    categories: ['frontend', 'uiux'],
     social: [
       {
         id: 'twitter',
