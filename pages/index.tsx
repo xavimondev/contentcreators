@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           </nav>
           <div>
             <CustomLink
-              href='https://github.com/d3vcloud'
+              href='https://github.com/d3vcloud/content-creators'
               rel='noopener noreferrer'
               target='_blank'
               aria-label='Go to Repository'
