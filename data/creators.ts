@@ -495,5 +495,149 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://www.instagram.com/dorian_desings/'
       }
     ]
+  },
+  {
+    id: 'glrodasz',
+    name: 'Guillermo Rodas',
+    description: 'I help developers to improve their skills while creating quality products.',
+    categories: ['backend', 'frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/glrodasz'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/glrodasz/'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/guillermorodas'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/GuillermoRodas'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/pA8fGFxjJP'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/glrodasz/'
+      },
+      {
+        id: 'blog',
+        url: 'https://guillermorodas.com/'
+      }
+    ]
+  },
+  {
+    id: 'baumannzone',
+    name: 'Jorge Baumann',
+    description:
+      'Ingeniero de software y creador de contenido. Apasionado del Open Source y de las comunidades.',
+    categories: ['backend', 'frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/baumannzone'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/baumannzone'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/baumannzone/'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/RambitoJS'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/baumannzone/'
+      },
+      {
+        id: 'blog',
+        url: 'https://www.baumannzone.dev/'
+      }
+    ]
+  },
+  {
+    id: 'miriamgonp',
+    name: 'Miriam Gonzalez',
+    description:
+      'Holi 👋 Soy Miriam, desarrolladora frontend con más de 4 años de experiencia en el mundo Startup. Apasionada del diseño y la experiencia de usuario, procuro que mis desarrollos sean usables, inclusivos y accesibles a todas las personas.',
+    categories: ['frontend', 'uiux'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/miriamgonp'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/miriamgonp'
+      },
+      {
+        id: 'blog',
+        url: 'https://miriamgonzalez.dev/'
+      }
+    ]
+  },
+  {
+    id: 'pablokbs',
+    name: 'Pablo Fredrikson',
+    description:
+      'Soy Desarrollador Full Stack JavaScript con 15 años de experiencia. ⭐ Reconocido como Google Developer Expert y GitHub Star.',
+    categories: ['backend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/pablokbs'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/pablokbs'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/PeladoNerd'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/pablokbs/'
+      },
+      {
+        id: 'blog',
+        url: 'https://peladonerd.com/'
+      }
+    ]
+  },
+  {
+    id: 'marcosrivasr',
+    name: 'Marcos Rivas',
+    description:
+      'Software engineer at Microsoft and creator of Vida MRR, a personal project dedicated to help other developers to increase their technical skills in web design, web development, problems solving, and more.',
+    categories: ['backend', 'frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/vidamrr'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/marcosrivasr'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/VidaMRR'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/vidamrr/'
+      }
+    ]
   }
 ]
