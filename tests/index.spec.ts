@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { getLocator } from './utils'
 
 // Mockup data, in the future I should take data from categories file
 const LIST_CATEGORIES = [
@@ -69,10 +70,10 @@ describe('tests for home page', () => {
   test('index page has content.[creators] in title and introduction paragraph should not empty', async ({
     page
   }) => {
-    const title = page.locator('h1')
+    const title = getLocator(page, 'h1')
     await expect(title).toHaveText('content.[creators]')
     // create a locator
-    const paragraph = page.locator('p').first()
+    const paragraph = getLocator(page, 'p').first()
     // Expect paragraph has a value.
     await expect(paragraph).not.toBeEmpty()
   })
@@ -81,7 +82,7 @@ describe('tests for home page', () => {
     page
   }) => {
     // Getting articles selectors inside categories section
-    const locator = page.locator('section >> nth=1 >> article')
+    const locator = getLocator(page, 'section >> nth=1 >> article')
     const totalCategories = await locator.count()
     // It makes sure there's at least one category
     expect(totalCategories).toBeGreaterThan(0)

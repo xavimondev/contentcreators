@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { api } from 'data/api'
+import { getLocator } from './utils'
 
 const { describe, beforeEach } = test
 
@@ -14,13 +15,13 @@ describe('tests for category page', () => {
     // TODO: Get this from categories file
     const TOTAL_CATEGORIES = 8
     // Display correct title
-    const title = page.locator('h1')
+    const title = getLocator(page, 'h1')
     await expect(title).toHaveText(`${PAGE}`)
     // Checking if there are all categories
-    const categoriesList = page.locator('ul:first-child > li')
+    const categoriesList = getLocator(page, 'ul:first-child > li')
     await expect(categoriesList).toHaveCount(TOTAL_CATEGORIES)
     // Checking whether there is a search form
-    const inputLocator = page.locator('input[type="search"]')
+    const inputLocator = getLocator(page, 'input[type="search"]')
     await expect(inputLocator).toBeVisible()
   })
 
@@ -29,12 +30,12 @@ describe('tests for category page', () => {
     const ERROR_MESSAGE = `No se encontraron resultados para ${QUERY}. Sin embargo, puedes agregarlos contribuyendo al 🚀 repositorio 😊.`
 
     // Filling input with QUERY's value
-    const inputLocator = page.locator('input[type="search"]')
+    const inputLocator = getLocator(page, 'input[type="search"]')
     await inputLocator.fill(QUERY)
 
     // Getting locator "p" which has a span inside and checking against ERROR_MESSAGE
     const errorMessageLocator = page.locator('p', {
-      has: page.locator('span')
+      has: getLocator(page, 'span')
     })
     await expect(errorMessageLocator).toHaveText(ERROR_MESSAGE)
   })
@@ -43,7 +44,7 @@ describe('tests for category page', () => {
     const queryId = 'mi'
 
     // Filling input with QUERY's value
-    const inputLocator = page.locator('input[type="search"]')
+    const inputLocator = getLocator(page, 'input[type="search"]')
     await inputLocator.fill(queryId)
 
     // Fetching data
