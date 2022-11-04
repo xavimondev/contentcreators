@@ -655,16 +655,16 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://twitter.com/vidamrr'
       },
       {
+        id: 'instagram',
+        url: 'https://www.instagram.com/vidamrr/'
+      },
+      {
         id: 'github',
         url: 'https://github.com/marcosrivasr'
       },
       {
         id: 'youtube',
         url: 'https://www.youtube.com/VidaMRR'
-      },
-      {
-        id: 'instagram',
-        url: 'https://www.instagram.com/vidamrr/'
       }
     ]
   },
@@ -719,7 +719,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'pablosirera',
     name: 'Pablo Sirera',
-    description: 'Engineering Manager for Payments at Parrot, Teacher & Google Developer Expert',
+    description: 'Senior Frontend Developer 👨🏼‍💻 Instructor && passionate about web technologies',
     categories: ['frontend'],
     social: [
       {
@@ -745,6 +745,54 @@ export const CREATORS_DATA: Creator[] = [
       {
         id: 'blog',
         url: 'https://pablosirera.com'
+      }
+    ]
+  },
+  {
+    id: 'alexanyernaranjo',
+    name: 'Alexanyer Naranjo',
+    description: 'Desarrollador Frontend | FrontEnd Developer',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/alexanyernas'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/alexanyernas'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/c/AlexanyerNaranjo'
+      },
+      {
+        id: 'blog',
+        url: 'https://alexanyernas-links.netlify.app/'
+      }
+    ]
+  },
+  {
+    id: 'acadeller',
+    name: 'Acadeller',
+    description: 'Nuestra misión es impulsar a cualquier persona a empezar su carrera en el mundo del desarrollo de software.💡',
+    categories: ['frontend', 'backend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/acadeller'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/acadeller/'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/Acadeller'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/9vvcTTC'
       }
     ]
   },
