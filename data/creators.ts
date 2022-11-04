@@ -587,6 +587,34 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
+      id: 'veritechi',
+      name: 'Verónica Moreno',
+      description: 'Desarrolladora Frontend + lo que el Backend se deje :) | Trabajo en remoto desde Canarias ❤',
+      categories: ['frontend'],
+      social: [
+        {
+          id: 'twitter',
+          url: 'https://twitter.com/veritechie/'
+        },
+        {
+          id: 'github',
+          url: 'https://github.com/VeroMoreno'
+        },
+        {
+          id: 'youtube',
+          url: 'https://www.youtube.com/channel/UCawQeVsc63c08HXrtsK0b2g'
+        },
+        {
+          id: 'instagram',
+          url: 'https://www.instagram.com/veritechie/'
+        },
+        {
+          id: 'blog',
+          url: 'https://veromoreno.github.io/'
+        },
+      ]
+  },
+  {
     id: 'pablokbs',
     name: 'Pablo Fredrikson',
     description:
@@ -627,17 +655,146 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://twitter.com/vidamrr'
       },
       {
+        id: 'instagram',
+        url: 'https://www.instagram.com/vidamrr/'
+      },
+      {
         id: 'github',
         url: 'https://github.com/marcosrivasr'
       },
       {
         id: 'youtube',
         url: 'https://www.youtube.com/VidaMRR'
+      }
+    ]
+  },
+  {
+    id: 'naviscode',
+    name: 'Navis Code',
+    description: 'Desarrollador Web | Front End Developer',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/NavisCode'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/Navis-code'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/c/NavisCode'
+      },
+      {
+        id: 'blog',
+        url: 'https://naviscode.com/'
+      }
+    ]
+  },
+  {
+    id: 'leonidasesteban',
+    name: 'Leonidas Esteban',
+    description: 'Engineering Manager for Payments at Parrot, Teacher & Google Developer Expert',
+    categories: ['frontend', 'backend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/LeonidasEsteban'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/LeonidasEsteban'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/c/LeonidasEsteban'
+      },
+      {
+        id: 'blog',
+        url: 'https://leonidasesteban.com'
+      }
+    ]
+  },
+  {
+    id: 'pablosirera',
+    name: 'Pablo Sirera',
+    description: 'Senior Frontend Developer 👨🏼‍💻 Instructor && passionate about web technologies',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/pablosirera'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/pablosirera'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/pablosirera'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/user/psirera4'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/DsvmWs8Ban'
+      },
+      {
+        id: 'blog',
+        url: 'https://pablosirera.com'
+      }
+    ]
+  },
+  {
+    id: 'alexanyernaranjo',
+    name: 'Alexanyer Naranjo',
+    description: 'Desarrollador Frontend | FrontEnd Developer',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/alexanyernas'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/alexanyernas'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/c/AlexanyerNaranjo'
+      },
+      {
+        id: 'blog',
+        url: 'https://alexanyernas-links.netlify.app/'
+      }
+    ]
+  },
+  {
+    id: 'acadeller',
+    name: 'Acadeller',
+    description: 'Nuestra misión es impulsar a cualquier persona a empezar su carrera en el mundo del desarrollo de software.💡',
+    categories: ['frontend', 'backend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/acadeller'
       },
       {
         id: 'instagram',
-        url: 'https://www.instagram.com/vidamrr/'
+        url: 'https://www.instagram.com/acadeller/'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/Acadeller'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.com/invite/9vvcTTC'
       }
     ]
-  }
+  },
+  
 ]
