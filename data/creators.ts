@@ -587,32 +587,33 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-      id: 'veritechi',
-      name: 'Verónica Moreno',
-      description: 'Desarrolladora Frontend + lo que el Backend se deje :) | Trabajo en remoto desde Canarias ❤',
-      categories: ['frontend'],
-      social: [
-        {
-          id: 'twitter',
-          url: 'https://twitter.com/veritechie/'
-        },
-        {
-          id: 'github',
-          url: 'https://github.com/VeroMoreno'
-        },
-        {
-          id: 'youtube',
-          url: 'https://www.youtube.com/channel/UCawQeVsc63c08HXrtsK0b2g'
-        },
-        {
-          id: 'instagram',
-          url: 'https://www.instagram.com/veritechie/'
-        },
-        {
-          id: 'blog',
-          url: 'https://veromoreno.github.io/'
-        },
-      ]
+    id: 'VeroMoreno',
+    name: 'Verónica Moreno',
+    description:
+      'Desarrolladora Frontend + lo que el Backend se deje :) | Trabajo en remoto desde Canarias ❤',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/veritechie/'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/VeroMoreno'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/channel/UCawQeVsc63c08HXrtsK0b2g'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/veritechie/'
+      },
+      {
+        id: 'blog',
+        url: 'https://veromoreno.github.io/'
+      }
+    ]
   },
   {
     id: 'pablokbs',
@@ -669,7 +670,7 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'naviscode',
+    id: 'Navis-code',
     name: 'Navis Code',
     description: 'Desarrollador Web | Front End Developer',
     categories: ['frontend'],
@@ -749,7 +750,7 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'alexanyernaranjo',
+    id: 'alexanyernas',
     name: 'Alexanyer Naranjo',
     description: 'Desarrollador Frontend | FrontEnd Developer',
     categories: ['frontend'],
@@ -775,7 +776,8 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'acadeller',
     name: 'Acadeller',
-    description: 'Nuestra misión es impulsar a cualquier persona a empezar su carrera en el mundo del desarrollo de software.💡',
+    description:
+      'Nuestra misión es impulsar a cualquier persona a empezar su carrera en el mundo del desarrollo de software.💡',
     categories: ['frontend', 'backend'],
     social: [
       {
@@ -795,6 +797,5 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://discord.com/invite/9vvcTTC'
       }
     ]
-  },
-  
+  }
 ]
