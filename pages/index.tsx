@@ -10,29 +10,31 @@ import { GitHubIc } from 'components/icons'
 const Home: NextPage = () => {
   return (
     <>
-      <header className='sticky top-0 z-50 text-white font-semibold w-full'>
-        <div className='flex flex-row justify-between p-6'>
-          <nav>
-            <ul className='flex flex-row justify-between'>
-              <li>
-                <CustomLink
-                  href='/'
-                  classes='text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#e82e6b] to-[#e6da7a] bg-[length:200%_auto] animate-text-clip'
-                >
-                  content.[creators]
-                </CustomLink>
-              </li>
-            </ul>
-          </nav>
-          <div>
-            <CustomLink
-              href='https://github.com/d3vcloud/content-creators'
-              rel='noopener noreferrer'
-              target='_blank'
-              aria-label='Go to Repository'
-            >
-              <GitHubIc className='w-6 h-6' />
-            </CustomLink>
+      <header className='sticky top-0 z-50 text-white font-semibold w-full backdrop-blur-lg'>
+        <div className='border-b border-[#344a8c] px-4 py-3'>
+          <div className='flex flex-row justify-between'>
+            <nav>
+              <ul className='flex flex-row justify-between'>
+                <li>
+                  <CustomLink
+                    href='/'
+                    classes='text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#e82e6b] to-[#e6da7a] bg-[length:200%_auto] animate-text-clip'
+                  >
+                    content.[creators]
+                  </CustomLink>
+                </li>
+              </ul>
+            </nav>
+            <div>
+              <CustomLink
+                href='https://github.com/d3vcloud/content-creators'
+                rel='noopener noreferrer'
+                target='_blank'
+                aria-label='Go to Repository'
+              >
+                <GitHubIc className='w-6 h-6' />
+              </CustomLink>
+            </div>
           </div>
         </div>
       </header>
