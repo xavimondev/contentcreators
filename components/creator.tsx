@@ -65,7 +65,7 @@ const CreatorCard = ({ id, name, description, categories, socialLinks }: Creator
           {/* Name */}
           <h2 className='text-lg md:text-3xl font-bold tracking-tight dark:text-white'>{name}</h2>
           {/* Description */}
-          <p className='mb-3 text-base font-normal text-gray-700 dark:text-gray-400 max-w-5xl'>
+          <p className='mb-3 text-base font-normal text-gray-600 dark:text-gray-300 max-w-5xl'>
             {description}
           </p>
           {/* Categories area */}
