@@ -10,7 +10,7 @@ import { GitHubIc } from 'components/icons'
 const Home: NextPage = () => {
   return (
     <>
-      <header className='sticky top-0 z-50 text-white font-semibold bg-gradient-to-l from-[#39497e] to-[#1d184e] w-full'>
+      <header className='sticky top-0 z-50 text-white font-semibold w-full'>
         <div className='flex flex-row justify-between p-6'>
           <nav>
             <ul className='flex flex-row justify-between'>
