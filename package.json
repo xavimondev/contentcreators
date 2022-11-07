@@ -13,6 +13,7 @@
     "prettier:check": "npx prettier . --write"
   },
   "dependencies": {
+    "@notionhq/client": "2.2.2",
     "just-debounce-it": "3.1.1",
     "next": "12.3.1",
     "next-seo": "5.5.0",
