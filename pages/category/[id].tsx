@@ -1,7 +1,10 @@
+import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { Category } from 'types'
+import { getContentCreators } from 'lib/notion'
+
+import { Category, Creator } from 'types'
 import { LIST_CATEGORIES } from 'data/categories'
 
 import HeaderTitle from 'components/header-title'
@@ -11,7 +14,7 @@ import CustomLink from 'components/custom-link'
 import ListCategory from 'components/list-category'
 import CategoryDetail from 'components/category-detail'
 
-const DashboardCategory = () => {
+const DashboardCategory: NextPage<{ creators: Creator[] }> = ({ creators }) => {
   const router = useRouter()
   const { id } = router.query
   const title = id ? `Dashboard: ${id} 🚀` : 'Loading...'
@@ -30,11 +33,21 @@ const DashboardCategory = () => {
         <div className='flex flex-col gap-4'>
           {/* Tecnologías slider */}
           <ListCategory listCategories={LIST_CATEGORIES} />
-          <CategoryDetail categoryId={id as Category} />
+          <CategoryDetail categoryId={id as Category} listCreators={creators} />
         </div>
       </Layout>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  const data = await getContentCreators()
+
+  return {
+    props: {
+      creators: data
+    }
+  }
 }
 
 export default DashboardCategory

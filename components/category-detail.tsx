@@ -1,45 +1,22 @@
-import { useEffect, useState } from 'react'
-
-import { api } from 'data/api'
+import { useState } from 'react'
 
 import type { Category, Creator } from 'types'
 
-import NoDataFound from './no-data-found'
 import FormSearch from './form-search'
 import ListCreator from './list-creator'
-import Placeholder from './placeholder'
 
 type PropsCategoryDetail = {
   categoryId: Category
+  listCreators: Creator[]
 }
 
-const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
+const CategoryDetail = ({ categoryId, listCreators }: PropsCategoryDetail) => {
   const [creators, setCreators] = useState<Creator[]>([])
   const [isSearching, setIsSearching] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [query, setQuery] = useState<string>('')
 
-  // TODO: Check if this useEffect is an anti-pattern
-  useEffect(() => {
-    if (!categoryId) return
-
-    setIsLoading(true)
-    api
-      .search(categoryId)
-      .then((data) => {
-        setCreators(data)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-
-    return () => {
-      setQuery('')
-      setIsSearching(false)
-    }
-  }, [categoryId])
-
-  if (isLoading) return <Placeholder length={4} />
+  // if (isLoading) return <Placeholder length={4} />
 
   return (
     <>
@@ -51,14 +28,15 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
           setQuery={setQuery}
         />
       )}
-      {creators.length > 0 ? (
-        <ListCreator listCreators={creators} />
+      <ListCreator listCreators={listCreators} />
+      {/* {creators.length > 0 ? (
+        <ListCreator listCreators={listCreators} />
       ) : (
         <NoDataFound
           message='No se encontraron resultados para'
           keyword={isSearching ? query : categoryId}
         />
-      )}
+      )} */}
     </>
   )
 }

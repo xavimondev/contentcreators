@@ -16,6 +16,9 @@ const options = {
 }
 
 const CreatorCard = ({ id, name, description, categories, socialLinks }: CreatorCardProps) => {
+  const idSplitted = id.split('-')
+  const socialName = idSplitted[0]
+  const socialUser = idSplitted[1]
   const cardRef = useRef<HTMLDivElement>(null)
   // I took blur workaround from https://github.com/vercel/next.js/discussions/26168
   const [isLoading, setLoading] = useState(true)
@@ -53,7 +56,7 @@ const CreatorCard = ({ id, name, description, categories, socialLinks }: Creator
             className={`rounded-xl duration-700 ease-in-out ${
               isLoading ? 'grayscale blur-2xl scale-110' : 'grayscale-0 blur-0 scale-100'
             }`}
-            src={`https://unavatar.io/github/${id}`}
+            src={`https://unavatar.io/${socialName}/${socialUser}`}
             width='256'
             height='256'
             alt={name}
@@ -83,9 +86,11 @@ const CreatorCard = ({ id, name, description, categories, socialLinks }: Creator
         <div className='flex flex-col gap-2 md:gap-4'>
           <h5 className='text-base md:text-lg text-white font-semibold'>Sígueme en:</h5>
           <ul className='flex gap-4 flex-wrap'>
-            {socialLinks.map(({ id, url }) => (
-              <SocialLink key={id} id={id} url={url} />
-            ))}
+            {socialLinks
+              .filter((link) => link.url !== null)
+              .map(({ id, url }) => (
+                <SocialLink key={id} id={id} url={url} />
+              ))}
           </ul>
         </div>
       </div>
