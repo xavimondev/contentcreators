@@ -14,10 +14,7 @@ type PropsCategoryDetail = {
 const CategoryDetail = ({ categoryId, listCreators }: PropsCategoryDetail) => {
   const [creators, setCreators] = useState<Creator[]>([])
   const [isSearching, setIsSearching] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
   const [query, setQuery] = useState<string>('')
-
-  // if (isLoading) return <Placeholder length={4} />
 
   return (
     <>
