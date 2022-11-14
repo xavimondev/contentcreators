@@ -4,6 +4,7 @@ import type { Category, Creator } from 'types'
 
 import FormSearch from './form-search'
 import ListCreator from './list-creator'
+import NoDataFound from './no-data-found'
 
 type PropsCategoryDetail = {
   categoryId: Category
@@ -20,7 +21,7 @@ const CategoryDetail = ({ categoryId, listCreators }: PropsCategoryDetail) => {
 
   return (
     <>
-      {(creators.length > 0 || isSearching) && (
+      {(listCreators.length > 0 || isSearching) && (
         <FormSearch
           nameClass='mb-8'
           setCreators={setCreators}
@@ -28,15 +29,15 @@ const CategoryDetail = ({ categoryId, listCreators }: PropsCategoryDetail) => {
           setQuery={setQuery}
         />
       )}
-      <ListCreator listCreators={listCreators} />
-      {/* {creators.length > 0 ? (
+
+      {listCreators.length > 0 ? (
         <ListCreator listCreators={listCreators} />
       ) : (
         <NoDataFound
           message='No se encontraron resultados para'
           keyword={isSearching ? query : categoryId}
         />
-      )} */}
+      )}
     </>
   )
 }

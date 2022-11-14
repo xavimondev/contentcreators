@@ -8,15 +8,37 @@ const notion = new Client({
   auth: NOTION_KEY
 })
 
-export const getDatabase = async () => {
+export const getDatabase = async (customQuery: string) => {
   const response = await notion.databases.query({
-    database_id: NOTION_DATABASE
+    database_id: NOTION_DATABASE,
+    filter: {
+      and: [
+        {
+          property: 'status',
+          select: {
+            equals: 'enabled'
+          }
+        },
+        {
+          property: 'category',
+          multi_select: {
+            contains: customQuery
+          }
+        }
+      ]
+    },
+    sorts: [
+      {
+        property: 'name',
+        direction: 'ascending'
+      }
+    ]
   })
   return response.results
 }
 
-export const getContentCreators = async (): Promise<any> => {
-  const data = await getDatabase()
+export const getContentCreators = async (customQuery: string): Promise<any> => {
+  const data = await getDatabase(customQuery)
   let provider = ''
   let id = ''
   const creators = data.map((item: any) => {
