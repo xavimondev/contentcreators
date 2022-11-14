@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import debounce from 'just-debounce-it'
 
 import type { Creator } from 'types'
-import { api } from 'data/api'
 import { LoadingIc, SearchIc } from './icons'
 
 type SearchProps = {
@@ -16,15 +15,22 @@ type SearchProps = {
 const FormSearch = ({ nameClass, setCreators, setIsSearching, setQuery }: SearchProps) => {
   const router = useRouter()
   const { id: categoryId } = router.query
-
+  const currentPath = router.asPath.split('?')[0]
   const [isTyping, setIsTyping] = useState<boolean>(false)
 
   const autoCompleteDebounce = useCallback(
     debounce(async (query: string) => {
-      const data = await api.search(categoryId as string, query)
-      setCreators(data)
+      setCreators([])
       setIsTyping(false)
       setQuery(query)
+      router.push(
+        {
+          pathname: currentPath,
+          query: { q: query }
+        },
+        undefined,
+        { shallow: true }
+      )
     }, 250),
     []
   )
@@ -32,6 +38,10 @@ const FormSearch = ({ nameClass, setCreators, setIsSearching, setQuery }: Search
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     const query = e.target.value
+    if (!query) {
+      router.replace(currentPath, undefined, { shallow: true })
+      return
+    }
     setIsTyping(true)
     // it's an indicator that tells app whether users is searching or not
     setIsSearching(true)
