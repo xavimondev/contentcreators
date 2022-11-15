@@ -8,7 +8,8 @@ const notion = new Client({
   auth: NOTION_KEY
 })
 
-export const getDatabase = async (customQuery: string) => {
+export const getDatabase = async (customQuery: string, queryCreator: string) => {
+  console.log({ customQuery, queryCreator })
   const response = await notion.databases.query({
     database_id: NOTION_DATABASE,
     filter: {
@@ -24,6 +25,12 @@ export const getDatabase = async (customQuery: string) => {
           multi_select: {
             contains: customQuery
           }
+        },
+        {
+          property: 'name',
+          rich_text: {
+            contains: queryCreator
+          }
         }
       ]
     },
@@ -37,8 +44,11 @@ export const getDatabase = async (customQuery: string) => {
   return response.results
 }
 
-export const getContentCreators = async (customQuery: string): Promise<any> => {
-  const data = await getDatabase(customQuery)
+export const getContentCreators = async (
+  customQuery: string,
+  queryCreator: string
+): Promise<any> => {
+  const data = await getDatabase(customQuery, queryCreator)
   let provider = ''
   let id = ''
   const creators = data.map((item: any) => {

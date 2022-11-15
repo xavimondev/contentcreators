@@ -2,35 +2,31 @@ import { ChangeEvent, Dispatch, SetStateAction, useState, useCallback } from 're
 import { useRouter } from 'next/router'
 import debounce from 'just-debounce-it'
 
-import type { Creator } from 'types'
 import { LoadingIc, SearchIc } from './icons'
 
 type SearchProps = {
   nameClass?: string
-  setCreators: Dispatch<SetStateAction<Creator[]>>
+  setIsLoading: Dispatch<SetStateAction<boolean>>
   setIsSearching: Dispatch<SetStateAction<boolean>>
   setQuery: Dispatch<SetStateAction<string>>
 }
 
-const FormSearch = ({ nameClass, setCreators, setIsSearching, setQuery }: SearchProps) => {
+const FormSearch = ({ nameClass, setIsLoading, setIsSearching, setQuery }: SearchProps) => {
   const router = useRouter()
-  const { id: categoryId } = router.query
   const currentPath = router.asPath.split('?')[0]
+  const currentQuery = (router.query.q as string) ?? ''
+  const [inputValue, setInputValue] = useState<string>(currentQuery)
   const [isTyping, setIsTyping] = useState<boolean>(false)
 
   const autoCompleteDebounce = useCallback(
     debounce(async (query: string) => {
-      setCreators([])
       setIsTyping(false)
       setQuery(query)
-      router.push(
-        {
-          pathname: currentPath,
-          query: { q: query }
-        },
-        undefined,
-        { shallow: true }
-      )
+      setIsLoading(true)
+      router.replace({
+        pathname: currentPath,
+        query: { q: query }
+      })
     }, 250),
     []
   )
@@ -38,10 +34,14 @@ const FormSearch = ({ nameClass, setCreators, setIsSearching, setQuery }: Search
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     const query = e.target.value
+
+    setInputValue(query)
+
     if (!query) {
-      router.replace(currentPath, undefined, { shallow: true })
+      router.replace(currentPath)
       return
     }
+
     setIsTyping(true)
     // it's an indicator that tells app whether users is searching or not
     setIsSearching(true)
@@ -61,6 +61,7 @@ const FormSearch = ({ nameClass, setCreators, setIsSearching, setQuery }: Search
           placeholder='Busca creadores de contenido...'
           autoComplete='off'
           autoCorrect='off'
+          value={inputValue}
           onChange={handleInputChange}
           autoFocus
         />

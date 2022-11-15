@@ -40,10 +40,11 @@ const DashboardCategory: NextPage<{ creators: Creator[] }> = ({ creators }) => {
   )
 }
 
-export const getServerSideProps = async ({ params }: any) => {
-  const { id } = params
-  const data = await getContentCreators(id)
-  console.log(id)
+export const getServerSideProps = async ({ query }: any) => {
+  const { id, q } = query
+  const filter = q ?? ''
+
+  const data = await getContentCreators(id, filter)
   return {
     props: {
       creators: data
