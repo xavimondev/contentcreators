@@ -59,16 +59,9 @@ const DashboardCreator = () => {
             {creatorInfo?.social.map((item) => {
               const Component = SOCIAL_LINKS.find((link) => link.id === item.id)?.Component
               return (
-                <>
-                  <CustomLink
-                    href={item.url}
-                    key={item.id}
-                    rel='noopener noreferrer'
-                    target='_blank'
-                  >
-                    <div className='p-2 rounded-lg transition hover:scale-110'>{Component}</div>
-                  </CustomLink>
-                </>
+                <CustomLink href={item.url} key={item.id} rel='noopener noreferrer' target='_blank'>
+                  <div className='p-2 rounded-lg transition hover:scale-110'>{Component}</div>
+                </CustomLink>
               )
             })}
           </div>
