@@ -78,7 +78,7 @@ const DashboardCreator = () => {
             por su aporte a la comunidad.
           </p>
         </section>
-        <div className='fixed left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 hover:bg-slate-800 w-3/5 m-auto sm:w-52 px-6 py-4'>
+        <div className='fixed left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 hover:bg-slate-800 w-3/4 m-auto sm:w-52 px-6 py-4'>
           <button className='flex flex-row justify-center gap-3 sm:gap-2 w-full'>
             <GitHubIc className='w-6 h-6 text-white' />
             <span className='text-base font-semibold text-white'>Iniciar Sesión</span>
