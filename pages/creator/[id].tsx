@@ -21,7 +21,6 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const router = useRouter()
   const { username, avatarUrl } = user
   const { id } = router.query
-
   let creatorInfo = null,
     title = ''
 
@@ -87,11 +86,21 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
         </section>
         <div className='fixed left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 hover:bg-slate-800 w-3/4 m-auto sm:w-52 px-6 py-4'>
           <button
-            className='flex flex-row justify-center gap-3 sm:gap-2 w-full'
+            className='flex flex-row items-center justify-center gap-3 sm:gap-2 w-full'
             onClick={() => auth(username, id as string)}
           >
-            <GitHubIc className='w-6 h-6 text-white' />
-            <span className='text-base font-semibold text-white'>Iniciar Sesión</span>
+            {avatarUrl ? (
+              <>
+                <div className='relative w-6 h-6'>
+                  <Image src={avatarUrl} className='rounded-full' alt={username} layout='fill' />
+                </div>
+              </>
+            ) : (
+              <GitHubIc className='w-6 h-6 text-white' />
+            )}
+            <span className='text-base font-semibold text-white'>
+              {username ?? 'Iniciar Sesión'}
+            </span>
           </button>
         </div>
       </Layout>
@@ -107,8 +116,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     data: { session }
   } = await supabase.auth.getSession()
 
-  let username = ''
-  let avatarUrl = ''
+  let username = null
+  let avatarUrl = null
 
   if (session) {
     const { user } = session
