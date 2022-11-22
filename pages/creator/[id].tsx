@@ -2,16 +2,16 @@ import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 import { CREATORS_DATA } from 'data/creators'
 
 import { auth } from 'services/auth'
 
-import CustomLink from 'components/custom-link'
-import { GitHubIc, HomeIc } from 'components/icons'
-import Layout from 'components/layout'
 import { SOCIAL_LINKS } from 'components/social-link'
-import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import CustomLink from 'components/custom-link'
+import { CommentIc, GitHubIc, HomeIc, LogoutIc } from 'components/icons'
+import Layout from 'components/layout'
 
 type DashboardProps = {
   user: any
@@ -84,7 +84,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
             por su aporte a la comunidad.
           </p>
         </section>
-        <div className='fixed left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 hover:bg-slate-800 w-3/4 m-auto sm:w-52 px-6 py-4'>
+        <div className='fixed flex flex-row justify-center gap-1 left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 w-3/4 m-auto sm:w-60 px-6 py-4'>
           <button
             className='flex flex-row items-center justify-center gap-3 sm:gap-2 w-full'
             onClick={() => auth(username, id as string)}
@@ -102,6 +102,16 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
               {username ?? 'Iniciar Sesión'}
             </span>
           </button>
+          {username ? (
+            <div className='flex flex-row gap-2'>
+              <button>
+                <CommentIc className='w-6 h-6 text-white' />
+              </button>
+              <button>
+                <LogoutIc className='w-6 h-6 text-white' />
+              </button>
+            </div>
+          ) : null}
         </div>
       </Layout>
     </>
