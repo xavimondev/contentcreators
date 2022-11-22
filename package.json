@@ -13,6 +13,8 @@
     "prettier:check": "npx prettier . --write"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "0.5.2",
+    "@supabase/auth-helpers-react": "0.3.1",
     "@supabase/supabase-js": "2.1.0",
     "just-debounce-it": "3.1.1",
     "next": "12.3.1",

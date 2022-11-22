@@ -1,8 +1,18 @@
 import 'styles/globals.css'
+import { useState } from 'react'
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({
+  Component,
+  pageProps
+}: AppProps<{
+  initialSession: Session
+}>) {
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient())
+
   return (
     <>
       <DefaultSeo
@@ -31,7 +41,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           ]
         }}
       />
-      <Component {...pageProps} />
+      <SessionContextProvider
+        supabaseClient={supabaseClient}
+        initialSession={pageProps.initialSession}
+      >
+        <Component {...pageProps} />
+      </SessionContextProvider>
     </>
   )
 }

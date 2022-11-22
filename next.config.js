@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['unavatar.io']
+    domains: ['unavatar.io', 'avatars.githubusercontent.com']
   },
   i18n: {
     locales: ['es'],

@@ -1,24 +1,31 @@
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import { CREATORS_DATA } from 'data/creators'
 
+import { auth } from 'services/auth'
+
 import CustomLink from 'components/custom-link'
 import { GitHubIc, HomeIc } from 'components/icons'
 import Layout from 'components/layout'
 import { SOCIAL_LINKS } from 'components/social-link'
+import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
-const DashboardCreator = () => {
+type DashboardProps = {
+  user: any
+}
+
+const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const router = useRouter()
-
+  const { username, avatarUrl } = user
   const { id } = router.query
 
   let creatorInfo = null,
     title = ''
 
   if (id) {
-    console.log(id)
     creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
     title = `Creador: ${creatorInfo?.name} 🚀`
   }
@@ -79,7 +86,10 @@ const DashboardCreator = () => {
           </p>
         </section>
         <div className='fixed left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 hover:bg-slate-800 w-3/4 m-auto sm:w-52 px-6 py-4'>
-          <button className='flex flex-row justify-center gap-3 sm:gap-2 w-full'>
+          <button
+            className='flex flex-row justify-center gap-3 sm:gap-2 w-full'
+            onClick={() => auth(username, id as string)}
+          >
             <GitHubIc className='w-6 h-6 text-white' />
             <span className='text-base font-semibold text-white'>Iniciar Sesión</span>
           </button>
@@ -87,6 +97,35 @@ const DashboardCreator = () => {
       </Layout>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createServerSupabaseClient(ctx)
+  // Check if we have a session
+  const {
+    data: { session }
+  } = await supabase.auth.getSession()
+
+  let username = ''
+  let avatarUrl = ''
+
+  if (session) {
+    const { user } = session
+    const {
+      user_metadata: { avatar_url, user_name }
+    } = user
+    username = user_name
+    avatarUrl = avatar_url
+  }
+  return {
+    props: {
+      user: {
+        username,
+        avatarUrl
+      }
+    }
+  }
 }
 
 export default DashboardCreator
