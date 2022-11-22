@@ -6,7 +6,7 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 import { CREATORS_DATA } from 'data/creators'
 
-import { auth } from 'services/auth'
+import { signInWithGitHub, signout } from 'services/auth'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
@@ -87,7 +87,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
         <div className='fixed flex flex-row justify-center gap-1 left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 w-3/4 m-auto sm:w-60 px-6 py-4'>
           <button
             className='flex flex-row items-center justify-center gap-3 sm:gap-2 w-full'
-            onClick={() => auth(username, id as string)}
+            onClick={() => signInWithGitHub(id as string)}
           >
             {avatarUrl ? (
               <>
@@ -107,7 +107,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
               <button>
                 <CommentIc className='w-6 h-6 text-white' />
               </button>
-              <button>
+              <button onClick={() => signout()}>
                 <LogoutIc className='w-6 h-6 text-white' />
               </button>
             </div>

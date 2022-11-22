@@ -2,12 +2,7 @@ import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 const supabaseClient = createBrowserSupabaseClient()
 
-export const auth = (username: string, creatorId: string) => {
-  if (username) signout()
-  else signInWithGitHub(creatorId)
-}
-
-const signInWithGitHub = async (creatorId: string) => {
+export const signInWithGitHub = async (creatorId: string) => {
   console.log(creatorId)
   try {
     const { data, error } = await supabaseClient.auth.signInWithOAuth({
@@ -24,7 +19,7 @@ const signInWithGitHub = async (creatorId: string) => {
   }
 }
 
-const signout = async () => {
+export const signout = async () => {
   try {
     const { error } = await supabaseClient.auth.signOut()
     if (error) throw new Error('An error ocurred during logout')
