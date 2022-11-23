@@ -6,6 +6,7 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 import { CREATORS_DATA } from 'data/creators'
 
+import { addComment } from 'services/comment'
 import { signInWithGitHub, signout } from 'services/auth'
 
 import { SOCIAL_LINKS } from 'components/social-link'
@@ -19,8 +20,9 @@ type DashboardProps = {
 
 const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const router = useRouter()
-  const { username, avatarUrl } = user
+  const { username, avatarUrl, userId } = user
   const { id } = router.query
+
   let creatorInfo = null,
     title = ''
 
@@ -104,7 +106,20 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
           </button>
           {username ? (
             <div className='flex flex-row gap-2'>
-              <button>
+              <button
+                onClick={async () => {
+                  const comment = {
+                    userId,
+                    content: 'Enhorabuena 😸'
+                  }
+
+                  const creator = {
+                    username: id as string
+                  }
+
+                  await addComment(comment, creator)
+                }}
+              >
                 <CommentIc className='w-6 h-6 text-white' />
               </button>
               <button onClick={() => signout()}>
@@ -128,9 +143,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   let username = null
   let avatarUrl = null
-
+  let userId = ''
   if (session) {
     const { user } = session
+    userId = user.id
     const {
       user_metadata: { avatar_url, user_name }
     } = user
@@ -140,6 +156,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     props: {
       user: {
+        userId,
         username,
         avatarUrl
       }
