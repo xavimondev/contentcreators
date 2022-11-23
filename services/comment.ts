@@ -1,23 +1,38 @@
 import { supabase } from './db'
 
 export const addComment = async (comment: any, creator: any) => {
-  const newCreator = await addCreator(creator)
-  if (newCreator) {
-    const { id } = newCreator
-    comment.creatorId = id
-    const { data, error } = await supabase.from('Comment').insert(comment)
-    if (error) {
-      console.error(error)
-      return null
-    }
-    return data
+  let creatorData = await searchCreator(creator.username)
+
+  if (!creatorData) {
+    creatorData = await addCreator(creator)
   }
-  return newCreator
+
+  const { id } = creatorData
+  comment.creatorId = id
+
+  const { data, error } = await supabase.from('Comment').insert(comment)
+
+  if (error) {
+    console.error(error)
+    return null
+  }
+
+  return data
 }
 
 export const addCreator = async (creator: any) => {
   const { data, error } = await supabase.from('Creator').upsert(creator).select()
   console.log(data)
+  if (error) {
+    console.error(error)
+    return null
+  }
+
+  return data[0]
+}
+
+export const searchCreator = async (username: string) => {
+  const { data, error } = await supabase.from('Creator').select().eq('username', username)
   if (error) {
     console.error(error)
     return null
