@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id String @id @unique
-  comment Comment?
+  comments Comment[]
   githubId String @unique
   name String @db.VarChar(255)
   username String @db.VarChar(255)
@@ -23,14 +23,14 @@ model User {
 model Creator {
   id Int @id @default(autoincrement())
   comments Comment[]
-  username String @db.VarChar(255)
+  username String @unique
   createdAt DateTime @default(now())
 }
 
 model Comment {
   id Int @id @default(autoincrement())
   user User @relation(fields: [userId], references: [id])
-  userId String @unique
+  userId String
   creator Creator @relation(fields: [creatorId], references: [id])
   creatorId   Int
   content String @db.Text
