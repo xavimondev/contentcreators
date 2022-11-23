@@ -13,6 +13,7 @@ import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
 import { CommentIc, GitHubIc, HomeIc, LogoutIc } from 'components/icons'
 import Layout from 'components/layout'
+import DialogComment from 'components/dialog'
 
 type DashboardProps = {
   user: any
@@ -128,6 +129,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
             </div>
           ) : null}
         </div>
+        <DialogComment />
       </Layout>
     </>
   )
