@@ -10,9 +10,9 @@ const DialogComment = () => {
   }
 
   return (
-    <dialog
+    <div
       id='commentDialog'
-      className='fixed rounded-md p-3 right-0 bottom-20 sm:bottom-[80px] sm:right-[195px] sm:left-auto w-3/4 sm:w-auto
+      className='fixed rounded-md p-3 right-0 bottom-20 sm:bottom-[80px] sm:right-[195px] sm:left-auto w-3/4 sm:w-auto bg-white 
       sm:before:content-[" "] 
       sm:before:absolute 
       sm:before:w-0 
@@ -25,7 +25,6 @@ const DialogComment = () => {
       sm:before:border-r-white
       sm:before:border-b-transparent
       sm:before:border-l-transparent'
-      open
     >
       <form method='dialog' className='flex flex-col justify-center gap-3' onSubmit={handleSubmit}>
         <textarea
@@ -45,7 +44,7 @@ const DialogComment = () => {
           />
         </button>
       </form>
-    </dialog>
+    </div>
   )
 }
 
