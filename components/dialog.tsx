@@ -3,9 +3,10 @@ import { SendIc } from './icons'
 
 type DialogCommentProps = {
   dialogRef: RefObject<HTMLDivElement>
+  onSave: (content: string) => void
 }
 
-const DialogComment = ({ dialogRef }: DialogCommentProps) => {
+const DialogComment = ({ dialogRef, onSave }: DialogCommentProps) => {
   const commentRef = useRef<HTMLTextAreaElement>(null)
   const [comment, setComment] = useState<string>('')
 
@@ -24,9 +25,10 @@ const DialogComment = ({ dialogRef }: DialogCommentProps) => {
     }
   }, [commentRef, comment])
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    console.log(comment)
+  const handleSubmit = () => {
+    onSave(comment)
+    setComment('')
+    commentRef.current?.focus()
   }
 
   return (
@@ -58,7 +60,12 @@ const DialogComment = ({ dialogRef }: DialogCommentProps) => {
           value={comment}
           onChange={(e: React.FormEvent<HTMLTextAreaElement>) => setComment(e.currentTarget.value)}
         ></textarea>
-        <button type='submit' className='cursor-not-allowed flex justify-end' title='Send comment'>
+        <button
+          type='submit'
+          className={`flex justify-end ${!comment && 'cursor-not-allowed'}`}
+          title='Send comment'
+          disabled={!Boolean(comment)}
+        >
           <SendIc
             className={`${
               comment ? 'text-white bg-blue-600' : 'text-blue-600'

@@ -8,6 +8,7 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { CREATORS_DATA } from 'data/creators'
 
 import { signInWithGitHub, signout } from 'services/auth'
+import { addComment } from 'services/comment'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
@@ -48,6 +49,18 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   if (id) {
     creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
     title = `Creador: ${creatorInfo?.name} 🚀`
+  }
+
+  const handleSubmit = async (content: string) => {
+    const comment = {
+      userId,
+      content
+    }
+    const creator = {
+      username: id as string
+    }
+    await addComment(comment, creator)
+    // TODO: Show error message whether there's an error
   }
 
   return (
@@ -125,20 +138,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
           </button>
           {username ? (
             <div className='flex flex-row gap-2'>
-              <button
-                ref={buttonRef}
-                onClick={async () => {
-                  setIsOpen(true)
-                  // const comment = {
-                  //   userId,
-                  //   content: 'Enhorabuena 😸'
-                  // }
-                  // const creator = {
-                  //   username: id as string
-                  // }
-                  // await addComment(comment, creator)
-                }}
-              >
+              <button ref={buttonRef} onClick={() => setIsOpen(true)}>
                 <CommentIc className='w-6 h-6 text-white' />
               </button>
               <button onClick={() => signout()}>
@@ -147,7 +147,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
             </div>
           ) : null}
         </div>
-        {isOpen && <DialogComment dialogRef={dialogRef} />}
+        {isOpen && <DialogComment dialogRef={dialogRef} onSave={handleSubmit} />}
       </Layout>
     </>
   )
