@@ -40,3 +40,25 @@ export const searchCreator = async (username: string) => {
 
   return data[0]
 }
+
+export const listCommentsByCreator = async (username: string) => {
+  const { data, error } = await supabase
+    .from('Comment')
+    .select(
+      `
+    id,
+    content,
+    Creator (
+      id,
+      username
+    )
+  `
+    )
+    .eq('Creator.username', username)
+  if (error) {
+    console.error(error)
+    return null
+  }
+
+  return data
+}

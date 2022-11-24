@@ -8,7 +8,7 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { CREATORS_DATA } from 'data/creators'
 
 import { signInWithGitHub, signout } from 'services/auth'
-import { addComment } from 'services/comment'
+import { addComment, listCommentsByCreator } from 'services/comment'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
@@ -18,16 +18,17 @@ import DialogComment from 'components/dialog'
 
 type DashboardProps = {
   user: any
+  comments: any
 }
 
-const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
+const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   const router = useRouter()
   const { username, avatarUrl, userId } = user
   const { id } = router.query
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
-
+  console.log(comments)
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (
@@ -173,13 +174,23 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     username = user_name
     avatarUrl = avatar_url
   }
+  const {
+    query: { id }
+  } = ctx
+
+  // Fetching comments
+  let comments = null
+  if (id) {
+    comments = await listCommentsByCreator(id as string)
+  }
   return {
     props: {
       user: {
         userId,
         username,
         avatarUrl
-      }
+      },
+      comments
     }
   }
 }
