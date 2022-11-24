@@ -7,13 +7,22 @@ type DialogCommentProps = {
 
 const DialogComment = ({ dialogRef }: DialogCommentProps) => {
   const commentRef = useRef<HTMLTextAreaElement>(null)
-  const [comment, setComment] = useState('')
+  const [comment, setComment] = useState<string>('')
 
   useEffect(() => {
     if (commentRef.current) {
       commentRef.current?.focus()
     }
   }, [])
+
+  useEffect(() => {
+    if (commentRef.current) {
+      // We need to reset the height momentarily to get the correct scrollHeight for the textarea
+      commentRef.current.style.height = '0px'
+      const scrollHeight = commentRef.current.scrollHeight
+      commentRef.current.style.height = scrollHeight + 'px'
+    }
+  }, [commentRef, comment])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -42,7 +51,7 @@ const DialogComment = ({ dialogRef }: DialogCommentProps) => {
         <textarea
           name='comment'
           id='comment'
-          className='p-2.5 w-full text-sm border-none rounded-md outline-none'
+          className='p-2.5 w-full text-sm border-none rounded-md outline-none resize-none'
           cols={30}
           placeholder='Dejame un comentario...'
           ref={commentRef}
