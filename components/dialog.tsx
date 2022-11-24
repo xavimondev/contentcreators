@@ -17,7 +17,7 @@ const DialogComment = ({ dialogRef }: DialogCommentProps) => {
     <div
       ref={dialogRef}
       id='commentDialog'
-      className='fixed rounded-md p-3 right-0 bottom-20 sm:bottom-[80px] sm:right-[195px] sm:left-auto w-3/4 sm:w-auto bg-white 
+      className='fixed rounded-md p-3 left-0 right-0 bottom-20 sm:bottom-[80px] sm:right-[195px] sm:left-auto w-3/4 m-auto sm:w-auto bg-white 
       sm:before:content-[" "] 
       sm:before:absolute 
       sm:before:w-0 
