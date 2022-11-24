@@ -183,6 +183,21 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   if (id) {
     comments = await listCommentsByCreator(id as string)
   }
+
+  if (comments) {
+    comments = comments.map((comment) => {
+      const { id, content, User } = comment
+      const { name, photoUrl, username } = User as any
+      return {
+        id,
+        message: content,
+        author: name,
+        authorAvatar: photoUrl,
+        authorUsername: username
+      }
+    })
+  }
+
   return {
     props: {
       user: {

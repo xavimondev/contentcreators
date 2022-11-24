@@ -51,6 +51,13 @@ export const listCommentsByCreator = async (username: string) => {
     Creator (
       id,
       username
+    ),
+    User(
+      id,
+      githubId,
+      name,
+      username,
+      photoUrl
     )
   `
     )
