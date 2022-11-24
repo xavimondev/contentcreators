@@ -1,4 +1,4 @@
-import React, { FormEvent, RefObject, useState } from 'react'
+import React, { FormEvent, RefObject, useRef, useState, useEffect } from 'react'
 import { SendIc } from './icons'
 
 type DialogCommentProps = {
@@ -6,7 +6,14 @@ type DialogCommentProps = {
 }
 
 const DialogComment = ({ dialogRef }: DialogCommentProps) => {
+  const commentRef = useRef<HTMLTextAreaElement>(null)
   const [comment, setComment] = useState('')
+
+  useEffect(() => {
+    if (commentRef.current) {
+      commentRef.current?.focus()
+    }
+  }, [])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -38,6 +45,7 @@ const DialogComment = ({ dialogRef }: DialogCommentProps) => {
           className='p-2.5 w-full text-sm border-none rounded-md outline-none'
           cols={30}
           placeholder='Dejame un comentario...'
+          ref={commentRef}
           value={comment}
           onChange={(e: React.FormEvent<HTMLTextAreaElement>) => setComment(e.currentTarget.value)}
         ></textarea>
