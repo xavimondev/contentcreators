@@ -1,7 +1,11 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, RefObject, useState } from 'react'
 import { SendIc } from './icons'
 
-const DialogComment = () => {
+type DialogCommentProps = {
+  dialogRef: RefObject<HTMLDivElement>
+}
+
+const DialogComment = ({ dialogRef }: DialogCommentProps) => {
   const [comment, setComment] = useState('')
 
   const handleSubmit = (e: FormEvent) => {
@@ -11,6 +15,7 @@ const DialogComment = () => {
 
   return (
     <div
+      ref={dialogRef}
       id='commentDialog'
       className='fixed rounded-md p-3 right-0 bottom-20 sm:bottom-[80px] sm:right-[195px] sm:left-auto w-3/4 sm:w-auto bg-white 
       sm:before:content-[" "] 

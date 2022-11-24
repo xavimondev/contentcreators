@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -6,7 +7,6 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
 import { CREATORS_DATA } from 'data/creators'
 
-import { addComment } from 'services/comment'
 import { signInWithGitHub, signout } from 'services/auth'
 
 import { SOCIAL_LINKS } from 'components/social-link'
@@ -23,6 +23,24 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const router = useRouter()
   const { username, avatarUrl, userId } = user
   const { id } = router.query
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      if (
+        !buttonRef.current?.contains(event.target) &&
+        !dialogRef.current?.contains(event.target)
+      ) {
+        setIsOpen(false)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
 
   let creatorInfo = null,
     title = ''
@@ -108,17 +126,17 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
           {username ? (
             <div className='flex flex-row gap-2'>
               <button
+                ref={buttonRef}
                 onClick={async () => {
-                  const comment = {
-                    userId,
-                    content: 'Enhorabuena 😸'
-                  }
-
-                  const creator = {
-                    username: id as string
-                  }
-
-                  await addComment(comment, creator)
+                  setIsOpen(true)
+                  // const comment = {
+                  //   userId,
+                  //   content: 'Enhorabuena 😸'
+                  // }
+                  // const creator = {
+                  //   username: id as string
+                  // }
+                  // await addComment(comment, creator)
                 }}
               >
                 <CommentIc className='w-6 h-6 text-white' />
@@ -129,7 +147,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
             </div>
           ) : null}
         </div>
-        <DialogComment />
+        {isOpen && <DialogComment dialogRef={dialogRef} />}
       </Layout>
     </>
   )
