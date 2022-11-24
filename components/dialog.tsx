@@ -1,6 +1,14 @@
+import React, { FormEvent, useState } from 'react'
 import { SendIc } from './icons'
 
 const DialogComment = () => {
+  const [comment, setComment] = useState('')
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    console.log(comment)
+  }
+
   return (
     <dialog
       id='commentDialog'
@@ -19,16 +27,22 @@ const DialogComment = () => {
       sm:before:border-l-transparent'
       open
     >
-      <form method='dialog' className='flex flex-col justify-center gap-3'>
+      <form method='dialog' className='flex flex-col justify-center gap-3' onSubmit={handleSubmit}>
         <textarea
           name='comment'
           id='comment'
           className='p-2.5 w-full text-sm border-none rounded-md outline-none'
           cols={30}
           placeholder='Dejame un comentario...'
+          value={comment}
+          onChange={(e: React.FormEvent<HTMLTextAreaElement>) => setComment(e.currentTarget.value)}
         ></textarea>
         <button type='submit' className='cursor-not-allowed flex justify-end' title='Send comment'>
-          <SendIc className='text-white bg-blue-600 rounded-md h-7 w-7 p-1' />
+          <SendIc
+            className={`${
+              comment ? 'text-white bg-blue-600' : 'text-blue-600'
+            } rounded-md h-6 w-6 p-1`}
+          />
         </button>
       </form>
     </dialog>
