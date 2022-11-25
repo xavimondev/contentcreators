@@ -10,8 +10,7 @@ export const addComment = async (comment: any, creator: any) => {
   const { id } = creatorData
   comment.creatorId = id
 
-  const { data, error } = await supabase.from('Comment').insert(comment)
-
+  const { data, error } = await supabase.from('Comment').insert(comment).select()
   if (error) {
     console.error(error)
     return null

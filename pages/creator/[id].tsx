@@ -23,9 +23,10 @@ type DashboardProps = {
 
 const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   const router = useRouter()
-  const { username, avatarUrl, userId } = user
+  const { fullName, username, avatarUrl, userId } = user
   const { id } = router.query
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [listComments, setListComments] = useState<any>(comments)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
 
@@ -60,7 +61,18 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
     const creator = {
       username: id as string
     }
-    await addComment(comment, creator)
+    const data = await addComment(comment, creator)
+    if (data) {
+      const { id } = data[0]
+      const newComment = {
+        id,
+        message: content,
+        author: fullName,
+        authorAvatar: avatarUrl,
+        authorUsername: username
+      }
+      setListComments((comments: any) => comments.concat(newComment))
+    }
     // TODO: Show error message whether there's an error
   }
 
@@ -109,8 +121,8 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
         </section>
 
         <section className='mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4'>
-          {comments && comments.length > 0 ? (
-            comments.map(({ id, message, author, authorAvatar, authorUsername }: any) => (
+          {listComments && listComments.length > 0 ? (
+            listComments.map(({ id, message, author, authorAvatar, authorUsername }: any) => (
               <div
                 className='flex flex-col gap-3 p-4 bg-white rounded-xl w-full sm:max-w-xs shadow-[-6px_-6px_0_0px_rgb(29,78,216)]'
                 key={id}
@@ -197,14 +209,17 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let username = null
   let avatarUrl = null
   let userId = ''
+  let fullName = ''
+
   if (session) {
     const { user } = session
     userId = user.id
     const {
-      user_metadata: { avatar_url, user_name }
+      user_metadata: { avatar_url, user_name, full_name }
     } = user
     username = user_name
     avatarUrl = avatar_url
+    fullName = full_name
   }
   const {
     query: { id }
@@ -234,6 +249,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     props: {
       user: {
         userId,
+        fullName,
         username,
         avatarUrl
       },
