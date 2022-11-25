@@ -28,7 +28,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
-  console.log(comments)
+
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (
@@ -107,17 +107,49 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
             })}
           </div>
         </section>
-        <section className='mx-auto max-w-6xl md:text-2xl mt-8 flex flex-col gap-4 items-center'>
-          <div className='relative w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80'>
-            <Image src='/img/messages.png' alt='Messages Icon' layout='fill' />
-          </div>
-          <p className='text-white font-semibold text-center'>
-            Dejalé un mensaje a{' '}
-            <span className='bg-gradient-to-r from-[#d770b2] to-[#e4ad7a] font-bold text-transparent bg-clip-text'>
-              {creatorInfo?.name}
-            </span>{' '}
-            por su aporte a la comunidad.
-          </p>
+
+        <section className='mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4'>
+          {comments && comments.length > 0 ? (
+            comments.map(({ id, message, author, authorAvatar, authorUsername }: any) => (
+              <div
+                className='flex flex-col gap-3 p-4 bg-white rounded-xl w-full sm:max-w-xs shadow-[-6px_-6px_0_0px_rgb(29,78,216)]'
+                key={id}
+              >
+                <CustomLink href={`https://github.com/${authorUsername}`} target='_blank'>
+                  <div className='flex flex-row items-center gap-3'>
+                    <div className='relative w-8 h-8'>
+                      <Image
+                        src={authorAvatar}
+                        className='rounded-full'
+                        alt={username}
+                        layout='fill'
+                      />
+                    </div>
+                    <div className='space-y-0.5'>
+                      <span className='font-medium'>{author}</span>
+                      <div className='text-sm font-light text-gray-400'>{authorUsername}</div>
+                    </div>
+                  </div>
+                </CustomLink>
+                <blockquote>
+                  <p className='text-gray-500'>{message}</p>
+                </blockquote>
+              </div>
+            ))
+          ) : (
+            <section className='mx-auto max-w-6xl md:text-2xl mt-8 flex flex-col gap-4 items-center'>
+              <div className='relative w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80'>
+                <Image src='/img/messages.png' alt='Messages Icon' layout='fill' />
+              </div>
+              <p className='text-white font-semibold text-center'>
+                Dejalé un mensaje a{' '}
+                <span className='bg-gradient-to-r from-[#d770b2] to-[#e4ad7a] font-bold text-transparent bg-clip-text'>
+                  {creatorInfo?.name}
+                </span>{' '}
+                por su aporte a la comunidad.
+              </p>
+            </section>
+          )}
         </section>
         <div className='fixed flex flex-row justify-center gap-1 left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 w-3/4 m-auto sm:w-60 px-6 py-4'>
           <button
