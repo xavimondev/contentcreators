@@ -47,7 +47,7 @@ const DialogComment = ({ dialogRef, onSave }: DialogCommentProps) => {
       sm:before:border-t-white
       sm:before:border-r-white
       sm:before:border-b-transparent
-      sm:before:border-l-transparent'
+      sm:before:border-l-transparent animate-bounce-in-up'
     >
       <form method='dialog' className='flex flex-col justify-center gap-3' onSubmit={handleSubmit}>
         <textarea
