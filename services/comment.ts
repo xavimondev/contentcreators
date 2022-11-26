@@ -21,7 +21,6 @@ export const addComment = async (comment: any, creator: any) => {
 
 export const addCreator = async (creator: any) => {
   const { data, error } = await supabase.from('Creator').upsert(creator).select()
-  console.log(data)
   if (error) {
     console.error(error)
     return null

@@ -3,7 +3,6 @@ import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 const supabaseClient = createBrowserSupabaseClient()
 
 export const signInWithGitHub = async (creatorId: string) => {
-  console.log(creatorId)
   try {
     const { data, error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'github',
