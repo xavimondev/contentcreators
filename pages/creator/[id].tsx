@@ -58,10 +58,9 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
       userId,
       content
     }
-    const creator = {
-      username: id as string
-    }
-    const data = await addComment(comment, creator)
+
+    const data = await addComment(comment, id as string)
+
     if (data) {
       const { id } = data[0]
       const newComment = {

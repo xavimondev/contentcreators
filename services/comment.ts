@@ -1,10 +1,10 @@
 import { supabase } from './db'
 
-export const addComment = async (comment: any, creator: any) => {
-  let creatorData = await searchCreator(creator.username)
+export const addComment = async (comment: any, username: string) => {
+  let creatorData = await searchCreator(username)
 
   if (!creatorData) {
-    creatorData = await addCreator(creator)
+    creatorData = await addCreator(username)
   }
 
   const { id } = creatorData
@@ -19,8 +19,8 @@ export const addComment = async (comment: any, creator: any) => {
   return data
 }
 
-export const addCreator = async (creator: any) => {
-  const { data, error } = await supabase.from('Creator').upsert(creator).select()
+export const addCreator = async (username: string) => {
+  const { data, error } = await supabase.from('Creator').insert({ username }).select()
   if (error) {
     console.error(error)
     return null
