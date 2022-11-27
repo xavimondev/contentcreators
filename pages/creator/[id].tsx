@@ -4,11 +4,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import toast, { Toaster } from 'react-hot-toast'
 
 import { CREATORS_DATA } from 'data/creators'
 
 import { signInWithGitHub, signout } from 'services/auth'
-import { listCommentsByCreator } from 'services/comment'
+import { listCommentsByCreator, saveComment } from 'services/comment'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
@@ -60,27 +61,43 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
       username: id
     }
 
-    const response = await fetch('/api/comment', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    const commentPromise = saveComment(data)
 
-    const { status, commentId } = await response.json()
-    if (status) {
-      const newComment = {
-        id: commentId,
-        message: content,
-        author: fullName,
-        authorAvatar: avatarUrl,
-        authorUsername: username
+    toast.promise(
+      commentPromise,
+      {
+        loading: 'Guardando...',
+        success: (data) => {
+          const { status, commentId } = data
+          if (status) {
+            const newComment = {
+              id: commentId,
+              message: content,
+              author: fullName,
+              authorAvatar: avatarUrl,
+              authorUsername: username
+            }
+            setListComments((comments: any) => [newComment, ...comments])
+            return <b>Mucha gracias por tu mensaje.</b>
+          }
+          return <b>No se pudo guardar tu mensaje. Intentalo nuevamente.</b>
+        },
+        error: () => <b>Se ha detectado un error en el servidor. Intentalo nuevamente.</b>
+      },
+      {
+        style: {
+          minWidth: '315px'
+        },
+        success: {
+          duration: 2000,
+          icon: '😊'
+        },
+        error: {
+          duration: 4000,
+          icon: '😱'
+        }
       }
-      console.log(commentId)
-      setListComments((comments: any) => [newComment, ...comments])
-    }
-    // TODO: Show error message whether there's an error
+    )
   }
 
   return (
@@ -201,6 +218,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
         </div>
         {isOpen && <DialogComment dialogRef={dialogRef} onSave={handleSubmit} />}
       </Layout>
+      <Toaster />
     </>
   )
 }

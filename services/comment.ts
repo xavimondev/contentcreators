@@ -1,6 +1,19 @@
 import { Prisma } from '@prisma/client'
 import { prisma } from './client'
 
+export const saveComment = async (comment: any) => {
+  const response = await fetch('/api/comment', {
+    method: 'POST',
+    body: JSON.stringify(comment),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  const data = await response.json()
+  return data
+}
+
 export const searchCreator = async (username: string) => {
   const user = await prisma.creator.findUnique({
     where: {
