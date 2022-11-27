@@ -8,7 +8,7 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { CREATORS_DATA } from 'data/creators'
 
 import { signInWithGitHub, signout } from 'services/auth'
-import { addComment, listCommentsByCreator } from 'services/comment'
+import { listCommentsByCreator } from 'services/comment'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
@@ -54,23 +54,31 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   }
 
   const handleSubmit = async (content: string) => {
-    const comment = {
+    const data = {
       userId,
-      content
+      content,
+      username: id
     }
 
-    const data = await addComment(comment, id as string)
+    const response = await fetch('/api/comment', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
 
-    if (data) {
-      const { id } = data[0]
+    const { status, commentId } = await response.json()
+    if (status) {
       const newComment = {
-        id,
+        id: commentId,
         message: content,
         author: fullName,
         authorAvatar: avatarUrl,
         authorUsername: username
       }
-      setListComments((comments: any) => comments.concat(newComment))
+      console.log(commentId)
+      setListComments((comments: any) => [newComment, ...comments])
     }
     // TODO: Show error message whether there's an error
   }
@@ -232,8 +240,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   if (comments) {
     comments = comments.map((comment) => {
-      const { id, content, User } = comment
-      const { name, photoUrl, username } = User as any
+      const { id, content, user } = comment
+      const { name, photoUrl, username } = user
       return {
         id,
         message: content,
