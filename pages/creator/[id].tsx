@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import toast, { Toaster } from 'react-hot-toast'
 
+import { Comment, User } from 'types'
+
 import { CREATORS_DATA } from 'data/creators'
 
 import { signInWithGitHub, signout } from 'services/auth'
@@ -18,8 +20,8 @@ import Layout from 'components/layout'
 import DialogComment from 'components/dialog'
 
 type DashboardProps = {
-  user: any
-  comments: any
+  user: User
+  comments: Comment[]
 }
 
 const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
@@ -27,7 +29,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   const { fullName, username, avatarUrl, userId } = user
   const { id } = router.query
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [listComments, setListComments] = useState<any>(comments)
+  const [listComments, setListComments] = useState<Comment[]>(comments)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
 
@@ -77,7 +79,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
               authorAvatar: avatarUrl,
               authorUsername: username
             }
-            setListComments((comments: any) => [newComment, ...comments])
+            setListComments((comments) => [newComment, ...comments])
             return <b>Mucha gracias por tu mensaje.</b>
           }
           return <b>No se pudo guardar tu mensaje. Intentalo nuevamente.</b>
@@ -146,7 +148,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
 
         <section className='mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4'>
           {listComments && listComments.length > 0 ? (
-            listComments.map(({ id, message, author, authorAvatar, authorUsername }: any) => (
+            listComments.map(({ id, message, author, authorAvatar, authorUsername }) => (
               <div
                 className='flex flex-col gap-3 p-4 bg-white rounded-xl w-full sm:max-w-xs shadow-[-6px_-6px_0_0px_rgb(29,78,216)]'
                 key={id}

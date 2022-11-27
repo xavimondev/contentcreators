@@ -36,3 +36,18 @@ export type Category =
   | 'datascience'
   | 'uiux'
   | 'ciberseguridad'
+
+export type Comment = {
+  id: number
+  message: string
+  author: string
+  authorAvatar: string
+  authorUsername: string
+}
+
+export type User = {
+  userId: string
+  fullName: string
+  username: string
+  avatarUrl: string
+}
