@@ -1,4 +1,4 @@
-import React, { FormEvent, RefObject, useRef, useState, useEffect } from 'react'
+import React, { RefObject, useRef, useState, useEffect } from 'react'
 import { SendIc } from './icons'
 
 type DialogCommentProps = {
