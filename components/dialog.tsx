@@ -35,25 +35,25 @@ const DialogComment = ({ dialogRef, onSave }: DialogCommentProps) => {
     <div
       ref={dialogRef}
       id='commentDialog'
-      className='fixed rounded-md p-3 left-0 right-0 bottom-20 sm:bottom-[80px] sm:right-[195px] sm:left-auto w-3/4 m-auto sm:w-auto bg-white 
+      className='fixed rounded-lg p-3 left-0 right-0 bottom-20 sm:bottom-[92px] sm:right-[195px] sm:left-auto w-3/4 m-auto sm:w-auto bg-slate-900  
       sm:before:content-[" "] 
       sm:before:absolute 
       sm:before:w-0 
       sm:before:h-0 
       sm:before:left-auto 
       sm:before:right-3
-      sm:before:bottom-[-21px] 
+      sm:before:bottom-[-22px] 
       sm:before:border-[12px] 
-      sm:before:border-t-white
-      sm:before:border-r-white
+      sm:before:border-t-slate-900
+      sm:before:border-r-slate-900
       sm:before:border-b-transparent
       sm:before:border-l-transparent animate-bounce-in-up'
     >
-      <form method='dialog' className='flex flex-col justify-center gap-3' onSubmit={handleSubmit}>
+      <form method='dialog' className='flex flex-col justify-center gap-3 ' onSubmit={handleSubmit}>
         <textarea
           name='comment'
           id='comment'
-          className='p-2.5 w-full text-sm border-none rounded-md outline-none resize-none'
+          className='p-2.5 w-full border-none outline-none resize-none bg-slate-900 text-white placeholder-slate-400'
           cols={30}
           placeholder='Dejame un comentario...'
           ref={commentRef}
@@ -68,8 +68,8 @@ const DialogComment = ({ dialogRef, onSave }: DialogCommentProps) => {
         >
           <SendIc
             className={`${
-              comment ? 'text-white bg-blue-600' : 'text-blue-600'
-            } rounded-md h-6 w-6 p-1`}
+              comment ? 'bg-blue-600' : 'bg-transparent'
+            } rounded-md h-6 w-6 p-1 text-white`}
           />
         </button>
       </form>
