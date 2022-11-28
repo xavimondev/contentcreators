@@ -6,7 +6,7 @@ type NoCommentsFoundProps = {
 
 const NoCommentsFound = ({ data }: NoCommentsFoundProps) => {
   return (
-    <section className='mx-auto max-w-6xl md:text-2xl mt-8 flex flex-col gap-4 items-center'>
+    <div className='mx-auto max-w-6xl md:text-2xl mt-8 flex flex-col gap-4 items-center'>
       <div className='relative w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80'>
         <Image src='/img/messages.png' alt='Messages Icon' layout='fill' />
       </div>
@@ -17,7 +17,7 @@ const NoCommentsFound = ({ data }: NoCommentsFoundProps) => {
         </span>{' '}
         por su aporte a la comunidad.
       </p>
-    </section>
+    </div>
   )
 }
 

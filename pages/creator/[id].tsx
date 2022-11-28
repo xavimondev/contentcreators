@@ -148,7 +148,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
           </div>
         </section>
 
-        <section className='mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4'>
+        <section className='mt-6'>
           {listComments && listComments.length > 0 ? (
             <ListComment listComments={listComments} />
           ) : (

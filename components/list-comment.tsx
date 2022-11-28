@@ -8,7 +8,7 @@ type ListCommentProps = {
 
 const ListComment = ({ listComments }: ListCommentProps) => {
   return (
-    <>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4'>
       {listComments.map(({ id, message, author, authorAvatar, authorUsername }) => (
         <div
           className='flex flex-col gap-3 p-4 bg-white rounded-xl w-full sm:max-w-xs shadow-[-6px_-6px_0_0px_rgb(29,78,216)]'
@@ -30,7 +30,7 @@ const ListComment = ({ listComments }: ListCommentProps) => {
           </blockquote>
         </div>
       ))}
-    </>
+    </div>
   )
 }
 
