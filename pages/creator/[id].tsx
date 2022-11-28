@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import toast, { Toaster } from 'react-hot-toast'
+
+import useOnClickOutside from 'hooks/useOnClickOutside'
 
 import { Comment, User } from 'types'
 
@@ -33,21 +35,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   const [listComments, setListComments] = useState<Comment[]>(comments)
   const buttonCommentRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (
-        !buttonCommentRef.current?.contains(event.target) &&
-        !dialogRef.current?.contains(event.target)
-      ) {
-        setIsOpen(false)
-      }
-    }
-    document.addEventListener('click', handleClickOutside)
-    return () => {
-      document.removeEventListener('click', handleClickOutside)
-    }
-  }, [])
+  useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
 
   let creatorInfo = null,
     title = ''
