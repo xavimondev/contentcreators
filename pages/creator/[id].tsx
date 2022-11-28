@@ -10,14 +10,14 @@ import { Comment, User } from 'types'
 
 import { CREATORS_DATA } from 'data/creators'
 
-import { signInWithGitHub, signout } from 'services/auth'
 import { listCommentsByCreator, saveComment } from 'services/comment'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
-import { CommentIc, GitHubIc, HomeIc, LogoutIc } from 'components/icons'
+import { HomeIc } from 'components/icons'
 import Layout from 'components/layout'
 import DialogComment from 'components/dialog'
+import ToolbarUser from 'components/toolbar-user'
 
 type DashboardProps = {
   user: User
@@ -26,17 +26,16 @@ type DashboardProps = {
 
 const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   const router = useRouter()
-  const { fullName, username, avatarUrl, userId } = user
   const { id } = router.query
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [listComments, setListComments] = useState<Comment[]>(comments)
-  const buttonRef = useRef<HTMLButtonElement>(null)
+  const buttonCommentRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       if (
-        !buttonRef.current?.contains(event.target) &&
+        !buttonCommentRef.current?.contains(event.target) &&
         !dialogRef.current?.contains(event.target)
       ) {
         setIsOpen(false)
@@ -57,6 +56,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   }
 
   const handleSubmit = async (content: string) => {
+    const { fullName, username, avatarUrl, userId } = user
     const data = {
       userId,
       content,
@@ -159,7 +159,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
                       <Image
                         src={authorAvatar}
                         className='rounded-full'
-                        alt={username}
+                        alt={author}
                         layout='fill'
                       />
                     </div>
@@ -189,35 +189,12 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
             </section>
           )}
         </section>
-        <div className='fixed flex flex-row justify-center gap-1 left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 w-3/4 m-auto sm:w-60 px-6 py-4'>
-          <button
-            className='flex flex-row items-center justify-center gap-3 sm:gap-2 w-full'
-            onClick={() => signInWithGitHub(id as string)}
-          >
-            {avatarUrl ? (
-              <>
-                <div className='relative w-6 h-6'>
-                  <Image src={avatarUrl} className='rounded-full' alt={username} layout='fill' />
-                </div>
-              </>
-            ) : (
-              <GitHubIc className='w-6 h-6 text-white' />
-            )}
-            <span className='text-base font-semibold text-white'>
-              {username ?? 'Iniciar Sesión'}
-            </span>
-          </button>
-          {username ? (
-            <div className='flex flex-row gap-2'>
-              <button ref={buttonRef} onClick={() => setIsOpen(true)}>
-                <CommentIc className='w-6 h-6 text-white' />
-              </button>
-              <button onClick={() => signout()}>
-                <LogoutIc className='w-6 h-6 text-white' />
-              </button>
-            </div>
-          ) : null}
-        </div>
+        <ToolbarUser
+          creatorId={id as string}
+          user={user}
+          buttonCommentRef={buttonCommentRef}
+          setIsOpen={setIsOpen}
+        />
         {isOpen && <DialogComment dialogRef={dialogRef} onSave={handleSubmit} />}
       </Layout>
       <Toaster />
@@ -233,20 +210,20 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     data: { session }
   } = await supabase.auth.getSession()
 
-  let username = null
-  let avatarUrl = null
-  let userId = ''
-  let fullName = ''
+  let userInfo: User | null = null
 
   if (session) {
     const { user } = session
-    userId = user.id
     const {
       user_metadata: { avatar_url, user_name, full_name }
     } = user
-    username = user_name
-    avatarUrl = avatar_url
-    fullName = full_name
+
+    userInfo = {
+      userId: user.id,
+      fullName: full_name,
+      username: user_name,
+      avatarUrl: avatar_url
+    }
   }
   const {
     query: { id }
@@ -274,12 +251,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      user: {
-        userId,
-        fullName,
-        username,
-        avatarUrl
-      },
+      user: userInfo,
       comments
     }
   }
