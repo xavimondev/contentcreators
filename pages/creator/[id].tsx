@@ -19,6 +19,7 @@ import Layout from 'components/layout'
 import DialogComment from 'components/dialog'
 import ToolbarUser from 'components/toolbar-user'
 import ListComment from 'components/list-comment'
+import NoCommentsFound from 'components/no-comments-found'
 
 type DashboardProps = {
   user: User
@@ -151,18 +152,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
           {listComments && listComments.length > 0 ? (
             <ListComment listComments={listComments} />
           ) : (
-            <section className='mx-auto max-w-6xl md:text-2xl mt-8 flex flex-col gap-4 items-center'>
-              <div className='relative w-48 h-48 sm:w-72 sm:h-72 md:w-80 md:h-80'>
-                <Image src='/img/messages.png' alt='Messages Icon' layout='fill' />
-              </div>
-              <p className='text-white font-semibold text-center'>
-                Dejalé un mensaje a{' '}
-                <span className='bg-gradient-to-r from-[#d770b2] to-[#e4ad7a] font-bold text-transparent bg-clip-text'>
-                  {creatorInfo?.name}
-                </span>{' '}
-                por su aporte a la comunidad.
-              </p>
-            </section>
+            <NoCommentsFound data={creatorInfo?.name} />
           )}
         </section>
         <ToolbarUser
