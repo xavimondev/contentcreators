@@ -6,12 +6,15 @@ import CustomLink from './custom-link'
 
 type CommentProps = {
   commentInfo: Comment
+  className?: string
 }
 
-const CommentCard = ({ commentInfo }: CommentProps) => {
+const CommentCard = ({ commentInfo, className }: CommentProps) => {
   const { message, author, authorAvatar, authorUsername } = commentInfo
   return (
-    <div className='flex flex-col gap-3 p-4 bg-white rounded-xl w-full sm:max-w-xs shadow-[-6px_-6px_0_0px_rgb(29,78,216)]'>
+    <div
+      className={`flex flex-col gap-3 p-4 bg-white rounded-xl w-full sm:max-w-xs shadow-[-6px_-6px_0_0px_rgb(29,78,216)] ${className}`}
+    >
       <CustomLink href={`https://github.com/${authorUsername}`} target='_blank'>
         <div className='flex flex-row items-center gap-3'>
           <div className='relative w-8 h-8'>
