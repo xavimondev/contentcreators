@@ -22,6 +22,7 @@ import DialogComment from 'components/dialog'
 import ToolbarUser from 'components/toolbar-user'
 import ListComment from 'components/list-comment'
 import NoCommentsFound from 'components/no-comments-found'
+import { useSession } from '@supabase/auth-helpers-react'
 
 type DashboardProps = {
   user: User
@@ -35,6 +36,8 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   const [listComments, setListComments] = useState<Comment[]>(comments)
   const buttonCommentRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
+  const session = useSession()
+
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
 
   let creatorInfo = null,
@@ -46,9 +49,13 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   }
 
   const handleSubmit = async (content: string) => {
-    const { fullName, username, avatarUrl, userId } = user
+    // handleSubmit oly works when users is authenticated
+    const { user } = session!
+    const {
+      user_metadata: { avatar_url: avatarUrl, user_name: username, full_name: fullName }
+    } = user
     const data = {
-      userId,
+      userId: user.id,
       content,
       username: id
     }
@@ -148,6 +155,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
           user={user}
           buttonCommentRef={buttonCommentRef}
           setIsOpen={setIsOpen}
+          session={session}
         />
         {isOpen && <DialogComment dialogRef={dialogRef} onSave={handleSubmit} />}
       </Layout>
