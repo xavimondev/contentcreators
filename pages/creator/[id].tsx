@@ -49,7 +49,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
   }
 
   const handleSubmit = async (content: string) => {
-    // handleSubmit oly works when users is authenticated
+    // I used non null assertion since users will use handleSubmit when they are authenticated
     const { user } = session!
     const {
       user_metadata: { avatar_url: avatarUrl, user_name: username, full_name: fullName }
