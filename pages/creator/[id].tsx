@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { useSession } from '@supabase/auth-helpers-react'
 import toast, { Toaster } from 'react-hot-toast'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
@@ -22,7 +23,6 @@ import DialogComment from 'components/dialog'
 import ToolbarUser from 'components/toolbar-user'
 import ListComment from 'components/list-comment'
 import NoCommentsFound from 'components/no-comments-found'
-import { useSession } from '@supabase/auth-helpers-react'
 
 type DashboardProps = {
   user: User
