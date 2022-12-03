@@ -6,11 +6,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint -- --fix",
-    "prettier:check": "npx prettier . --write"
+    "prettier:check": "npx prettier . --write",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "4.6.1",
