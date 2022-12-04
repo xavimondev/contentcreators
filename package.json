@@ -14,7 +14,7 @@
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
-    "@vercel/og": "0.0.20",
+    "@vercel/og": "0.0.21",
     "@prisma/client": "4.6.1",
     "@supabase/auth-helpers-nextjs": "0.5.2",
     "@supabase/auth-helpers-react": "0.3.1",
