@@ -154,3 +154,59 @@ export const LoadingIc = (props: SVGProps<SVGSVGElement>) => {
     </svg>
   )
 }
+
+export const CommentIc = (props: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg height='21' viewBox='0 0 21 21' width='21' xmlns='http://www.w3.org/2000/svg' {...props}>
+      <g
+        fill='none'
+        fillRule='evenodd'
+        stroke='currentColor'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        transform='translate(2 3)'
+      >
+        <path d='m11.4182262 1.21376122c-.904128-.29938651-1.88845542-.46376122-2.9182262-.46376122-4.418278 0-8 3.02593755-8 6.75862069 0 1.45741942.54603279 2.80709561 1.47469581 3.91098161l-.97469581 4.5803977 3.91607376-2.4472652c1.07810761.4571647 2.29544433.7145066 3.58392624.7145066 4.418278 0 8-3.0259376 8-6.75862071 0-.68476204-.1205394-1.34573924-.3446699-1.96861327' />
+        <path d='m14.5.5v4' />
+        <path d='m14.5.5v4' transform='matrix(0 1 -1 0 17 -12)' />
+      </g>
+    </svg>
+  )
+}
+
+export const LogoutIc = (props: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg height='21' viewBox='0 0 21 21' width='21' xmlns='http://www.w3.org/2000/svg' {...props}>
+      <g
+        fill='none'
+        fillRule='evenodd'
+        stroke='currentColor'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        transform='translate(4 3)'
+      >
+        <path d='m10.595 10.5 2.905-3-2.905-3' />
+        <path d='m13.5 7.5h-9' />
+        <path d='m10.5.5-8 .00224609c-1.1043501.00087167-1.9994384.89621131-2 2.00056153v9.99438478c0 1.1045695.8954305 2 2 2h8.0954792' />
+      </g>
+    </svg>
+  )
+}
+
+export const SendIc = (props: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg height='21' viewBox='0 0 21 21' width='21' xmlns='http://www.w3.org/2000/svg' {...props}>
+      <g
+        fill='none'
+        fillRule='evenodd'
+        stroke='currentColor'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        transform='translate(3 2)'
+      >
+        <path d='m15.5.465-8 8.033' />
+        <path d='m10.5 16.5-3-8.002-7-2.998 15-5z' />
+      </g>
+    </svg>
+  )
+}

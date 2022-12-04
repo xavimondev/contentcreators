@@ -6,20 +6,26 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && prisma migrate deploy && next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint -- --fix",
-    "prettier:check": "npx prettier . --write"
+    "prettier:check": "npx prettier . --write",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@vercel/og": "0.0.20",
+    "@prisma/client": "4.6.1",
+    "@supabase/auth-helpers-nextjs": "0.5.2",
+    "@supabase/auth-helpers-react": "0.3.1",
+    "@supabase/supabase-js": "2.1.0",
     "just-debounce-it": "3.1.1",
     "next": "12.3.1",
     "next-seo": "5.5.0",
     "prettier": "2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hot-toast": "2.4.0",
     "react-responsive-masonry": "2.1.6"
   },
   "devDependencies": {
@@ -36,6 +42,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "postcss": "8.4.17",
+    "prisma": "4.6.1",
     "tailwindcss": "3.1.8",
     "typescript": "4.8.4"
   }

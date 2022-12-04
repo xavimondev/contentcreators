@@ -3,7 +3,7 @@ import { SocialLink, SocialMedia } from 'types'
 import CustomLink from './custom-link'
 import { BlogIc, DiscordIc, GitHubIc, InstagramIc, TwitchIc, TwitterIc, YoutubeIc } from './icons'
 
-const SOCIAL_LINKS: Array<SocialLink> = [
+export const SOCIAL_LINKS: Array<SocialLink> = [
   {
     id: 'twitter',
     Component: <TwitterIc className='w-6 h-6' color='white' />
