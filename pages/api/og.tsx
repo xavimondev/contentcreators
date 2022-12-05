@@ -20,12 +20,53 @@ export default async function handler(req: NextRequest) {
     const creatorInfo = CREATORS_DATA.find((creator) => creator.id === username)
 
     if (!creatorInfo) {
-      return new ImageResponse(<>Visit with &quot;?username=vercel&quot;</>, {
-        width: 1200,
-        height: 630
-      })
+      return new ImageResponse(
+        (
+          <div
+            style={{
+              display: 'flex',
+              backgroundImage: 'linear-gradient(to left, #39497e, #1d184e)',
+              height: '100%'
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                margin: 'auto',
+                maxWidth: '70rem',
+                width: '100%'
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 130
+                }}
+              >
+                🫤
+              </span>
+              <p
+                style={{
+                  fontSize: 28,
+                  fontWeight: 'bold',
+                  color: 'white',
+                  textAlign: 'center'
+                }}
+              >
+                El usuario que estas intentando buscar no está registrado.
+              </p>
+            </div>
+          </div>
+        ),
+        {
+          width: 1200,
+          height: 630,
+          emoji: 'fluentFlat'
+        }
+      )
     }
-    console.log(creatorInfo)
     const { name, description, id } = creatorInfo
     return new ImageResponse(
       (
