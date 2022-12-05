@@ -23,6 +23,7 @@ import DialogComment from 'components/dialog'
 import ToolbarUser from 'components/toolbar-user'
 import ListComment from 'components/list-comment'
 import NoCommentsFound from 'components/no-comments-found'
+import { DefaultSeo } from 'next-seo'
 
 type DashboardProps = {
   user: User
@@ -45,7 +46,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
 
   if (id) {
     creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
-    title = `Creador: ${creatorInfo?.name} 🚀`
+    title = `content.[creators] | ${creatorInfo?.name}`
   }
 
   const handleSubmit = async (content: string) => {
@@ -101,13 +102,33 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
 
   return (
     <>
-      <Head>
+      <DefaultSeo
+        title={title}
+        description={`Déjale un mensaje a ${creatorInfo?.name} 🙂`}
+        openGraph={{
+          type: 'website',
+          url: `https://contentcreators.vercel.app/creator/${id}`,
+          locale: 'es_ES',
+          images: [
+            {
+              url: `https://contentcreators.vercel.app/api/og?username=${id}`,
+              type: 'image/png'
+            }
+          ]
+        }}
+        twitter={{
+          cardType: 'summary_large_image'
+        }}
+      />
+      {/* <Head>
         <title>{title}</title>
+        <meta property='og:title' content={title} />
+        <meta property='description' content={`Déjale un mensaje a ${creatorInfo?.name}`} />
         <meta
           property='og:image'
           content={`https://contentcreators.vercel.app/api/og?username=${id}`}
         />
-      </Head>
+      </Head> */}
       <Layout>
         <CustomLink href='/'>
           <div className='flex flex-row gap-2 items-center mb-2 text-white'>
