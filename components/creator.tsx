@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import type { Category, Social } from 'types'
 import CustomLink from './custom-link'
+import { ShareIc } from './icons'
 import SocialLink from './social-link'
 
 type CreatorCardProps = {
@@ -48,17 +49,22 @@ const CreatorCard = ({ id, name, description, categories, socialLinks }: Creator
     >
       <div className='flex flex-col gap-4 p-6'>
         {/* Photo section */}
-        <div className='object-cover w-24 md:w-32 h-auto rounded-xl'>
-          <Image
-            className={`rounded-xl duration-700 ease-in-out ${
-              isLoading ? 'grayscale blur-2xl scale-110' : 'grayscale-0 blur-0 scale-100'
-            }`}
-            src={`https://unavatar.io/github/${id}`}
-            width='256'
-            height='256'
-            alt={name}
-            onLoadingComplete={() => setLoading(false)}
-          />
+        <div className='flex flex-row justify-between'>
+          <div className='object-cover w-24 md:w-32 h-auto rounded-xl'>
+            <Image
+              className={`rounded-xl duration-700 ease-in-out ${
+                isLoading ? 'grayscale blur-2xl scale-110' : 'grayscale-0 blur-0 scale-100'
+              }`}
+              src={`https://unavatar.io/github/${id}`}
+              width='256'
+              height='256'
+              alt={name}
+              onLoadingComplete={() => setLoading(false)}
+            />
+          </div>
+          <CustomLink href={`/creator/${id}`}>
+            <ShareIc className='text-white' />
+          </CustomLink>
         </div>
         {/* Description section */}
         <div className='flex flex-col gap-2'>
