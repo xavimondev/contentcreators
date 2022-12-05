@@ -6,7 +6,12 @@ export const config = {
   runtime: 'experimental-edge'
 }
 
-export default function handler(req: NextRequest) {
+const fontMerriweather = fetch(new URL('../../assets/Merriweather.ttf', import.meta.url)).then(
+  (res) => res.arrayBuffer()
+)
+
+export default async function handler(req: NextRequest) {
+  const fontData = await fontMerriweather
   try {
     const { searchParams } = req.nextUrl
 
@@ -73,9 +78,9 @@ export default function handler(req: NextRequest) {
               </h1>
               <p
                 style={{
-                  color: 'white',
                   fontSize: '22px',
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
+                  color: 'white'
                 }}
               >
                 {description}
@@ -86,7 +91,14 @@ export default function handler(req: NextRequest) {
       ),
       {
         width: 1200,
-        height: 630
+        height: 630,
+        fonts: [
+          {
+            name: 'Merriweather',
+            data: fontData,
+            style: 'normal'
+          }
+        ]
       }
     )
   } catch (e: any) {
