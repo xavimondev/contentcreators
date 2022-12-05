@@ -103,6 +103,10 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
     <>
       <Head>
         <title>{title}</title>
+        <meta
+          property='og:image'
+          content={`https://contentcreators.vercel.app/api/og?username=${id}`}
+        />
       </Head>
       <Layout>
         <CustomLink href='/'>
