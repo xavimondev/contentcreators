@@ -11,7 +11,7 @@ const NoCommentsFound = ({ data }: NoCommentsFoundProps) => {
         <Image src='/img/messages.png' alt='Messages Icon' layout='fill' />
       </div>
       <p className='text-white font-semibold text-center'>
-        Dejalé un mensaje a{' '}
+        Déjale un mensaje a{' '}
         <span className='bg-gradient-to-r from-[#d770b2] to-[#e4ad7a] font-bold text-transparent bg-clip-text'>
           {data}
         </span>{' '}
