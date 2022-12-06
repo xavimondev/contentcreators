@@ -107,7 +107,7 @@ export default async function handler(req: NextRequest) {
             >
               <h1
                 style={{
-                  fontSize: '40px',
+                  fontSize: '60px',
                   fontWeight: 'bold',
                   backgroundImage: 'linear-gradient(to right, #d770b2, #e4ad7a)',
                   backgroundClip: 'text',
@@ -119,7 +119,7 @@ export default async function handler(req: NextRequest) {
               </h1>
               <p
                 style={{
-                  fontSize: '22px',
+                  fontSize: '26px',
                   fontWeight: 'bold',
                   color: 'white'
                 }}
