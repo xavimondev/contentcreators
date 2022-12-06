@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
