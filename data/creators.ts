@@ -797,5 +797,72 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://discord.com/invite/9vvcTTC'
       }
     ]
+  },
+  {
+    id: 'jvelezmagic',
+    name: 'Jesús Vélez Santiago',
+    description:
+      'I am a Data Scientist / Genomic Scientist interested in genomics, ecology, and evolution through computational and mathematical methods.',
+    categories: ['datascience'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/jvelezmagic'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/jvelezmagic'
+      },
+      {
+        id: 'blog',
+        url: 'https://jvelezmagic.com/'
+      }
+    ]
+  },
+  {
+    id: 'codificandobits',
+    name: 'Codificando Bits',
+    description:
+      '¡Hola, soy Miguel Sotaquirá, el creador de Codificando Bits! Divulgador de temas de #MachineLearning y #DataScience en habla hispana',
+    categories: ['datascience'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/codificandobits'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/codificandobits'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/c/codificandobits'
+      }
+    ]
+  },
+  {
+    id: 'gonzalezgouveia',
+    name: 'Rafael Gonzalez Gouveia',
+    description:
+      'hola mundo! soy Rafa y trabajo como Data Scientist. Te ayudo a completar tus proyectos en Ciencia de Datos. Espero con este contenido ayudarte a conocer más la profesión de científico de datos para ayudarte a decidir si esto puede ser para ti.',
+    categories: ['datascience'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/gonzalezgouveia'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/gonzalezgouveia'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/c/RafaGonzalezGouveia'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/gonzalezgouveia/'
+      }
+    ]
   }
 ]
