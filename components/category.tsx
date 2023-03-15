@@ -31,7 +31,7 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
     <>
       <li>
         <CustomLink href={`/category/${id}`}>
-          <div className='flex flex-col gap-1 items-center'>
+          <div className='flex flex-col gap-1.5 items-center'>
             <div
               className={`w-14 h-14 p-1 rounded-full`}
               style={{
@@ -48,7 +48,7 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
                 />
               </div>
             </div>
-            <span className='text-center text-white font-semibold'>{name.toLowerCase()}</span>
+            <span className='text-center text-white font-semibold'>{name}</span>
           </div>
         </CustomLink>
       </li>
