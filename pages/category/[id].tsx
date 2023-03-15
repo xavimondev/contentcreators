@@ -4,9 +4,8 @@ import Head from 'next/head'
 import { Category } from 'types'
 import { LIST_CATEGORIES } from 'data/categories'
 
-import HeaderTitle from 'components/header-title'
 import Layout from 'components/layout'
-import { HomeIc } from 'components/icons'
+import { LeftArrowIc } from 'components/icons'
 import CustomLink from 'components/custom-link'
 import ListCategory from 'components/list-category'
 import CategoryDetail from 'components/category-detail'
@@ -23,9 +22,11 @@ const DashboardCategory = () => {
       <Layout>
         <div className='flex flex-row gap-2 items-center mb-12'>
           <CustomLink href='/'>
-            <HomeIc className='h-8 w-8 lg:h-12 lg:w-12 text-white' />
+            <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
           </CustomLink>
-          <HeaderTitle msg={id as string} />
+          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
+            Todas las categorías
+          </span>
         </div>
         <div className='flex flex-col gap-4'>
           {/* Tecnologías slider */}
