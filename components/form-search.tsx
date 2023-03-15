@@ -47,7 +47,18 @@ const FormSearch = ({ nameClass, setCreators, setIsSearching, setQuery }: Search
         </div>
         <input
           type='search'
-          className='bg-gradient-to-l from-[#192957] to-[#211d45] border dark:border-gray-500 dark:text-white text-sm rounded-lg block w-full pl-10 p-2.5 dark:placeholder-gray-500 focus:outline-none focus:ring-1 dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
+          className='bg-[#1E1C26] 
+            border-none 
+            dark:text-white 
+            text-sm 
+            rounded-lg 
+            block 
+            w-full 
+            pl-10 
+            p-2.5 
+            dark:placeholder-gray-500 
+            focus:outline-none focus:ring-1 
+            dark:focus:ring-purple-400'
           placeholder='Busca creadores de contenido...'
           autoComplete='off'
           autoCorrect='off'
