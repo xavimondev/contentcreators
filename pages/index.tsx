@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         </div>
       </header>
       <Layout>
-        <section className='relative max-w-6xl mx-auto flex justify-center flex-col text-center mb-8 py-8 sm:py-12 lg:py-16'>
+        <section className='relative max-w-6xl mx-auto flex justify-center flex-col text-center py-8 sm:py-12 lg:py-16'>
           <Blob />
           <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#ff8b42] to-[#8b36bb] font-bold tracking-wide text-3xl sm:text-5xl lg:text-6xl'>
             content.[creators]
@@ -56,10 +56,15 @@ const Home: NextPage = () => {
             enfoques en lo que realmente necesites.
           </p>
         </section>
-        <section className='max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6'>
-          {LIST_CATEGORIES.map((category) => (
-            <CategoryCard key={category.id} {...category} />
-          ))}
+        <section className='max-w-6xl mx-auto flex justify-center flex-col mt-24'>
+          <h2 className='text-white font-bold tracking-wide text-2xl sm:text-3xl lg:text-5xl text-center'>
+            Categorías
+          </h2>
+          <div className='mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6'>
+            {LIST_CATEGORIES.map((category) => (
+              <CategoryCard key={category.id} {...category} />
+            ))}
+          </div>
         </section>
       </Layout>
       <footer className='w-full'>
