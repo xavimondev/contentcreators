@@ -6,7 +6,8 @@ module.exports = {
       animation: {
         'text-clip': 'text-clip 5s linear infinite',
         'bounce-in-up': 'bounce-in-up 0.5s ease-out',
-        pulse: 'pulse 0.5s ease-out'
+        pulse: 'pulse 0.5s ease-out',
+        'spin-slow': 'spin 20s linear infinite'
       },
       keyframes: {
         'text-clip': {
@@ -23,6 +24,9 @@ module.exports = {
           '0%': { transform: 'scaleX(1)' },
           '50%': { transform: 'scale3d(1.05,1.05,1.05)' },
           '100%': { transform: 'scaleX(1)' }
+        },
+        spin: {
+          '100%': { transform: 'rotate(1turn)' }
         }
       }
     }
