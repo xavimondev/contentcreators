@@ -3,7 +3,7 @@ import { CREATORS_DATA } from 'data/creators'
 import { NextRequest } from 'next/server'
 
 export const config = {
-  runtime: 'experimental-edge'
+  runtime: 'edge'
 }
 
 const fontMerriweather = fetch(new URL('../../assets/Merriweather.ttf', import.meta.url)).then(
