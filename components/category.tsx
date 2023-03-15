@@ -44,11 +44,11 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
             >
               <div className='h-full p-1 text-white rounded-full'>
                 <Image
-                  className='rounded-full'
+                  className='rounded-full w-full h-full'
                   src={image}
                   alt='frontend'
-                  width='100%'
-                  height='100%'
+                  width='100'
+                  height='100'
                 />
               </div>
             </div>

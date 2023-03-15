@@ -9,7 +9,7 @@ type NoDataFoundProps = {
 const NoDataFound = ({ message, keyword }: NoDataFoundProps) => {
   return (
     <div className='flex flex-col gap-6 justify-center items-center mt-16'>
-      <Image src='/img/no-data.webp' alt='Data not found' height='250' width='250' layout='fixed' />
+      <Image src='/img/no-data.webp' alt='Data not found' height='250' width='250' />
       <p className='dark:text-white text-base md:text-xl font-semibold max-w-xl text-center'>
         {message} <span className='text-red-500 font-bold'>{keyword}</span>. Sin embargo, puedes
         agregarlos contribuyendo al{' '}

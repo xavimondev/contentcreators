@@ -51,7 +51,7 @@ const ToolbarUser = ({
               src={userSession.avatarUrl}
               className='rounded-full'
               alt={userSession.fullName}
-              layout='fill'
+              fill
             />
           </div>
           <span className='text-base font-semibold text-white'>{userSession.username}</span>

@@ -18,7 +18,7 @@ const CommentCard = ({ commentInfo, className }: CommentProps) => {
       <CustomLink href={`https://github.com/${authorUsername}`} target='_blank'>
         <div className='flex flex-row items-center gap-3'>
           <div className='relative w-8 h-8'>
-            <Image src={authorAvatar} className='rounded-full' alt={author} layout='fill' />
+            <Image src={authorAvatar} className='rounded-full' alt={author} fill />
           </div>
           <div className='space-y-0.5'>
             <span className='font-medium'>{author}</span>

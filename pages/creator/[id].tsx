@@ -143,7 +143,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
                 src={`https://unavatar.io/github/${id}`}
                 width='256'
                 height='256'
-                alt={creatorInfo?.name}
+                alt={creatorInfo!.name}
               />
             </div>
             <div className='flex flex-col gap-2 md:gap-4'>
@@ -222,7 +222,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   if (comments) {
-    comments = comments.map((comment) => {
+    comments = comments.map((comment: any) => {
       const { id, content, user } = comment
       const { name, photoUrl, username } = user
       return {
