@@ -23,10 +23,13 @@ const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
         replace={replace}
         shallow={shallow}
         scroll={scroll}
+        rel={rel}
+        target={target}
+        ref={ref}
+        className={classes}
+        {...rest}
       >
-        <a {...rest} rel={rel} target={target} ref={ref} className={classes}>
-          {children}
-        </a>
+        {children}
       </Link>
     )
   }
