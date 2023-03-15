@@ -6,7 +6,7 @@ import Layout from 'components/layout'
 import { CategoryCard } from 'components/category'
 import CustomLink from 'components/custom-link'
 import { GitHubIc } from 'components/icons'
-import Blob from 'components/blob'
+import { BlobHome } from 'components/blob'
 
 const Home: NextPage = () => {
   return (
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
       </header>
       <Layout>
         <section className='relative max-w-6xl mx-auto flex justify-center flex-col text-center py-8 sm:py-12 lg:py-16'>
-          <Blob />
+          <BlobHome />
           <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#ff8b42] to-[#8b36bb] font-bold tracking-wide text-3xl sm:text-5xl lg:text-6xl'>
             content.[creators]
           </h1>
