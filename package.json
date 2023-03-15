@@ -18,15 +18,15 @@
     "@supabase/auth-helpers-nextjs": "0.5.2",
     "@supabase/auth-helpers-react": "0.3.1",
     "@supabase/supabase-js": "2.1.0",
-    "@vercel/og": "0.0.21",
-    "just-debounce-it": "3.1.1",
+    "@vercel/og": "0.4.0",
+    "just-debounce-it": "3.2.0",
     "next": "13.2.4",
-    "next-seo": "5.5.0",
+    "next-seo": "5.15.0",
     "prettier": "2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "2.4.0",
-    "react-responsive-masonry": "2.1.6"
+    "react-responsive-masonry": "2.1.7"
   },
   "devDependencies": {
     "@playwright/test": "1.27.1",
