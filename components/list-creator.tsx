@@ -1,7 +1,7 @@
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
-
 import type { Creator } from 'types'
 import CreatorCard from 'components/creator'
+import { BlobListCreators } from 'components/blob'
 
 type PropsListCreator = {
   listCreators: Creator[]
@@ -9,7 +9,8 @@ type PropsListCreator = {
 
 const ListCreator = ({ listCreators }: PropsListCreator) => {
   return (
-    <>
+    <div className='relative'>
+      <BlobListCreators />
       {/* Section */}
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4, 1200: 5 }}>
         <Masonry gutter='10px'>
@@ -25,7 +26,7 @@ const ListCreator = ({ listCreators }: PropsListCreator) => {
           ))}
         </Masonry>
       </ResponsiveMasonry>
-    </>
+    </div>
   )
 }
 
