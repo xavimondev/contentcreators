@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { useSession } from '@supabase/auth-helpers-react'
 import toast, { Toaster } from 'react-hot-toast'
+import { DefaultSeo } from 'next-seo'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
 
@@ -16,13 +17,12 @@ import { listCommentsByCreator, saveComment } from 'services/comment'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
-import { HomeIc } from 'components/icons'
+import { LeftArrowIc } from 'components/icons'
 import Layout from 'components/layout'
 import DialogComment from 'components/dialog'
 import ToolbarUser from 'components/toolbar-user'
 import ListComment from 'components/list-comment'
 import NoCommentsFound from 'components/no-comments-found'
-import { DefaultSeo } from 'next-seo'
 
 type DashboardProps = {
   user: User
@@ -119,54 +119,53 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
           cardType: 'summary_large_image'
         }}
       />
-      {/* <Head>
-        <title>{title}</title>
-        <meta property='og:title' content={title} />
-        <meta property='description' content={`Déjale un mensaje a ${creatorInfo?.name}`} />
-        <meta
-          property='og:image'
-          content={`https://contentcreators.vercel.app/api/og?username=${id}`}
-        />
-      </Head> */}
       <Layout>
-        <CustomLink href='/'>
-          <div className='flex flex-row gap-2 items-center mb-2 text-white'>
-            <HomeIc className='h-8 w-8' />
-            <span className='text-base'>Regresar a Inicio</span>
-          </div>
-        </CustomLink>
-        <section className='mt-10 p-4 flex flex-col gap-2 md:gap-4 bg-slate-900 rounded-xl'>
-          <div className='flex flex-col md:flex-row gap-2 md:gap-4 items-center'>
-            <div className='object-cover w-24 md:w-32 h-auto'>
-              <Image
-                className='rounded-xl duration-700 ease-in-out'
-                src={`https://unavatar.io/github/${id}`}
-                width='256'
-                height='256'
-                alt={creatorInfo!.name}
-              />
+        <div className='flex flex-row gap-2 items-center mb-12'>
+          <CustomLink href='/'>
+            <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
+          </CustomLink>
+          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
+            Todas las categorías
+          </span>
+        </div>
+        <section className='mt-10 p-0.5 flex flex-col gap-2 md:gap-4 rounded-xl bg-gradient-to-r from-indigo-500 to-[#d5578f]'>
+          <div className='bg-[#1E1C26] rounded-xl p-4'>
+            <div className='flex flex-col md:flex-row gap-2 md:gap-4 items-center'>
+              <div className='object-cover w-24 md:w-32 h-auto'>
+                <Image
+                  className='rounded-xl duration-700 ease-in-out'
+                  src={`https://unavatar.io/github/${id}`}
+                  width='256'
+                  height='256'
+                  alt={creatorInfo!.name}
+                />
+              </div>
+              <div className='flex flex-col gap-2 md:gap-4'>
+                <h2 className='text-white font-bold tracking-wide text-xl sm:text-2xl lg:text-5xl'>
+                  {creatorInfo?.name}
+                </h2>
+                <p className='text-base sm:text-lg lg:text-xl dark:text-gray-400'>
+                  {creatorInfo?.description}
+                </p>
+              </div>
             </div>
-            <div className='flex flex-col gap-2 md:gap-4'>
-              <h2 className='text-transparent bg-clip-text bg-gradient-to-r from-[#d770b2] to-[#e4ad7a] font-bold tracking-wide text-xl md:text-2xl lg:text-5xl'>
-                {creatorInfo?.name}
-              </h2>
-              <p className='font-semibold text-base sm:text-lg lg:text-xl text-white'>
-                {creatorInfo?.description}
-              </p>
+            <div className='flex gap-1 md:gap-3 flex-wrap md:flex-row mt-4 sm:mt-2'>
+              {creatorInfo?.social.map((item) => {
+                const Component = SOCIAL_LINKS.find((link) => link.id === item.id)?.Component
+                return (
+                  <CustomLink
+                    href={item.url}
+                    key={item.id}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                  >
+                    <div className='p-2 rounded-lg transition hover:scale-110'>{Component}</div>
+                  </CustomLink>
+                )
+              })}
             </div>
-          </div>
-          <div className='flex gap-1 md:gap-3 flex-wrap md:flex-row'>
-            {creatorInfo?.social.map((item) => {
-              const Component = SOCIAL_LINKS.find((link) => link.id === item.id)?.Component
-              return (
-                <CustomLink href={item.url} key={item.id} rel='noopener noreferrer' target='_blank'>
-                  <div className='p-2 rounded-lg transition hover:scale-110'>{Component}</div>
-                </CustomLink>
-              )
-            })}
           </div>
         </section>
-
         <section className='mt-6'>
           {listComments && listComments.length > 0 ? (
             <ListComment listComments={listComments} />
