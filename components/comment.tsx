@@ -6,30 +6,33 @@ import CustomLink from './custom-link'
 
 type CommentProps = {
   commentInfo: Comment
-  className?: string
 }
 
-const CommentCard = ({ commentInfo, className }: CommentProps) => {
+const CommentCard = ({ commentInfo }: CommentProps) => {
   const { message, author, authorAvatar, authorUsername } = commentInfo
   return (
-    <div
-      className={`flex flex-col gap-3 p-4 bg-white rounded-xl w-full sm:max-w-xs shadow-[-6px_-6px_0_0px_rgb(29,78,216)] ${className}`}
+    <CustomLink
+      href={`https://github.com/${authorUsername}`}
+      target='_blank'
+      rel='noopener noreferrer'
+      classes='bg-[#1E1C26] rounded-xl w-full sm:max-w-[350px] sm:w-[320px] shadow-md flex flex-col gap-3 p-5'
     >
-      <CustomLink href={`https://github.com/${authorUsername}`} target='_blank'>
-        <div className='flex flex-row items-center gap-3'>
-          <div className='relative w-8 h-8'>
+      <h3 className='text-sm text-gray-500 font-semibold'>Marzo 15, 2023</h3>
+      <blockquote>
+        <p className='text-white text-base sm:text-lg'>{message}</p>
+      </blockquote>
+      <div className='mt-3 flex flex-row items-center gap-3'>
+        <div className='rounded-full w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-indigo-500 to-[#d5578f] p-0.5'>
+          <div className='relative w-full h-full bg-[#1E1C26] rounded-full'>
             <Image src={authorAvatar} className='rounded-full' alt={author} fill />
           </div>
-          <div className='space-y-0.5'>
-            <span className='font-medium'>{author}</span>
-            <div className='text-sm font-light text-gray-400'>{authorUsername}</div>
-          </div>
         </div>
-      </CustomLink>
-      <blockquote>
-        <p className='text-gray-500'>{message}</p>
-      </blockquote>
-    </div>
+        <div className='space-y-0.5'>
+          <span className='font-semibold text-white/80'>{author}</span>
+          <div className='text-sm font-light text-gray-400'>{authorUsername}</div>
+        </div>
+      </div>
+    </CustomLink>
   )
 }
 
