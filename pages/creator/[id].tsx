@@ -8,12 +8,13 @@ import toast, { Toaster } from 'react-hot-toast'
 import { DefaultSeo } from 'next-seo'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
+import useComments from 'hooks/useComments'
 
-import { Comment, User } from 'types'
+import { User } from 'types'
 
 import { CREATORS_DATA } from 'data/creators'
 
-import { listCommentsByCreator, saveComment } from 'services/comment'
+import { saveComment } from 'services/comment'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
@@ -26,20 +27,18 @@ import NoCommentsFound from 'components/no-comments-found'
 
 type DashboardProps = {
   user: User
-  comments: Comment[]
 }
 
-const DashboardCreator: NextPage<DashboardProps> = ({ user, comments }) => {
+const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const router = useRouter()
   const { id } = router.query
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [listComments, setListComments] = useState<Comment[]>(comments)
   const buttonCommentRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
   const session = useSession()
-
+  const { listComments, setListComments } = useComments(id as string)
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
-
+  console.log(listComments)
   let creatorInfo = null,
     title = ''
 
@@ -210,34 +209,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       avatarUrl: avatar_url
     }
   }
-  const {
-    query: { id }
-  } = ctx
-
-  // Fetching comments
-  let comments = null
-  if (id) {
-    comments = await listCommentsByCreator(id as string)
-  }
-
-  if (comments) {
-    comments = comments.map((comment: any) => {
-      const { id, content, user } = comment
-      const { name, photoUrl, username } = user
-      return {
-        id,
-        message: content,
-        author: name,
-        authorAvatar: photoUrl,
-        authorUsername: username
-      }
-    })
-  }
 
   return {
     props: {
-      user: userInfo,
-      comments
+      user: userInfo
     }
   }
 }
