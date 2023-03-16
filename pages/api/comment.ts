@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { addComment, addCreator, searchCreator } from 'services/comment'
+import { addComment, addCreator, searchCreator, listCommentsByCreator } from 'services/comment'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
@@ -23,6 +23,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(201).json({ status: 1, commentId: id })
     } catch (error) {
       return res.status(500).json({ status: 0 })
+    }
+  } else if (req.method === 'GET') {
+    const username = req.query.username as string
+    if (username) {
+      const comments = await listCommentsByCreator(username)
+      const listCommentsFormatted = comments.map((comment: any) => {
+        const { id, content, user } = comment
+        const { name, photoUrl, username } = user
+        return {
+          id,
+          message: content,
+          author: name,
+          authorAvatar: photoUrl,
+          authorUsername: username
+        }
+      })
+      return res.status(201).json({ status: 1, data: listCommentsFormatted })
     }
   }
 
