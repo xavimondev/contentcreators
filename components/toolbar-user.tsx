@@ -43,7 +43,7 @@ const ToolbarUser = ({
   }, [session])
 
   return (
-    <div className='fixed flex flex-row justify-center gap-1 left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-slate-900 w-3/4 m-auto sm:w-60 px-6 py-4'>
+    <div className='fixed flex flex-row justify-center gap-1 left-0 right-0 bottom-4 sm:bottom-4 sm:right-4 sm:left-auto rounded-3xl bg-[#1E1C26] w-3/4 m-auto sm:w-60 px-6 py-4'>
       {userSession ? (
         <div className='flex flex-row items-center justify-center gap-4 sm:gap-3 w-full'>
           <div className='relative w-6 h-6'>
