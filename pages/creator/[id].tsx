@@ -3,9 +3,9 @@ import { GetServerSideProps, NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { useSession } from '@supabase/auth-helpers-react'
-import toast, { Toaster } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
 import { DefaultSeo } from 'next-seo'
+import { useSession } from '@supabase/auth-helpers-react'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
 import useComments from 'hooks/useComments'
@@ -13,8 +13,6 @@ import useComments from 'hooks/useComments'
 import { User } from 'types'
 
 import { CREATORS_DATA } from 'data/creators'
-
-import { saveComment } from 'services/comment'
 
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
@@ -36,7 +34,8 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const buttonCommentRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
   const session = useSession()
-  const { listComments, setListComments } = useComments(id as string)
+
+  const { listComments, addComment } = useComments(id as string)
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
   console.log(listComments)
   let creatorInfo = null,
@@ -45,57 +44,6 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   if (id) {
     creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
     title = `content.[creators] | ${creatorInfo?.name}`
-  }
-
-  const handleSubmit = async (content: string) => {
-    // I used non null assertion since users will use handleSubmit when they are authenticated
-    const { user } = session!
-    const {
-      user_metadata: { avatar_url: avatarUrl, user_name: username, full_name: fullName }
-    } = user
-    const data = {
-      userId: user.id,
-      content,
-      username: id
-    }
-
-    const commentPromise = saveComment(data)
-
-    toast.promise(
-      commentPromise,
-      {
-        loading: 'Guardando...',
-        success: (data) => {
-          const { status, commentId } = data
-          if (status) {
-            const newComment = {
-              id: commentId,
-              message: content,
-              author: fullName,
-              authorAvatar: avatarUrl,
-              authorUsername: username
-            }
-            setListComments((comments) => [newComment, ...comments])
-            return <b>Mucha gracias por tu mensaje.</b>
-          }
-          return <b>No se pudo guardar tu mensaje. Intentalo nuevamente.</b>
-        },
-        error: () => <b>Se ha detectado un error en el servidor. Intentalo nuevamente.</b>
-      },
-      {
-        style: {
-          minWidth: '315px'
-        },
-        success: {
-          duration: 2000,
-          icon: '😊'
-        },
-        error: {
-          duration: 4000,
-          icon: '😱'
-        }
-      }
-    )
   }
 
   return (
@@ -179,7 +127,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
           setIsOpen={setIsOpen}
           session={session}
         />
-        {isOpen && <DialogComment dialogRef={dialogRef} onSave={handleSubmit} />}
+        {isOpen && <DialogComment dialogRef={dialogRef} onSave={addComment} />}
       </Layout>
       <Toaster />
     </>
