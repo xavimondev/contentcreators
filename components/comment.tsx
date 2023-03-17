@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { ChangeEvent, useState } from 'react'
 
+import { MAX_CHARACTERS_ALLOWED } from 'global/constants'
+
 import { Comment } from 'types'
 
 import { PencilIc, SaveIc, TrashIc, CancelIc } from './icons'
@@ -53,7 +55,11 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
       {commentEditingId === commentInfo.id ? (
         <textarea
           value={commentEditingValue}
-          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setCommentEditingValue(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+            if (e.currentTarget.value.length <= MAX_CHARACTERS_ALLOWED) {
+              setCommentEditingValue(e.currentTarget.value)
+            }
+          }}
           className='bg-transparent border-none outline-none resize-none text-white h-full'
         ></textarea>
       ) : (

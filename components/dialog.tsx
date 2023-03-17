@@ -1,4 +1,7 @@
 import React, { RefObject, useRef, useState, useEffect } from 'react'
+
+import { MAX_CHARACTERS_ALLOWED } from 'global/constants'
+
 import { SendIc } from './icons'
 
 type DialogCommentProps = {
@@ -55,10 +58,14 @@ const DialogComment = ({ dialogRef, onSave }: DialogCommentProps) => {
           id='comment'
           className='p-2.5 w-full border-none outline-none resize-none bg-[#1E1C26] text-white placeholder-slate-400'
           cols={30}
-          placeholder='Dejame un comentario...'
+          placeholder={`Dejame un comentario(Max ${MAX_CHARACTERS_ALLOWED} caracteres)`}
           ref={commentRef}
           value={comment}
-          onChange={(e: React.FormEvent<HTMLTextAreaElement>) => setComment(e.currentTarget.value)}
+          onChange={(e: React.FormEvent<HTMLTextAreaElement>) => {
+            if (e.currentTarget.value.length <= MAX_CHARACTERS_ALLOWED) {
+              setComment(e.currentTarget.value)
+            }
+          }}
         ></textarea>
         <button
           type='submit'
