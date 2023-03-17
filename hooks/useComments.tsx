@@ -4,7 +4,7 @@ import { useSession } from '@supabase/auth-helpers-react'
 
 import { Comment } from 'types'
 
-import { saveComment } from 'services/comment'
+import { saveComment, removeComment } from 'services/comment'
 
 const useComments = (username: string) => {
   const [listComments, setListComments] = useState<Comment[]>([])
@@ -74,9 +74,19 @@ const useComments = (username: string) => {
     )
   }
 
+  const deleteComment = async (commentId: number) => {
+    const error = await removeComment(commentId)
+
+    if (!error) {
+      const newComments = listComments.filter((comment) => comment.id !== commentId)
+      setListComments(newComments)
+    }
+  }
+
   return {
     listComments,
-    addComment
+    addComment,
+    deleteComment
   }
 }
 

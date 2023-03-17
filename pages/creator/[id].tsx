@@ -35,9 +35,8 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const dialogRef = useRef<HTMLDivElement>(null)
   const session = useSession()
 
-  const { listComments, addComment } = useComments(id as string)
+  const { listComments, addComment, deleteComment } = useComments(id as string)
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
-  console.log(listComments)
   let creatorInfo = null,
     title = ''
 
@@ -115,7 +114,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
         </section>
         <section className='mt-6'>
           {listComments && listComments.length > 0 ? (
-            <ListComment listComments={listComments} />
+            <ListComment listComments={listComments} deleteComment={deleteComment} />
           ) : (
             <NoCommentsFound data={creatorInfo?.name} />
           )}

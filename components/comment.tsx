@@ -2,15 +2,27 @@ import Image from 'next/image'
 
 import { Comment } from 'types'
 
+import { TrashIc } from './icons'
+
 type CommentProps = {
   commentInfo: Comment
+  handleDelete: (commentId: number) => void
 }
 
-const CommentCard = ({ commentInfo }: CommentProps) => {
-  const { message, author, authorAvatar, authorUsername } = commentInfo
+const CommentCard = ({ commentInfo, handleDelete }: CommentProps) => {
+  const { id, message, author, authorAvatar, authorUsername } = commentInfo
+
   return (
     <div className='bg-[#1E1C26] rounded-xl sm:max-w-[350px] sm:w-[320px] sm:h-[280px] shadow-md p-5 w-full h-full flex flex-col gap-3'>
-      <h3 className='text-sm text-gray-500 font-semibold'>Marzo 15, 2023</h3>
+      <div className='flex justify-between items-center'>
+        <h3 className='text-sm text-gray-500 font-semibold'>Marzo 15, 2023</h3>
+        {/* Tools: remove and edit */}
+        <div className='space-x-2'>
+          <button onClick={() => handleDelete(id)}>
+            <TrashIc className='text-red-300 h-4 w-4' />
+          </button>
+        </div>
+      </div>
       <blockquote>
         <p className='text-white text-base sm:text-lg'>{message}</p>
       </blockquote>

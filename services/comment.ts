@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client'
 import { prisma } from './client'
+import { supabase } from './db'
 
 export const saveComment = async (comment: any) => {
   const response = await fetch('/api/comment', {
@@ -77,4 +78,9 @@ export const listCommentsByCreator = async (username: string) => {
   })
 
   return data
+}
+
+export const removeComment = async (commentId: number) => {
+  const { error } = await supabase.from('Comment').delete().eq('id', commentId)
+  return error
 }
