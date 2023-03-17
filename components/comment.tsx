@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 
 import { MAX_CHARACTERS_ALLOWED } from 'global/constants'
 
@@ -17,12 +17,20 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
   const [commentEditingId, setCommentEditingId] = useState<number | undefined>(undefined)
   const [commentEditingValue, setCommentEditingValue] = useState<string>(commentInfo.message)
   const { id, author, authorAvatar, authorUsername } = commentInfo
+  const inputRef = useRef<HTMLTextAreaElement>(null)
+
+  useEffect(() => {
+    if (inputRef) {
+      const lengthComment = commentEditingValue.length
+      inputRef.current?.setSelectionRange(lengthComment, lengthComment)
+      inputRef.current?.focus()
+    }
+  }, [commentEditingId])
 
   return (
     <div className='bg-[#1E1C26] rounded-xl sm:max-w-[350px] sm:w-[320px] sm:h-[280px] shadow-md p-5 w-full h-full flex flex-col gap-3'>
       <div className='flex justify-between items-center'>
         <h3 className='text-sm text-gray-500 font-semibold'>Marzo 15, 2023</h3>
-        {/* Tools: remove and edit */}
         <div className='space-x-4'>
           <button onClick={() => handleDelete(id)}>
             <TrashIc className='text-red-300 h-4 w-4' />
@@ -37,11 +45,7 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
               >
                 <SaveIc className='text-red-300 h-4 w-4' />
               </button>
-              <button
-                onClick={() => {
-                  setCommentEditingId(undefined)
-                }}
-              >
+              <button onClick={() => setCommentEditingId(undefined)}>
                 <CancelIc className='text-red-300 h-4 w-4' />
               </button>
             </>
@@ -54,6 +58,7 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
       </div>
       {commentEditingId === commentInfo.id ? (
         <textarea
+          ref={inputRef}
           value={commentEditingValue}
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
             if (e.currentTarget.value.length <= MAX_CHARACTERS_ALLOWED) {
