@@ -24,6 +24,13 @@ const useComments = (username: string) => {
   }, [])
 
   const addComment = async (content: string) => {
+    if (content === '') {
+      toast.error('No se puede guardar un comentario sin contenido', {
+        duration: 2000,
+        position: 'top-center'
+      })
+      return
+    }
     // I used non null assertion since users will use addComment when they are authenticated
     const { user } = session!
     const {
@@ -84,6 +91,14 @@ const useComments = (username: string) => {
   }
 
   const updateComment = async (commentId: number, commentValue: string) => {
+    if (commentValue === '') {
+      toast.error('No se puede guardar un comentario sin contenido', {
+        duration: 2000,
+        position: 'top-center',
+        icon: '👀'
+      })
+      return
+    }
     const data = {
       id: commentId,
       content: commentValue
