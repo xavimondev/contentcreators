@@ -84,3 +84,15 @@ export const removeComment = async (commentId: number) => {
   const { error } = await supabase.from('Comment').delete().eq('id', commentId)
   return error
 }
+
+export const editComment = async (comment: { id: number; content: string }) => {
+  const { error, data } = await supabase
+    .from('Comment')
+    .update({ content: comment.content })
+    .eq('id', comment.id)
+    .select()
+  return {
+    error,
+    data
+  }
+}
