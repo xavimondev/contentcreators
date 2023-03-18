@@ -65,7 +65,8 @@ export const listCommentsByCreator = async (username: string) => {
           username: true,
           photoUrl: true
         }
-      }
+      },
+      createdAt: true
     },
     where: {
       creator: {

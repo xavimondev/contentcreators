@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 
+import { getRelativeTime } from 'utils/getRelativeTime'
+
 import { MAX_CHARACTERS_ALLOWED } from 'global/constants'
 
 import { Comment } from 'types'
@@ -16,7 +18,7 @@ type CommentProps = {
 const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps) => {
   const [commentEditingId, setCommentEditingId] = useState<number | undefined>(undefined)
   const [commentEditingValue, setCommentEditingValue] = useState<string>(commentInfo.message)
-  const { id, author, authorAvatar, authorUsername } = commentInfo
+  const { id, author, authorAvatar, authorUsername, createdAt } = commentInfo
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
@@ -30,7 +32,9 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
   return (
     <div className='bg-[#1E1C26] rounded-xl sm:max-w-[350px] sm:w-[320px] sm:h-[280px] shadow-md p-5 w-full h-full flex flex-col gap-3'>
       <div className='flex justify-between items-center'>
-        <h3 className='text-sm text-gray-500 font-semibold'>Marzo 15, 2023</h3>
+        <h3 className='text-sm text-gray-500 font-semibold'>
+          {getRelativeTime(new Date(createdAt!))}
+        </h3>
         <div className='space-x-4'>
           <button onClick={() => handleDelete(id)}>
             <TrashIc className='text-red-300 h-4 w-4' />

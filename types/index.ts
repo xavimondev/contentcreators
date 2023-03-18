@@ -43,6 +43,7 @@ export type Comment = {
   author: string
   authorAvatar: string
   authorUsername: string
+  createdAt?: string
 }
 
 export type User = {

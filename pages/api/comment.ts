@@ -29,14 +29,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (username) {
       const comments = await listCommentsByCreator(username)
       const listCommentsFormatted = comments.map((comment: any) => {
-        const { id, content, user } = comment
+        const { id, content, user, createdAt } = comment
         const { name, photoUrl, username } = user
         return {
           id,
           message: content,
           author: name,
           authorAvatar: photoUrl,
-          authorUsername: username
+          authorUsername: username,
+          createdAt
         }
       })
       return res.status(201).json({ status: 1, data: listCommentsFormatted })
