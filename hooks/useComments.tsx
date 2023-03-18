@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useSession } from '@supabase/auth-helpers-react'
 
+import { getMillisecondsFromTimestamp } from 'utils/getMillisecondsFromTimestamp'
+
 import { Comment } from 'types'
 
 import { saveComment, removeComment, editComment, saveCommentInCache } from 'services/comment'
@@ -66,7 +68,8 @@ const useComments = (username: string) => {
             const cacheData = {
               creatorUsername: username,
               commentAuthor: authorUsername,
-              commentValue: content
+              commentValue: content,
+              createdAtMilliseconds: getMillisecondsFromTimestamp(createdAt)
             }
             saveCommentInCache(cacheData).then((res) => {
               console.log(res)

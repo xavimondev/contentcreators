@@ -103,6 +103,7 @@ type CacheData = {
   creatorUsername: string
   commentAuthor: string
   commentValue: string
+  createdAtMilliseconds: number
 }
 
 export const saveCommentInCache = async (data: CacheData): Promise<string> => {

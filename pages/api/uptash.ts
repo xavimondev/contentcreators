@@ -7,8 +7,8 @@ const redis = new Redis({
 })
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
-  const { creatorUsername, commentAuthor, commentValue } = req.body
-  const key = `${creatorUsername}:${commentAuthor}`
+  const { creatorUsername, commentAuthor, commentValue, createdAtMilliseconds } = req.body
+  const key = `${creatorUsername}:${commentAuthor}:${createdAtMilliseconds}`
   const result = await redis.set(key, commentValue, {
     ex: 60
   })
