@@ -18,9 +18,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       const resData = await addComment(commentData)
-      const { id } = resData
+      const { id, createdAt } = resData
 
-      return res.status(201).json({ status: 1, commentId: id })
+      return res.status(201).json({
+        status: 1,
+        data: {
+          id,
+          createdAt
+        }
+      })
     } catch (error) {
       return res.status(500).json({ status: 0 })
     }

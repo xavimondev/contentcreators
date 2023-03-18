@@ -36,27 +36,29 @@ const useComments = (username: string) => {
     const {
       user_metadata: { avatar_url: avatarUrl, user_name: authorUsername, full_name: fullName }
     } = user
-    const data = {
+    const newCommentDB = {
       userId: user.id,
       content,
       username
     }
 
-    const commentPromise = saveComment(data)
+    const commentPromise = saveComment(newCommentDB)
 
     toast.promise(
       commentPromise,
       {
         loading: 'Guardando...',
-        success: (data) => {
-          const { status, commentId } = data
+        success: (dataPromise) => {
+          const { status, data } = dataPromise
+          const { id, createdAt } = data
           if (status) {
             const newComment: Comment = {
-              id: commentId,
+              id,
               message: content,
               author: fullName,
               authorAvatar: avatarUrl,
-              authorUsername
+              authorUsername,
+              createdAt
             }
             setListComments((comments) => [newComment, ...comments])
 
