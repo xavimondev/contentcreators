@@ -96,3 +96,22 @@ export const editComment = async (comment: { id: number; content: string }) => {
     data
   }
 }
+
+/* Services cache */
+type CacheData = {
+  creatorUsername: string
+  commentAuthor: string
+  commentValue: string
+}
+
+export const saveCommentInCache = async (data: CacheData): Promise<string> => {
+  const response = await fetch('/api/uptash', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-type': 'application/json'
+    }
+  })
+  const result = await response.json()
+  return result
+}

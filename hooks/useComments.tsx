@@ -4,7 +4,7 @@ import { useSession } from '@supabase/auth-helpers-react'
 
 import { Comment } from 'types'
 
-import { saveComment, removeComment, editComment } from 'services/comment'
+import { saveComment, removeComment, editComment, saveCommentInCache } from 'services/comment'
 
 const useComments = (username: string) => {
   const [listComments, setListComments] = useState<Comment[]>([])
@@ -59,6 +59,16 @@ const useComments = (username: string) => {
               authorUsername
             }
             setListComments((comments) => [newComment, ...comments])
+
+            // Saving in cache
+            const cacheData = {
+              creatorUsername: username,
+              commentAuthor: authorUsername,
+              commentValue: content
+            }
+            saveCommentInCache(cacheData).then((res) => {
+              console.log(res)
+            })
             return <b>Mensaje guardado.</b>
           }
           return <b>No se pudo guardar tu mensaje. Intentalo nuevamente.</b>
