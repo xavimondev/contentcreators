@@ -7,7 +7,7 @@ const units: { unit: Intl.RelativeTimeFormatUnit; value: number }[] = [
   { unit: 'second', value: 1000 }
 ]
 
-const rtf = new Intl.RelativeTimeFormat('en')
+const rtf = new Intl.RelativeTimeFormat('es')
 
 /**
  * Return relative time message from elapsed time
