@@ -117,3 +117,9 @@ export const saveCommentInCache = async (data: CacheData): Promise<string> => {
   const result = await response.json()
   return result
 }
+
+export const listCommentsFromCache = async (username: string): Promise<string> => {
+  const response = await fetch(`/api/uptash/?username=${username}`)
+  const result = await response.json()
+  return result
+}
