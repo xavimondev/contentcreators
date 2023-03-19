@@ -67,7 +67,7 @@ const useComments = (username: string) => {
             // Saving in cache
             const cacheData = {
               creatorUsername: username,
-              commentAuthor: authorUsername,
+              commentAuthor: fullName.replace(' ', '-'),
               commentValue: content,
               createdAtMilliseconds: getMillisecondsFromTimestamp(createdAt)
             }
