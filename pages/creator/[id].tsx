@@ -7,6 +7,8 @@ import { Toaster } from 'react-hot-toast'
 import { DefaultSeo } from 'next-seo'
 import { useSession } from '@supabase/auth-helpers-react'
 
+import { useStore } from 'state/store'
+
 import useOnClickOutside from 'hooks/useOnClickOutside'
 import useComments from 'hooks/useComments'
 
@@ -22,6 +24,8 @@ import DialogComment from 'components/dialog'
 import ToolbarUser from 'components/toolbar-user'
 import ListComment from 'components/list-comment'
 import NoCommentsFound from 'components/no-comments-found'
+import StoriesCreator from 'components/stories-creator'
+import Modal from 'components/modal'
 
 type DashboardProps = {
   user: User
@@ -33,6 +37,8 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const buttonCommentRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
+  const isModalStoryOpen = useStore((state) => state.isModalStoryOpen)
+  const setIsModalStoryOpen = useStore((state) => state.setIsModalStoryOpen)
   const session = useSession()
 
   const { listComments, addComment, deleteComment, updateComment } = useComments(id as string)
@@ -77,9 +83,12 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
         <section className='mt-10 p-0.5 flex flex-col gap-2 md:gap-4 rounded-xl bg-gradient-to-r from-indigo-500 to-[#d5578f]'>
           <div className='bg-[#1E1C26] rounded-xl p-4'>
             <div className='flex flex-col md:flex-row gap-2 md:gap-4 items-center'>
-              <div className='object-cover w-24 md:w-32 h-auto'>
+              <div
+                className='object-cover w-24 md:w-32 h-auto cursor-pointer'
+                onClick={() => setIsModalStoryOpen(true)}
+              >
                 <Image
-                  className='rounded-xl duration-700 ease-in-out'
+                  className='rounded-full border-4 border-purple-800'
                   src={`https://unavatar.io/github/${id}`}
                   width='256'
                   height='256'
@@ -133,6 +142,11 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
         {isOpen && <DialogComment dialogRef={dialogRef} onSave={addComment} />}
       </Layout>
       <Toaster />
+      {isModalStoryOpen && (
+        <Modal>
+          <StoriesCreator />
+        </Modal>
+      )}
     </>
   )
 }
