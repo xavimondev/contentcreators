@@ -53,6 +53,11 @@ export type User = {
   avatarUrl: string
 }
 
+export type GradientColor = {
+  colorFrom: string
+  colorTo: string
+}
+
 export type CreatorStory = {
   dedicatedTo: string // content creator username
   author: string
