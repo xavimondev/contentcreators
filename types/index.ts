@@ -56,6 +56,6 @@ export type User = {
 export type CreatorStory = {
   dedicatedTo: string // content creator username
   author: string
-  content: string
+  message: string
   date: number //milliseconds
 }

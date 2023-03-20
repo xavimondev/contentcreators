@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return {
         dedicatedTo: creatorUsername,
         author: commentAuthor.replace('-', ' '),
-        content: commentValue,
+        message: commentValue,
         date: Number(createdAtMilliseconds)
       }
     })
