@@ -11,6 +11,7 @@ import { useStore } from 'state/store'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
 import useComments from 'hooks/useComments'
+import useStory from 'hooks/useStory'
 
 import { User } from 'types'
 
@@ -39,6 +40,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const dialogRef = useRef<HTMLDivElement>(null)
   const isModalStoryOpen = useStore((state) => state.isModalStoryOpen)
   const setIsModalStoryOpen = useStore((state) => state.setIsModalStoryOpen)
+  const { listStories } = useStory(id as string)
   const session = useSession()
 
   const { listComments, addComment, deleteComment, updateComment } = useComments(id as string)
@@ -46,6 +48,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   let creatorInfo = null,
     title = ''
 
+  const hasStories = listStories.length
   if (id) {
     creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
     title = `content.[creators] | ${creatorInfo?.name}`
@@ -85,10 +88,12 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
             <div className='flex flex-col md:flex-row gap-2 md:gap-4 items-center'>
               <div
                 className='object-cover w-24 md:w-32 h-auto cursor-pointer'
-                onClick={() => setIsModalStoryOpen(true)}
+                onClick={() => {
+                  hasStories && setIsModalStoryOpen(true)
+                }}
               >
                 <Image
-                  className='rounded-full border-4 border-purple-800'
+                  className={`rounded-full ${hasStories ? 'border-4 border-purple-800' : ''}`}
                   src={`https://unavatar.io/github/${id}`}
                   width='256'
                   height='256'
