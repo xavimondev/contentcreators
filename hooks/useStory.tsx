@@ -26,6 +26,7 @@ const useStory = (username: string) => {
         const stories: Story[] = data.map((creatorStory: CreatorStory, index: number) => {
           const { author, message, date } = creatorStory
           const relativeTime = getRelativeTime(new Date(date))
+          const gradientColor = getRandomGradient()
 
           return {
             header: {
@@ -34,12 +35,7 @@ const useStory = (username: string) => {
               profileImage: `https://avatars.jakerunzer.com/${index}`
             },
             content: ({ story, config }: { story: Story; config: any }) => (
-              <StoryCard
-                story={story}
-                config={config}
-                message={message}
-                gradient={getRandomGradient()}
-              />
+              <StoryCard story={story} config={config} message={message} gradient={gradientColor} />
             )
           }
         })
