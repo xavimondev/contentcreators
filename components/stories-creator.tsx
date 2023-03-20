@@ -2,6 +2,8 @@ import Stories, { WithHeader } from 'react-insta-stories'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import type { Story } from 'react-insta-stories/dist/interfaces'
 
+import { GradientColor } from 'types'
+
 import { useStore } from 'state/store'
 
 import { CancelIc } from './icons'
@@ -21,7 +23,7 @@ export const StoryCard = ({
   story: Story
   config: any
   message: string
-  gradient: any
+  gradient: GradientColor
 }) => {
   const { colorFrom, colorTo } = gradient
   return (
