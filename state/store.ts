@@ -1,17 +1,17 @@
 import { create } from 'zustand'
 
-import { CreatorStory } from 'types'
+import type { Story } from 'react-insta-stories/dist/interfaces'
 
 type AppGeneralStore = {
   isModalStoryOpen: boolean
   setIsModalStoryOpen: (isModalOpen: boolean) => void
-  listStories: CreatorStory[]
-  setListStories: (stories: CreatorStory[]) => void
+  listStories: Story[]
+  setListStories: (stories: Story[]) => void
 }
 
 export const useStore = create<AppGeneralStore>()((set) => ({
   isModalStoryOpen: false,
   setIsModalStoryOpen: (isModalOpen: boolean) => set({ isModalStoryOpen: isModalOpen }),
   listStories: [],
-  setListStories: (stories: CreatorStory[]) => set({ listStories: stories })
+  setListStories: (stories: Story[]) => set({ listStories: stories })
 }))
