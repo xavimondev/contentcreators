@@ -16,13 +16,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const commentValue = values.at(index)
       const [creatorUsername, commentAuthor, createdAtMilliseconds] = key.split(':')
       return {
-        creatorUsername,
-        commentAuthor: commentAuthor.replace('-', ' '),
-        commentValue,
-        createdAtMilliseconds
+        dedicatedTo: creatorUsername,
+        author: commentAuthor.replace('-', ' '),
+        content: commentValue,
+        date: Number(createdAtMilliseconds)
       }
     })
-    return res.status(200).json({ msg: data })
+    return res.status(200).json({ data })
   }
   const { creatorUsername, commentAuthor, commentValue, createdAtMilliseconds } = req.body
   const key = `${creatorUsername}:${commentAuthor}:${createdAtMilliseconds}`
