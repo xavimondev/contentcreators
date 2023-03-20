@@ -52,3 +52,10 @@ export type User = {
   username: string
   avatarUrl: string
 }
+
+export type CreatorStory = {
+  dedicatedTo: string // content creator username
+  author: string
+  content: string
+  date: number //milliseconds
+}
