@@ -9,12 +9,15 @@ import { getRelativeTime } from 'utils/getRelativeTime'
 import { getRandomGradient } from 'utils/getRandomGradient'
 
 import { listCommentsFromCache } from 'services/comment'
+import { getLastStoryIndexSeenByCreator } from 'services/story'
 
 import { StoryCard } from 'components/stories-creator'
 
 const useStory = (username: string) => {
   const listStories = useStore((state) => state.listStories)
   const setListStories = useStore((state) => state.setListStories)
+  const lastStoryIndex = useStore((state) => state.lastStoryIndex)
+  const setLastStoryIndex = useStore((state) => state.setLastStoryIndex)
 
   useEffect(() => {
     const getAllStories = async () => {
@@ -47,8 +50,19 @@ const useStory = (username: string) => {
     getAllStories()
   }, [])
 
+  // Fetching lastStorySeen
+  useEffect(() => {
+    const getLastStorySeen = async () => {
+      const { data } = await getLastStoryIndexSeenByCreator(username)
+
+      data !== 0 && setLastStoryIndex(data)
+    }
+    getLastStorySeen()
+  }, [username])
+
   return {
-    listStories
+    listStories,
+    lastStoryIndex
   }
 }
 
