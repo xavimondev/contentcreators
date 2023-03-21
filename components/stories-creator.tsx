@@ -51,7 +51,7 @@ const StoriesCreator = () => {
   const { id } = router.query
 
   return (
-    <div className='bg-white w-full h-full relative'>
+    <div className='bg-white w-full h-full relative animate-zoomIn'>
       <Stories
         stories={listStories}
         defaultInterval={10000}

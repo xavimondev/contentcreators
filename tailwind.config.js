@@ -7,7 +7,8 @@ module.exports = {
         'text-clip': 'text-clip 5s linear infinite',
         'bounce-in-up': 'bounce-in-up 0.5s ease-out',
         pulse: 'pulse 0.5s ease-out',
-        'spin-slow': 'spin 20s linear infinite'
+        'spin-slow': 'spin 20s linear infinite',
+        'zoomIn': 'zoomIn 0.3s'
       },
       keyframes: {
         'text-clip': {
@@ -27,6 +28,10 @@ module.exports = {
         },
         spin: {
           '100%': { transform: 'rotate(1turn)' }
+        },
+        'zoomIn': {
+          from: { opacity: 0, transform: 'scale3d(0.3, 0.3, 0.3)' },
+          '50%': { opacity: 1 }
         }
       }
     }
