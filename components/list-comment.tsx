@@ -1,6 +1,6 @@
 import { Comment } from 'types'
 
-import CommentCard from './comment'
+import CommentCard from './comment-card'
 
 type ListCommentProps = {
   listComments: Comment[]
