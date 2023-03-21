@@ -30,7 +30,7 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
   }, [commentEditingId])
 
   return (
-    <div className='bg-[#1E1C26] rounded-xl sm:max-w-[350px] sm:w-[320px] sm:h-[280px] shadow-md p-5 w-full h-full flex flex-col gap-3'>
+    <div className='bg-[#1E1C26] rounded-xl sm:h-[280px] p-5 h-full flex flex-col gap-3'>
       <div className='flex justify-between items-center'>
         <h3 className='text-sm text-gray-500 font-semibold'>
           {getRelativeTime(new Date(createdAt!))}

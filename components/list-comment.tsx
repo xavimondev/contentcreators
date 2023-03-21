@@ -10,7 +10,7 @@ type ListCommentProps = {
 
 const ListComment = ({ listComments, deleteComment, updateComment }: ListCommentProps) => {
   return (
-    <div className='flex flex-col sm:flex-row flex-1 gap-4 w-full'>
+    <div className='grid grid-cols-[repeat(auto-fill,minmax(1fr,_1fr))] sm:grid-cols-[repeat(auto-fill,minmax(320px,_1fr))] gap-4 w-full'>
       {listComments.map((data: Comment) => (
         <CommentCard
           key={data.id}
