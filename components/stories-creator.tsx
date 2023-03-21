@@ -1,8 +1,11 @@
 import Stories, { WithHeader } from 'react-insta-stories'
 import { Plus_Jakarta_Sans } from 'next/font/google'
+import { useRouter } from 'next/router'
 import type { Story } from 'react-insta-stories/dist/interfaces'
 
 import { GradientColor } from 'types'
+
+import { saveLastStoryIndexSeen } from 'services/story'
 
 import { useStore } from 'state/store'
 
@@ -43,7 +46,10 @@ export const StoryCard = ({
 const StoriesCreator = () => {
   const setIsModalStoryOpen = useStore((state) => state.setIsModalStoryOpen)
   const listStories = useStore((state) => state.listStories)
-  console.log(listStories)
+  const lastStoryIndex = useStore((state) => state.lastStoryIndex)
+  const router = useRouter()
+  const { id } = router.query
+
   return (
     <div className='bg-white w-full h-full relative'>
       <Stories
@@ -57,6 +63,12 @@ const StoriesCreator = () => {
         storyContainerStyles={{
           backgroundColor: 'transparent'
         }}
+        onStoryStart={async (indexStory: number) => {
+          const nextIndex = listStories.length - 1 === indexStory ? 0 : indexStory + 1
+          await saveLastStoryIndexSeen(id as string, nextIndex)
+        }}
+        currentIndex={lastStoryIndex}
+        onAllStoriesEnd={() => setIsModalStoryOpen(false)}
       />
       <button className='absolute bottom-4 left-1/2' onClick={() => setIsModalStoryOpen(false)}>
         <CancelIc className='text-white h-7 w-7' />
