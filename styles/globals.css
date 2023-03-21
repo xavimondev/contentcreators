@@ -4,8 +4,10 @@
 
 /* Getting from https://tailwindcss.com/docs/adding-custom-styles#adding-base-styles */
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
   body {
     @apply bg-[#13111a];
   }
-  
 }
