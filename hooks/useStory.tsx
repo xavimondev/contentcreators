@@ -24,7 +24,10 @@ const useStory = (username: string) => {
       try {
         const response = await listCommentsFromCache(username)
         const data = response.data as CreatorStory[]
-        if (data.length === 0) return
+        if (data.length === 0) {
+          setListStories([])
+          return
+        }
 
         const stories: Story[] = data.map((creatorStory: CreatorStory, index: number) => {
           const { author, message, date } = creatorStory
@@ -48,14 +51,14 @@ const useStory = (username: string) => {
       }
     }
     getAllStories()
-  }, [])
+  }, [username])
 
   // Fetching lastStorySeen
   useEffect(() => {
     const getLastStorySeen = async () => {
       const { data } = await getLastStoryIndexSeenByCreator(username)
 
-      data !== 0 && setLastStoryIndex(data)
+      setLastStoryIndex(data)
     }
     getLastStorySeen()
   }, [username])
