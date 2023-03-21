@@ -75,13 +75,11 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
         }}
       />
       <Layout>
-        <div className='flex flex-row gap-2 items-center mb-12'>
-          <CustomLink href='/'>
+        <div className='mb-12'>
+          <button className='flex flex-row gap-2 items-center' onClick={() => router.back()}>
             <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
-          </CustomLink>
-          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
-            Todas las categorías
-          </span>
+            <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Regresar</span>
+          </button>
         </div>
         <section className='mt-10 p-0.5 flex flex-col gap-2 md:gap-4 rounded-xl bg-gradient-to-r from-indigo-500 to-[#d5578f]'>
           <div className='bg-[#1E1C26] rounded-xl p-4'>

@@ -20,13 +20,13 @@ const DashboardCategory = () => {
         <title>{title}</title>
       </Head>
       <Layout>
-        <div className='flex flex-row gap-2 items-center mb-12'>
-          <CustomLink href='/'>
+        <div className='mb-12 w-fit'>
+          <CustomLink classes='flex flex-row gap-2 items-center' href='/#categories'>
             <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
+            <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
+              Todas las categorías
+            </span>
           </CustomLink>
-          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
-            Todas las categorías
-          </span>
         </div>
         <div className='flex flex-col gap-4'>
           {/* Tecnologías slider */}

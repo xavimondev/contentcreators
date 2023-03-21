@@ -56,7 +56,7 @@ const Home: NextPage = () => {
             enfoques en lo que realmente necesites.
           </p>
         </section>
-        <section className='max-w-6xl mx-auto flex justify-center flex-col mt-24'>
+        <section className='max-w-6xl mx-auto flex justify-center flex-col mt-24' id='categories'>
           <h2 className='text-white font-bold tracking-wide text-2xl sm:text-3xl lg:text-5xl text-center'>
             Categorías
           </h2>
