@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { useSession } from '@supabase/auth-helpers-react'
 
@@ -6,16 +6,22 @@ import { getMillisecondsFromTimestamp } from 'utils/getMillisecondsFromTimestamp
 
 import { Comment } from 'types'
 
+import { useStore } from 'state/store'
+
 import { saveComment, removeComment, editComment, saveCommentInCache } from 'services/comment'
 
 const useComments = (username: string) => {
-  const [listComments, setListComments] = useState<Comment[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const listComments = useStore((state) => state.listComments)
+  const setListComments = useStore((state) => state.setListComments)
+  const addNewCommentToList = useStore((state) => state.addNewCommentToList)
+  const removeCommentFromList = useStore((state) => state.removeCommentFromList)
+  const isLoadingComments = useStore((state) => state.isLoadingComments)
+  const setIsLoadingComments = useStore((state) => state.setIsLoadingComments)
   const session = useSession()
 
   useEffect(() => {
     if (username) {
-      setIsLoading(true)
+      setIsLoadingComments(true)
       fetch(`/api/comment/?username=${username}`)
         .then((response) => response.json())
         .then((response) => {
@@ -25,7 +31,7 @@ const useComments = (username: string) => {
           }
         })
         .finally(() => {
-          setIsLoading(false)
+          setIsLoadingComments(false)
         })
     }
   }, [])
@@ -67,7 +73,7 @@ const useComments = (username: string) => {
               authorUsername,
               createdAt
             }
-            setListComments((comments) => [newComment, ...comments])
+            addNewCommentToList(newComment)
 
             // Saving in cache
             const cacheData = {
@@ -105,8 +111,7 @@ const useComments = (username: string) => {
     const error = await removeComment(commentId)
 
     if (!error) {
-      const newComments = listComments.filter((comment) => comment.id !== commentId)
-      setListComments(newComments)
+      removeCommentFromList(commentId)
     }
   }
 
@@ -156,7 +161,7 @@ const useComments = (username: string) => {
 
   return {
     listComments,
-    isLoading,
+    isLoadingComments,
     addComment,
     deleteComment,
     updateComment

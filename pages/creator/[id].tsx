@@ -44,7 +44,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const { listStories } = useStory(id as string)
   const session = useSession()
 
-  const { listComments, isLoading, addComment, deleteComment, updateComment } = useComments(
+  const { listComments, isLoadingComments, addComment, deleteComment, updateComment } = useComments(
     id as string
   )
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
@@ -128,15 +128,17 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
           </div>
         </section>
         <section className='mt-6'>
-          {isLoading && <FallBackLoader msg='Cargando resultados' />}
-          {listComments && listComments.length > 0 && !isLoading && (
+          {isLoadingComments && <FallBackLoader msg='Cargando resultados' />}
+          {listComments && listComments.length > 0 && !isLoadingComments && (
             <ListComment
               listComments={listComments}
               deleteComment={deleteComment}
               updateComment={updateComment}
             />
           )}
-          {!isLoading && listComments.length === 0 && <NoCommentsFound data={creatorInfo?.name} />}
+          {!isLoadingComments && listComments.length === 0 && (
+            <NoCommentsFound data={creatorInfo?.name} />
+          )}
         </section>
         <ToolbarUser
           creatorId={id as string}
