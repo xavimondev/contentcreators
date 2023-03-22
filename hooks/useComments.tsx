@@ -10,10 +10,12 @@ import { saveComment, removeComment, editComment, saveCommentInCache } from 'ser
 
 const useComments = (username: string) => {
   const [listComments, setListComments] = useState<Comment[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const session = useSession()
 
   useEffect(() => {
     if (username) {
+      setIsLoading(true)
       fetch(`/api/comment/?username=${username}`)
         .then((response) => response.json())
         .then((response) => {
@@ -21,6 +23,9 @@ const useComments = (username: string) => {
           if (status) {
             setListComments(data)
           }
+        })
+        .finally(() => {
+          setIsLoading(false)
         })
     }
   }, [])
@@ -151,6 +156,7 @@ const useComments = (username: string) => {
 
   return {
     listComments,
+    isLoading,
     addComment,
     deleteComment,
     updateComment
