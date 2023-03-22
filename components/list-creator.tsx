@@ -1,13 +1,13 @@
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
-import type { Creator } from 'types'
-import CreatorCard from 'components/creator'
+
+import { useStore } from 'state/store'
+
 import { BlobListCreators } from 'components/blob'
+import CreatorCard from 'components/creator'
 
-type PropsListCreator = {
-  listCreators: Creator[]
-}
+const ListCreator = () => {
+  const listCreators = useStore((state) => state.listCreators)
 
-const ListCreator = ({ listCreators }: PropsListCreator) => {
   return (
     <div className='relative'>
       <BlobListCreators />

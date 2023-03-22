@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 
 import { api } from 'data/api'
 
-import type { Category, Creator } from 'types'
+import type { Category } from 'types'
+import { useStore } from 'state/store'
 
 import NoDataFound from './no-data-found'
 import FormSearch from './form-search'
@@ -14,7 +15,8 @@ type PropsCategoryDetail = {
 }
 
 const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
-  const [creators, setCreators] = useState<Creator[]>([])
+  const listCreators = useStore((state) => state.listCreators)
+  const setListCreators = useStore((state) => state.setListCreators)
   const [isSearching, setIsSearching] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [query, setQuery] = useState<string>('')
@@ -27,7 +29,7 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
     api
       .search(categoryId)
       .then((data) => {
-        setCreators(data)
+        setListCreators(data)
       })
       .finally(() => {
         setIsLoading(false)
@@ -43,16 +45,11 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
 
   return (
     <>
-      {(creators.length > 0 || isSearching) && (
-        <FormSearch
-          nameClass='mb-8'
-          setCreators={setCreators}
-          setIsSearching={setIsSearching}
-          setQuery={setQuery}
-        />
+      {(listCreators.length > 0 || isSearching) && (
+        <FormSearch nameClass='mb-8' setIsSearching={setIsSearching} setQuery={setQuery} />
       )}
-      {creators.length > 0 ? (
-        <ListCreator listCreators={creators} />
+      {listCreators.length > 0 ? (
+        <ListCreator />
       ) : (
         <NoDataFound
           message='No se encontraron resultados para'
