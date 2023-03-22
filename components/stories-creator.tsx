@@ -70,7 +70,11 @@ const StoriesCreator = () => {
         currentIndex={lastStoryIndex}
         onAllStoriesEnd={() => setIsModalStoryOpen(false)}
       />
-      <button className='absolute bottom-4 left-1/2' onClick={() => setIsModalStoryOpen(false)}>
+      <button
+        aria-label='Cancel'
+        className='absolute bottom-4 left-1/2'
+        onClick={() => setIsModalStoryOpen(false)}
+      >
         <CancelIc className='text-white h-7 w-7' />
       </button>
     </div>

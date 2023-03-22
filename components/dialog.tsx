@@ -68,6 +68,7 @@ const DialogComment = ({ dialogRef, onSave }: DialogCommentProps) => {
           }}
         ></textarea>
         <button
+          aria-label='Submit'
           type='submit'
           className={`flex justify-end ${!comment && 'cursor-not-allowed'}`}
           title='Send comment'

@@ -36,12 +36,13 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
           {getRelativeTime(new Date(createdAt!))}
         </h3>
         <div className='space-x-4'>
-          <button onClick={() => handleDelete(id)}>
+          <button aria-label='Delete' onClick={() => handleDelete(id)}>
             <TrashIc className='text-red-300 h-4 w-4' />
           </button>
           {commentEditingId === commentInfo.id ? (
             <>
               <button
+                aria-label='Save'
                 onClick={() => {
                   updateComment(commentEditingId, commentEditingValue)
                   setCommentEditingId(undefined)
@@ -49,12 +50,12 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
               >
                 <SaveIc className='text-red-300 h-4 w-4' />
               </button>
-              <button onClick={() => setCommentEditingId(undefined)}>
+              <button aria-label='Cancel' onClick={() => setCommentEditingId(undefined)}>
                 <CancelIc className='text-red-300 h-4 w-4' />
               </button>
             </>
           ) : (
-            <button onClick={() => setCommentEditingId(id)}>
+            <button aria-label='Edit' onClick={() => setCommentEditingId(id)}>
               <PencilIc className='text-red-300 h-4 w-4' />
             </button>
           )}

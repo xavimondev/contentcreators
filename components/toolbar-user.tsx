@@ -74,10 +74,15 @@ const ToolbarUser = ({
             </div>
             <span className='text-base font-semibold text-white'>{userSession.username}</span>
             <div className='flex flex-row gap-4 sm:gap-3'>
-              <button ref={buttonCommentRef} onClick={() => setIsOpen(true)}>
+              <button
+                aria-label='Open Dialog'
+                ref={buttonCommentRef}
+                onClick={() => setIsOpen(true)}
+              >
                 <CommentIc className='w-6 h-6 text-white' />
               </button>
               <button
+                aria-label='Logout'
                 onClick={() => {
                   setUserSession(null)
                   signout()
@@ -89,6 +94,7 @@ const ToolbarUser = ({
           </div>
         ) : (
           <button
+            aria-label='Login'
             className='flex flex-row items-center justify-center gap-3 sm:gap-2 w-full'
             onClick={() => signInWithGitHub(creatorId)}
           >
