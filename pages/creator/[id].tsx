@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { Toaster } from 'react-hot-toast'
@@ -11,23 +10,19 @@ import { useStore } from 'state/store'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
 import useComments from 'hooks/useComments'
-import useStory from 'hooks/useStory'
 
 import { User } from 'types'
 
 import { CREATORS_DATA } from 'data/creators'
 
-import { SOCIAL_LINKS } from 'components/social-link'
-import CustomLink from 'components/custom-link'
 import { LeftArrowIc } from 'components/icons'
 import Layout from 'components/layout'
 import DialogComment from 'components/dialog'
 import ToolbarUser from 'components/toolbar-user'
-import ListComment from 'components/list-comment'
-import NoCommentsFound from 'components/no-comments-found'
 import StoriesCreator from 'components/stories-creator'
 import Modal from 'components/modal'
-import FallBackLoader from 'components/fallback'
+import CreatorComments from 'components/creator-comments'
+import CreatorProfile from 'components/creator-profile'
 
 type DashboardProps = {
   user: User
@@ -40,18 +35,14 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const buttonCommentRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
   const isModalStoryOpen = useStore((state) => state.isModalStoryOpen)
-  const setIsModalStoryOpen = useStore((state) => state.setIsModalStoryOpen)
-  const { listStories } = useStory(id as string)
+
   const session = useSession()
 
-  const { listComments, isLoadingComments, addComment, deleteComment, updateComment } = useComments(
-    id as string
-  )
+  const { addComment } = useComments(id as string)
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
   let creatorInfo = null,
     title = ''
 
-  const hasStories = listStories.length
   if (id) {
     creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
     title = `content.[creators] | ${creatorInfo?.name}`
@@ -84,62 +75,8 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
             <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Regresar</span>
           </button>
         </div>
-        <section className='mt-10 p-0.5 flex flex-col gap-2 md:gap-4 rounded-xl bg-gradient-to-r from-indigo-500 to-[#d5578f]'>
-          <div className='bg-[#1E1C26] rounded-xl p-4'>
-            <div className='flex flex-col md:flex-row gap-2 md:gap-4 items-center'>
-              <div
-                className='object-cover w-24 md:w-32 h-auto cursor-pointer'
-                onClick={() => {
-                  hasStories && setIsModalStoryOpen(true)
-                }}
-              >
-                <Image
-                  className={`rounded-full ${hasStories ? 'border-4 border-purple-800' : ''}`}
-                  src={`https://unavatar.io/github/${id}`}
-                  width='256'
-                  height='256'
-                  alt={creatorInfo!.name}
-                />
-              </div>
-              <div className='flex flex-col gap-2 md:gap-4'>
-                <h2 className='text-white font-bold tracking-wide text-xl sm:text-2xl lg:text-5xl'>
-                  {creatorInfo?.name}
-                </h2>
-                <p className='text-base sm:text-lg lg:text-xl dark:text-gray-400'>
-                  {creatorInfo?.description}
-                </p>
-              </div>
-            </div>
-            <div className='flex gap-1 md:gap-3 flex-wrap md:flex-row mt-4 sm:mt-2'>
-              {creatorInfo?.social.map((item) => {
-                const Component = SOCIAL_LINKS.find((link) => link.id === item.id)?.Component
-                return (
-                  <CustomLink
-                    href={item.url}
-                    key={item.id}
-                    rel='noopener noreferrer'
-                    target='_blank'
-                  >
-                    <div className='p-2 rounded-lg transition hover:scale-110'>{Component}</div>
-                  </CustomLink>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-        <section className='mt-6'>
-          {isLoadingComments && <FallBackLoader msg='Cargando resultados' />}
-          {listComments && listComments.length > 0 && !isLoadingComments && (
-            <ListComment
-              listComments={listComments}
-              deleteComment={deleteComment}
-              updateComment={updateComment}
-            />
-          )}
-          {!isLoadingComments && listComments.length === 0 && (
-            <NoCommentsFound data={creatorInfo?.name} />
-          )}
-        </section>
+        <CreatorProfile />
+        <CreatorComments creatorInfoName={creatorInfo?.name} />
         <ToolbarUser
           creatorId={id as string}
           user={user}
