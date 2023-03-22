@@ -7,7 +7,7 @@ import type { Category, Creator } from 'types'
 import NoDataFound from './no-data-found'
 import FormSearch from './form-search'
 import ListCreator from './list-creator'
-import Placeholder from './placeholder'
+import FallBackLoader from 'components/fallback'
 
 type PropsCategoryDetail = {
   categoryId: Category
@@ -39,7 +39,7 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
     }
   }, [categoryId])
 
-  if (isLoading) return <Placeholder length={4} />
+  if (isLoading) return <FallBackLoader msg='Cargando resultados' />
 
   return (
     <>

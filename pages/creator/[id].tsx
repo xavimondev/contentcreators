@@ -27,6 +27,7 @@ import ListComment from 'components/list-comment'
 import NoCommentsFound from 'components/no-comments-found'
 import StoriesCreator from 'components/stories-creator'
 import Modal from 'components/modal'
+import FallBackLoader from 'components/fallback'
 
 type DashboardProps = {
   user: User
@@ -43,7 +44,9 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
   const { listStories } = useStory(id as string)
   const session = useSession()
 
-  const { listComments, addComment, deleteComment, updateComment } = useComments(id as string)
+  const { listComments, isLoading, addComment, deleteComment, updateComment } = useComments(
+    id as string
+  )
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
   let creatorInfo = null,
     title = ''
@@ -125,15 +128,15 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
           </div>
         </section>
         <section className='mt-6'>
-          {listComments && listComments.length > 0 ? (
+          {isLoading && <FallBackLoader msg='Cargando resultados' />}
+          {listComments && listComments.length > 0 && !isLoading && (
             <ListComment
               listComments={listComments}
               deleteComment={deleteComment}
               updateComment={updateComment}
             />
-          ) : (
-            <NoCommentsFound data={creatorInfo?.name} />
           )}
+          {!isLoading && listComments.length === 0 && <NoCommentsFound data={creatorInfo?.name} />}
         </section>
         <ToolbarUser
           creatorId={id as string}
