@@ -23,6 +23,7 @@ import StoriesCreator from 'components/stories-creator'
 import Modal from 'components/modal'
 import CreatorComments from 'components/creator-comments'
 import CreatorProfile from 'components/creator-profile'
+import PageHeader from 'components/page-header'
 
 type DashboardProps = {
   user: User
@@ -68,13 +69,13 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
           cardType: 'summary_large_image'
         }}
       />
+      <PageHeader>
+        <button className='flex flex-row gap-2 items-center' onClick={() => router.back()}>
+          <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
+          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Regresar</span>
+        </button>
+      </PageHeader>
       <Layout>
-        <div className='mb-6'>
-          <button className='flex flex-row gap-2 items-center' onClick={() => router.back()}>
-            <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
-            <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Regresar</span>
-          </button>
-        </div>
         <CreatorProfile />
         <CreatorComments creatorInfoName={creatorInfo?.name} />
         <ToolbarUser

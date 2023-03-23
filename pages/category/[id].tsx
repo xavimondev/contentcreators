@@ -8,6 +8,7 @@ import { LeftArrowIc } from 'components/icons'
 import CustomLink from 'components/custom-link'
 import ListCategory from 'components/list-category'
 import CategoryDetail from 'components/category-detail'
+import PageHeader from 'components/page-header'
 
 const DashboardCategory = () => {
   const router = useRouter()
@@ -18,15 +19,18 @@ const DashboardCategory = () => {
       <Head>
         <title>{title}</title>
       </Head>
+      <PageHeader>
+        <CustomLink classes='flex flex-row gap-2 items-center' href='/#categories'>
+          <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
+          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
+            Todas las categorías
+          </span>
+        </CustomLink>
+      </PageHeader>
       <Layout>
-        <div className='mb-6 w-fit'>
-          <CustomLink classes='flex flex-row gap-2 items-center' href='/#categories'>
-            <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
-            <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
-              Todas las categorías
-            </span>
-          </CustomLink>
-        </div>
+        {/* <div className='mb-6 w-fit'>
+          
+        </div> */}
         <div className='flex flex-col gap-4'>
           <ListCategory listType='colorful' />
           <CategoryDetail categoryId={id as Category} />
