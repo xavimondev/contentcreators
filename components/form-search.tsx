@@ -1,5 +1,4 @@
 import { ChangeEvent, Dispatch, SetStateAction, useState, useCallback } from 'react'
-import { useRouter } from 'next/router'
 import debounce from 'just-debounce-it'
 
 import { useStore } from 'state/store'
@@ -13,14 +12,12 @@ type SearchProps = {
 }
 
 const FormSearch = ({ setIsSearching, setQuery }: SearchProps) => {
-  const router = useRouter()
-  const { id: categoryId } = router.query
   const setListCreators = useStore((state) => state.setListCreators)
   const [isTyping, setIsTyping] = useState<boolean>(false)
 
   const autoCompleteDebounce = useCallback(
     debounce(async (query: string) => {
-      const data = await api.search(categoryId as string, query)
+      const data = await api.search(undefined, query)
       setListCreators(data)
       setIsTyping(false)
       setQuery(query)
