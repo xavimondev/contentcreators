@@ -2,7 +2,6 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import { Category } from 'types'
-import { LIST_CATEGORIES } from 'data/categories'
 
 import Layout from 'components/layout'
 import { LeftArrowIc } from 'components/icons'
@@ -29,8 +28,7 @@ const DashboardCategory = () => {
           </CustomLink>
         </div>
         <div className='flex flex-col gap-4'>
-          {/* Tecnologías slider */}
-          <ListCategory listCategories={LIST_CATEGORIES} />
+          <ListCategory listType='colorful' />
           <CategoryDetail categoryId={id as Category} />
         </div>
       </Layout>

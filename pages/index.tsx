@@ -1,17 +1,14 @@
 import type { NextPage } from 'next'
 
-import { LIST_CATEGORIES } from 'data/categories'
-
 import Layout from 'components/layout'
-import { CategoryCard } from 'components/category'
 import CustomLink from 'components/custom-link'
 import { GitHubIc } from 'components/icons'
 import { BlobHome } from 'components/blob'
+import ListCategory from 'components/list-category'
 
 const Home: NextPage = () => {
   return (
     <>
-      {/* from-[#ffb21d] via-[#ed5572] to-[#6284ff] */}
       <header className='sticky top-0 z-50 text-white font-semibold w-full backdrop-blur-lg'>
         <div className='px-6 py-4'>
           <div className='flex flex-row justify-between items-center'>
@@ -60,11 +57,7 @@ const Home: NextPage = () => {
           <h2 className='text-white font-bold tracking-wide text-2xl sm:text-3xl lg:text-5xl text-center'>
             Categorías
           </h2>
-          <div className='mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6'>
-            {LIST_CATEGORIES.map((category) => (
-              <CategoryCard key={category.id} {...category} />
-            ))}
-          </div>
+          <ListCategory listType='normal' />
         </section>
       </Layout>
       <footer className='w-full'>

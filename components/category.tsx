@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import CustomLink from './custom-link'
+
+import CustomLink from 'components/custom-link'
 
 type CategoryProps = {
   id: string
