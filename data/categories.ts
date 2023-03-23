@@ -6,8 +6,16 @@ import MobileImg from '../public/illustrations/mobile.svg'
 import DataScienceImg from '../public/illustrations/data-science.svg'
 import UiuxImg from '../public/illustrations/ui-ux.svg'
 import CybersecurityImg from '../public/illustrations/cybersecurity.svg'
+import All from '../public/illustrations/all.svg'
 
 export const LIST_CATEGORIES = [
+  {
+    id: 'all',
+    name: 'Todos',
+    image: All,
+    colorFrom: '#9749bb',
+    colorTo: '#cb8fd5'
+  },
   {
     id: 'frontend',
     name: 'Frontend',
