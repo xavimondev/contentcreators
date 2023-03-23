@@ -23,16 +23,6 @@ const Home: NextPage = () => {
             </li>
           </ul>
         </nav>
-        <div>
-          <CustomLink
-            href='https://github.com/d3vcloud/content-creators'
-            rel='noopener noreferrer'
-            target='_blank'
-            aria-label='Go to Repository'
-          >
-            <GitHubIc className='w-6 h-6' />
-          </CustomLink>
-        </div>
       </PageHeader>
       <Layout>
         <section className='relative max-w-6xl mx-auto flex justify-center flex-col text-center py-8 sm:py-12 lg:py-16'>
@@ -59,9 +49,16 @@ const Home: NextPage = () => {
       </Layout>
       <footer className='w-full'>
         <div className='py-10'>
-          <p className='text-center text-base font-semibold text-white'>
-            Hecho con ❤️ y Next.js 🚀
-          </p>
+          <div className='flex justify-center'>
+            <CustomLink
+              href='https://github.com/d3vcloud/content-creators'
+              rel='noopener noreferrer'
+              target='_blank'
+              aria-label='Go to Repository'
+            >
+              <GitHubIc className='w-6 h-6 text-white' />
+            </CustomLink>
+          </div>
         </div>
       </footer>
     </>
