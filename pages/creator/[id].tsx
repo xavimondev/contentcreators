@@ -69,7 +69,7 @@ const DashboardCreator: NextPage<DashboardProps> = ({ user }) => {
         }}
       />
       <Layout>
-        <div className='mb-12'>
+        <div className='mb-6'>
           <button className='flex flex-row gap-2 items-center' onClick={() => router.back()}>
             <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
             <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Regresar</span>

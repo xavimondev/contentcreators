@@ -20,7 +20,7 @@ const DashboardCategory = () => {
         <title>{title}</title>
       </Head>
       <Layout>
-        <div className='mb-12 w-fit'>
+        <div className='mb-6 w-fit'>
           <CustomLink classes='flex flex-row gap-2 items-center' href='/#categories'>
             <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
             <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
