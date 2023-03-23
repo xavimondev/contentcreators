@@ -24,7 +24,7 @@ const CreatorProfile = () => {
   }
 
   return (
-    <section className='mt-10 p-0.5 flex flex-col gap-2 md:gap-4 rounded-xl bg-gradient-to-r from-indigo-500 to-[#d5578f]'>
+    <section className='p-0.5 flex flex-col gap-2 md:gap-4 rounded-xl bg-gradient-to-r from-indigo-500 to-[#d5578f]'>
       <div className='bg-[#1E1C26] rounded-xl p-4'>
         <div className='flex flex-col md:flex-row gap-2 md:gap-4 items-center'>
           <div
