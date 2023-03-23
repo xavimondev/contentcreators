@@ -42,7 +42,11 @@ const FormSearch = ({ setIsSearching, setQuery }: SearchProps) => {
     <form className='flex flex-col gap-5 md:flex-row md:items-center w-full mb-3'>
       <div className='relative w-full'>
         <div className='flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none'>
-          {isTyping ? <LoadingIc /> : <SearchIc />}
+          {isTyping ? (
+            <LoadingIc className='animate-spin -ml-1 mr-3 h-5 w-5 text-white' />
+          ) : (
+            <SearchIc />
+          )}
         </div>
         <input
           type='search'
