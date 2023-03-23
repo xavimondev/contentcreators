@@ -46,7 +46,7 @@ const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
   return (
     <>
       {(listCreators.length > 0 || isSearching) && (
-        <FormSearch nameClass='mb-8' setIsSearching={setIsSearching} setQuery={setQuery} />
+        <FormSearch setIsSearching={setIsSearching} setQuery={setQuery} />
       )}
       {listCreators.length > 0 ? (
         <ListCreator />

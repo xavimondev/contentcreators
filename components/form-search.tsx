@@ -8,12 +8,11 @@ import { api } from 'data/api'
 import { LoadingIc, SearchIc } from './icons'
 
 type SearchProps = {
-  nameClass?: string
   setIsSearching: Dispatch<SetStateAction<boolean>>
   setQuery: Dispatch<SetStateAction<string>>
 }
 
-const FormSearch = ({ nameClass, setIsSearching, setQuery }: SearchProps) => {
+const FormSearch = ({ setIsSearching, setQuery }: SearchProps) => {
   const router = useRouter()
   const { id: categoryId } = router.query
   const setListCreators = useStore((state) => state.setListCreators)
@@ -40,7 +39,7 @@ const FormSearch = ({ nameClass, setIsSearching, setQuery }: SearchProps) => {
   }
 
   return (
-    <form className={`flex flex-col gap-5 md:flex-row md:items-center w-full ${nameClass ?? ''}`}>
+    <form className='flex flex-col gap-5 md:flex-row md:items-center w-full mb-3'>
       <div className='relative w-full'>
         <div className='flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none'>
           {isTyping ? <LoadingIc /> : <SearchIc />}
