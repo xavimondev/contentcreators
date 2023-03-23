@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react'
-
-import { api } from 'data/api'
-
 import type { Category } from 'types'
-import { useStore } from 'state/store'
+
+import useCreators from 'hooks/useCreators'
 
 import NoDataFound from './no-data-found'
 import FormSearch from './form-search'
@@ -15,31 +12,8 @@ type PropsCategoryDetail = {
 }
 
 const CategoryDetail = ({ categoryId }: PropsCategoryDetail) => {
-  const listCreators = useStore((state) => state.listCreators)
-  const setListCreators = useStore((state) => state.setListCreators)
-  const [isSearching, setIsSearching] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [query, setQuery] = useState<string>('')
-
-  // TODO: Check if this useEffect is an anti-pattern
-  useEffect(() => {
-    if (!categoryId) return
-
-    setIsLoading(true)
-    api
-      .search(categoryId)
-      .then((data) => {
-        setListCreators(data)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-
-    return () => {
-      setQuery('')
-      setIsSearching(false)
-    }
-  }, [categoryId])
+  const { isLoading, listCreators, isSearching, setIsSearching, query, setQuery } =
+    useCreators(categoryId)
 
   if (isLoading) return <FallBackLoader msg='Cargando resultados' />
 
