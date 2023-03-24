@@ -24,7 +24,7 @@ const Tooltip = ({ text, children }: PropsWithChildren<TooltipProps>) => {
           bg-[#292539]'
         >
           <TooltipPrimitive.Arrow className='fill-current text-[#292539] mr-6' />
-          <span className='block text-sm leading-none text-gray-100'>{text}</span>
+          <span className='block text-sm leading-none text-gray-100 max-w-sm'>{text}</span>
         </TooltipPrimitive.Content>
       </TooltipPrimitive.Root>
     </TooltipPrimitive.Provider>
