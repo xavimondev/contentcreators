@@ -226,7 +226,7 @@ export const CREATORS_DATA: Creator[] = [
       },
       {
         id: 'twitch',
-        url: 'https://www.twitch.tv/manzdev/'
+        url: 'https://www.twitch.tv/manzdev'
       },
       {
         id: 'youtube',
@@ -279,7 +279,7 @@ export const CREATORS_DATA: Creator[] = [
       },
       {
         id: 'twitch',
-        url: 'https://www.twitch.tv/gndxdev/'
+        url: 'https://www.twitch.tv/gndxdev'
       },
       {
         id: 'youtube',
@@ -484,7 +484,7 @@ export const CREATORS_DATA: Creator[] = [
       },
       {
         id: 'twitch',
-        url: 'https://www.twitch.tv/doriandesings/'
+        url: 'https://www.twitch.tv/doriandesings'
       },
       {
         id: 'youtube',
@@ -549,7 +549,7 @@ export const CREATORS_DATA: Creator[] = [
       },
       {
         id: 'twitch',
-        url: 'https://www.twitch.tv/baumannzone/'
+        url: 'https://www.twitch.tv/baumannzone'
       },
       {
         id: 'youtube',
