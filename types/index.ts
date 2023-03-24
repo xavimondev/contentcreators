@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 
 export type Creator = {
   id: string
+  profileUrl: string // URL social media
   name: string
   description: string
   categories: Category[]

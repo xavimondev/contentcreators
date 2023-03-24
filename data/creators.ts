@@ -3,6 +3,7 @@ import { Creator } from 'types'
 export const CREATORS_DATA: Creator[] = [
   {
     id: 'midudev',
+    profileUrl: 'https://avatars.githubusercontent.com/u/1561955?v=4',
     name: 'Miguel Angel Durán García',
     description:
       'Soy Desarrollador Full Stack JavaScript con 15 años de experiencia. ⭐ Reconocido como Google Developer Expert y GitHub Star.',
@@ -40,6 +41,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'goncy',
+    profileUrl: 'https://avatars.githubusercontent.com/u/6494462?v=4',
     name: 'Goncy Pozzo',
     description: 'Solutions architect @ Vercel, Frontend / React ❤',
     categories: ['backend', 'frontend'],
@@ -72,6 +74,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'fazt',
+    profileUrl: 'https://avatars.githubusercontent.com/u/13667358?v=4',
     name: 'Fazt',
     description: "I'm a Freelance FullStack Web Developer and content creator",
     categories: ['backend', 'frontend', 'cloud'],
@@ -108,6 +111,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'mouredev',
+    profileUrl: 'https://avatars.githubusercontent.com/u/17043402?v=4',
     name: 'Brais Moure',
     description:
       'Hola 👋🏼 Mi nombre es Brais Moure 💻 Desarrollador de software Freelance full-stack 📲 iOS & Android Engineer 📚 Te enseño programación, tecnología, entrevistas y fricadas en general 🗓 En directo todos los días de Lunes a Viernes!',
@@ -145,6 +149,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'klerith',
+    profileUrl: 'https://avatars.githubusercontent.com/u/3438503?v=4',
     name: 'Fernando Herrera',
     description:
       'Soy un Fullstack developer y profesor en línea a quien le encanta programar y enseñar.',
@@ -174,6 +179,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'carlosazaustre',
+    profileUrl: 'https://avatars.githubusercontent.com/u/650752?v=4',
     name: 'Carlos Azaustre',
     description:
       'Hola! 👋 Me dedico al Desarrollo Web desde hace más de 10 años. Estoy reconocido como Google Developer Expert (GDE) en Tecnologías Web y Microsoft MVP por Develover Technologies.',
@@ -211,6 +217,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'manzdev',
+    profileUrl: 'https://avatars.githubusercontent.com/u/1507150?v=4',
     name: 'Manz',
     description:
       "Hi! I'm Manz, 👨🏽‍💻 FullStack developer and 🥑 FrontEnd / WebPlatform standards advocate FullStack/Frontend Tenerife Program Mentor, Teacher & Director at @eoi & Teacher at @ull",
@@ -248,6 +255,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'teffcode',
+    profileUrl: 'https://avatars.githubusercontent.com/u/25943655?v=4',
     name: 'Estefany Aguilar',
     description: 'Friend of CSS · Frontend Developer at La Haus · Teacher at Platzi 🌸',
     categories: ['frontend', 'uiux'],
@@ -264,6 +272,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'gndx',
+    profileUrl: 'https://avatars.githubusercontent.com/u/10554486?v=4',
     name: 'Oscar Barajas Tavares',
     description:
       'Learning Engineer at @platzi - Microsoft MVP - Lead at Developer Circles from Meta.',
@@ -301,6 +310,8 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 's4vitar',
+    profileUrl:
+      'https://static-cdn.jtvnw.net/jtv_user_pictures/3c6c3df7-e241-4ea7-ac3b-2ba29ef5699b-profile_image-70x70.png',
     name: 'S4vitar',
     description: 'Creador de contenido de Hacking y Ciberseguridad. Hago directo todos los días.',
     categories: ['ciberseguridad'],
@@ -337,6 +348,8 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'nsdonato',
+    profileUrl:
+      'https://static-cdn.jtvnw.net/jtv_user_pictures/842aaa2a-4801-4096-9792-92fb3a7f5296-profile_image-150x150.png',
     name: 'Noelia',
     description:
       '🎯 • Ayudo a los que inician en programación 👩🏻‍💻 • Desarrolladora Frontend 🟣 • Aprendemos tecnologías en Twitch 💬 • Sumate a la comunidad en Discord.',
@@ -370,6 +383,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'jonmircha',
+    profileUrl: 'https://avatars.githubusercontent.com/u/11139429?v=4',
     name: 'Jonathan Mircha',
     description:
       'Soy tu amigo y docente digital... Jonathan MirCha. Profesor, programador web y creador de contenidos ubicado en México.',
@@ -403,6 +417,8 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'powerhdeleon',
+    profileUrl:
+      'https://static-cdn.jtvnw.net/jtv_user_pictures/bd75e776-5b91-4e69-b5b8-d537a2ba4270-profile_image-70x70.png',
     name: 'Héctor de León',
     description:
       'Mi nombre es Héctor de León, soy programador y Microsoft MVP, tengo más de 20 años programando.',
@@ -432,6 +448,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'bluuweb',
+    profileUrl: 'https://avatars.githubusercontent.com/u/28485235?v=4',
     name: 'bluuweb',
     description:
       'Soy Ignacio Gutiérrez y siempre he dicho que la práctica hace al maestro, la programación no es más que repetición y repetición, por lo tanto para comenzar solo tienes que atreverte a escribir tus primeras líneas de código, así perderás el miedo y cada vez será más y más sencillo adquirir la lógica de programación.',
@@ -469,6 +486,8 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'DorianDesings',
+    profileUrl:
+      'https://static-cdn.jtvnw.net/jtv_user_pictures/1d3925a2-0cef-41b2-ab5f-51be8c561310-profile_image-70x70.png',
     name: 'DorianDesings',
     description:
       'Tengo más de 9 años de experiencia en desarrollo web. Soy apasionado de las nuevas tecnologías y en especial del ecosistema de javascript. Mi propósito es trasladar mi pasión por enseñar tecnologías web a todos aquellos que quieran iniciarse o desarrollarse en este campo de una forma actualizada.',
@@ -498,6 +517,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'glrodasz',
+    profileUrl: 'https://avatars.githubusercontent.com/u/1431663?v=4',
     name: 'Guillermo Rodas',
     description: 'I help developers to improve their skills while creating quality products.',
     categories: ['backend', 'frontend'],
@@ -534,6 +554,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'baumannzone',
+    profileUrl: 'https://avatars.githubusercontent.com/u/5422102?v=4',
     name: 'Jorge Baumann',
     description:
       'Ingeniero de software y creador de contenido. Apasionado del Open Source y de las comunidades.',
@@ -567,6 +588,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'miriamgonp',
+    profileUrl: 'https://avatars.githubusercontent.com/u/33062056?v=4',
     name: 'Miriam Gonzalez',
     description:
       'Holi 👋 Soy Miriam, desarrolladora frontend con más de 4 años de experiencia en el mundo Startup. Apasionada del diseño y la experiencia de usuario, procuro que mis desarrollos sean usables, inclusivos y accesibles a todas las personas.',
@@ -588,6 +610,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'VeroMoreno',
+    profileUrl: 'https://pbs.twimg.com/profile_images/1505938141785505798/kuzTVX-C_200x200.jpg',
     name: 'Verónica Moreno',
     description:
       'Desarrolladora Frontend + lo que el Backend se deje :) | Trabajo en remoto desde Canarias ❤',
@@ -617,6 +640,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'pablokbs',
+    profileUrl: 'https://avatars.githubusercontent.com/u/4028336?v=4',
     name: 'Pablo Fredrikson',
     description:
       'Soy Desarrollador Full Stack JavaScript con 15 años de experiencia. ⭐ Reconocido como Google Developer Expert y GitHub Star.',
@@ -646,6 +670,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'marcosrivasr',
+    profileUrl: 'https://avatars.githubusercontent.com/u/641704?v=4',
     name: 'Marcos Rivas',
     description:
       'Software engineer at Microsoft and creator of Vida MRR, a personal project dedicated to help other developers to increase their technical skills in web design, web development, problems solving, and more.',
@@ -671,6 +696,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'Navis-code',
+    profileUrl: 'https://avatars.githubusercontent.com/u/70051417?v=4',
     name: 'Navis Code',
     description: 'Desarrollador Web | Front End Developer',
     categories: ['frontend'],
@@ -695,6 +721,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'leonidasesteban',
+    profileUrl: 'https://avatars.githubusercontent.com/u/1150114?v=4',
     name: 'Leonidas Esteban',
     description: 'Engineering Manager for Payments at Parrot, Teacher & Google Developer Expert',
     categories: ['frontend', 'backend'],
@@ -719,6 +746,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'pablosirera',
+    profileUrl: 'https://avatars.githubusercontent.com/u/25353031?v=4',
     name: 'Pablo Sirera',
     description: 'Senior Frontend Developer 👨🏼‍💻 Instructor && passionate about web technologies',
     categories: ['frontend'],
@@ -751,6 +779,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'alexanyernas',
+    profileUrl: 'https://avatars.githubusercontent.com/u/49798413?v=4',
     name: 'Alexanyer Naranjo',
     description: 'Desarrollador Frontend | FrontEnd Developer',
     categories: ['frontend'],
@@ -775,6 +804,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'acadeller',
+    profileUrl: 'https://avatars.githubusercontent.com/u/81473680?s=200&v=4',
     name: 'Acadeller',
     description:
       'Nuestra misión es impulsar a cualquier persona a empezar su carrera en el mundo del desarrollo de software.💡',
@@ -800,6 +830,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'jvelezmagic',
+    profileUrl: 'https://avatars.githubusercontent.com/u/46458320?v=4',
     name: 'Jesús Vélez Santiago',
     description:
       'I am a Data Scientist / Genomic Scientist interested in genomics, ecology, and evolution through computational and mathematical methods.',
@@ -821,6 +852,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'codificandobits',
+    profileUrl: 'https://avatars.githubusercontent.com/u/40238168?v=4',
     name: 'Codificando Bits',
     description:
       '¡Hola, soy Miguel Sotaquirá, el creador de Codificando Bits! Divulgador de temas de #MachineLearning y #DataScience en habla hispana',
@@ -842,6 +874,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'gonzalezgouveia',
+    profileUrl: 'https://avatars.githubusercontent.com/u/20340577?v=4',
     name: 'Rafael Gonzalez Gouveia',
     description:
       'hola mundo! soy Rafa y trabajo como Data Scientist. Te ayudo a completar tus proyectos en Ciencia de Datos. Espero con este contenido ayudarte a conocer más la profesión de científico de datos para ayudarte a decidir si esto puede ser para ti.',
