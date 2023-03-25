@@ -66,3 +66,12 @@ export type CreatorStory = {
   message: string
   date: number //milliseconds
 }
+
+export type StreamerLive = {
+  id: string
+  titleStream: string
+  streamerName: string
+  streamerLogin: string
+  viewerCount: number
+  avatarUrl: string
+}
