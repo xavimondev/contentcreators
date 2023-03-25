@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import { StreamerLive } from 'types'
+
 import CustomLink from 'components/custom-link'
 import Tooltip from 'components/tooltip'
 
@@ -20,14 +22,27 @@ const Avatar = ({ urlImage, alt }: AvatarProps) => {
   )
 }
 
-const StackAvatars = () => {
+const StackAvatars = ({ streamers }: { streamers: StreamerLive[] }) => {
   return (
     <div className='flex -space-x-4 items-center'>
-      <Tooltip text='36 personas están viendo a xavimon'>
-        <CustomLink href='https://www.twitch.tv/xavimon' rel='noopener noreferrer' target='_blank'>
-          <Avatar urlImage='https://avatars.githubusercontent.com/u/68721455?v=4' alt='xavimon' />
-        </CustomLink>
-      </Tooltip>
+      {streamers.length > 0 &&
+        streamers.map((streamer) => {
+          const { id, avatarUrl, streamerLogin, streamerName, viewerCount, titleStream } = streamer
+          return (
+            <Tooltip
+              text={`${viewerCount} personas están viendo a ${streamerName} - ${titleStream}`}
+              key={id}
+            >
+              <CustomLink
+                href={`https://www.twitch.tv/${streamerLogin}`}
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                <Avatar urlImage={avatarUrl} alt={streamerLogin} />
+              </CustomLink>
+            </Tooltip>
+          )
+        })}
     </div>
   )
 }
