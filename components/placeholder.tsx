@@ -55,7 +55,7 @@ const PlaceHolderItem = () => {
   )
 }
 
-export const PlaceHolderItemAvatar = () => {
+const PlaceHolderItemAvatar = () => {
   return (
     <div className='animate-pulse'>
       <UserIc className='w-10 h-10 text-gray-700' />
