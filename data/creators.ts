@@ -3,6 +3,7 @@ import { Creator } from 'types'
 export const CREATORS_DATA: Creator[] = [
   {
     id: 'midudev',
+    twitchId: 'midudev',
     profileUrl: 'https://avatars.githubusercontent.com/u/1561955?v=4',
     name: 'Miguel Angel Durán García',
     description:
@@ -41,6 +42,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'goncy',
+    twitchId: 'goncypozzo',
     profileUrl: 'https://avatars.githubusercontent.com/u/6494462?v=4',
     name: 'Goncy Pozzo',
     description: 'Solutions architect @ Vercel, Frontend / React ❤',
@@ -74,6 +76,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'fazt',
+    twitchId: 'fazttech',
     profileUrl: 'https://avatars.githubusercontent.com/u/13667358?v=4',
     name: 'Fazt',
     description: "I'm a Freelance FullStack Web Developer and content creator",
@@ -111,6 +114,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'mouredev',
+    twitchId: 'mouredev',
     profileUrl: 'https://avatars.githubusercontent.com/u/17043402?v=4',
     name: 'Brais Moure',
     description:
@@ -179,6 +183,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'carlosazaustre',
+    twitchId: 'carlosazaustre',
     profileUrl: 'https://avatars.githubusercontent.com/u/650752?v=4',
     name: 'Carlos Azaustre',
     description:
@@ -217,6 +222,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'manzdev',
+    twitchId: 'manzdev',
     profileUrl: 'https://avatars.githubusercontent.com/u/1507150?v=4',
     name: 'Manz',
     description:
@@ -272,6 +278,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'gndx',
+    twitchId: 'gndxdev',
     profileUrl: 'https://avatars.githubusercontent.com/u/10554486?v=4',
     name: 'Oscar Barajas Tavares',
     description:
@@ -310,6 +317,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 's4vitar',
+    twitchId: 's4vitaar',
     profileUrl:
       'https://static-cdn.jtvnw.net/jtv_user_pictures/3c6c3df7-e241-4ea7-ac3b-2ba29ef5699b-profile_image-70x70.png',
     name: 'S4vitar',
@@ -348,6 +356,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'nsdonato',
+    twitchId: 'vamoacodear',
     profileUrl:
       'https://static-cdn.jtvnw.net/jtv_user_pictures/842aaa2a-4801-4096-9792-92fb3a7f5296-profile_image-150x150.png',
     name: 'Noelia',
@@ -417,6 +426,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'powerhdeleon',
+    twitchId: 'hdeleonnet',
     profileUrl:
       'https://static-cdn.jtvnw.net/jtv_user_pictures/bd75e776-5b91-4e69-b5b8-d537a2ba4270-profile_image-70x70.png',
     name: 'Héctor de León',
@@ -448,6 +458,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'bluuweb',
+    twitchId: 'bluuweb',
     profileUrl: 'https://avatars.githubusercontent.com/u/28485235?v=4',
     name: 'bluuweb',
     description:
@@ -486,6 +497,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'DorianDesings',
+    twitchId: 'doriandesings',
     profileUrl:
       'https://static-cdn.jtvnw.net/jtv_user_pictures/1d3925a2-0cef-41b2-ab5f-51be8c561310-profile_image-70x70.png',
     name: 'DorianDesings',
@@ -517,6 +529,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'glrodasz',
+    twitchId: 'guillermorodas',
     profileUrl: 'https://avatars.githubusercontent.com/u/1431663?v=4',
     name: 'Guillermo Rodas',
     description: 'I help developers to improve their skills while creating quality products.',
@@ -554,6 +567,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'baumannzone',
+    twitchId: 'baumannzone',
     profileUrl: 'https://avatars.githubusercontent.com/u/5422102?v=4',
     name: 'Jorge Baumann',
     description:
@@ -746,6 +760,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'pablosirera',
+    twitchId: 'pablosirera',
     profileUrl: 'https://avatars.githubusercontent.com/u/25353031?v=4',
     name: 'Pablo Sirera',
     description: 'Senior Frontend Developer 👨🏼‍💻 Instructor && passionate about web technologies',

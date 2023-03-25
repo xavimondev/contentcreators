@@ -7,6 +7,7 @@ export type Creator = {
   description: string
   categories: Category[]
   social: Social[]
+  twitchId?: string // you can get from url
 }
 
 export type Social = {
