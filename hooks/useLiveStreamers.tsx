@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { StreamerLive } from 'types'
 
-const useLiveCreators = () => {
+const useLiveStreamers = () => {
   const [streamers, setStreamers] = useState<StreamerLive[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
@@ -23,4 +23,4 @@ const useLiveCreators = () => {
   }
 }
 
-export default useLiveCreators
+export default useLiveStreamers

@@ -6,7 +6,7 @@ import { GitHubIc } from 'components/icons'
 import { BlobHome } from 'components/blob'
 import ListCategory from 'components/list-category'
 import PageHeader from 'components/page-header'
-import LiveCreators from 'components/live-creators'
+import LiveStreamers from 'components/live-streamers'
 
 const Home: NextPage = () => {
   return (
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
             </li>
           </ul>
         </nav>
-        <LiveCreators />
+        <LiveStreamers />
       </PageHeader>
       <Layout>
         <section className='relative max-w-6xl mx-auto flex justify-center flex-col text-center py-8 sm:py-12 lg:py-16'>

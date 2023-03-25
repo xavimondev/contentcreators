@@ -1,10 +1,10 @@
-import useLiveCreators from 'hooks/useLiveCreators'
+import useLiveStreamers from 'hooks/useLiveStreamers'
 
 import StackAvatars from 'components/stack-avatars'
 import Placeholder from 'components/placeholder'
 
-const LiveCreators = () => {
-  const { streamers, isLoading } = useLiveCreators()
+const LiveStreamers = () => {
+  const { streamers, isLoading } = useLiveStreamers()
 
   if (isLoading) return <Placeholder length={4} type='avatar' />
 
@@ -24,4 +24,4 @@ const LiveCreators = () => {
   )
 }
 
-export default LiveCreators
+export default LiveStreamers
