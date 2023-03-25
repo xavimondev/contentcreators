@@ -58,7 +58,7 @@ const PlaceHolderItem = () => {
 const PlaceHolderItemAvatar = () => {
   return (
     <div className='animate-pulse'>
-      <UserIc className='w-10 h-10 text-gray-700' />
+      <UserIc className='w-8 h-8 text-gray-700' />
     </div>
   )
 }
