@@ -42,6 +42,7 @@ export type Category =
 export type Comment = {
   id: number
   message: string
+  authorId?: string
   author: string
   authorAvatar: string
   authorUsername: string
