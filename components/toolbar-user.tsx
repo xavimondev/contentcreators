@@ -4,6 +4,8 @@ import { Session } from '@supabase/supabase-js'
 
 import { User } from 'types'
 
+import { getDataFromUser } from 'utils/getDataFromUser'
+
 import { signInWithGitHub, signout } from 'services/auth'
 
 import { CommentIc, GitHubIc, LogoutIc } from 'components/icons'
@@ -27,17 +29,7 @@ const ToolbarUser = ({
 
   useEffect(() => {
     if (session) {
-      const { user } = session
-      const {
-        user_metadata: { avatar_url, user_name, full_name }
-      } = user
-
-      const userInfo = {
-        userId: user.id,
-        fullName: full_name,
-        username: user_name,
-        avatarUrl: avatar_url
-      }
+      const userInfo = getDataFromUser(session)
       setUserSession(userInfo)
     }
   }, [session])
