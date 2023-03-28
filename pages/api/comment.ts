@@ -36,10 +36,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const comments = await listCommentsByCreator(username)
       const listCommentsFormatted = comments.map((comment: any) => {
         const { id, content, user, createdAt } = comment
-        const { name, photoUrl, username } = user
+        const { id: authorId, name, photoUrl, username } = user
         return {
           id,
           message: content,
+          authorId,
           author: name,
           authorAvatar: photoUrl,
           authorUsername: username,
