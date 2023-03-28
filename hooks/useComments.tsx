@@ -68,6 +68,7 @@ const useComments = (username: string) => {
             const newComment: Comment = {
               id,
               message: content,
+              authorId: user.id,
               author: fullName,
               authorAvatar: avatarUrl,
               authorUsername,
