@@ -35,7 +35,7 @@ const CreatorProfile = () => {
           >
             <Image
               className={`rounded-full ${hasStories ? 'border-4 border-purple-800' : ''}`}
-              src={`https://unavatar.io/github/${id}`}
+              src={creatorInfo!.profileUrl}
               width='256'
               height='256'
               alt={creatorInfo!.name}

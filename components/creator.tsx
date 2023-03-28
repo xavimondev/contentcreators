@@ -11,12 +11,20 @@ type CreatorCardProps = {
   description: string
   categories: Category[]
   socialLinks: Social[]
+  profileUrl: string
 }
 const options = {
   threshold: 0.1
 }
 
-const CreatorCard = ({ id, name, description, categories, socialLinks }: CreatorCardProps) => {
+const CreatorCard = ({
+  id,
+  name,
+  description,
+  categories,
+  socialLinks,
+  profileUrl
+}: CreatorCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null)
   // I took blur workaround from https://github.com/vercel/next.js/discussions/26168
   const [isLoading, setLoading] = useState(true)
@@ -55,7 +63,7 @@ const CreatorCard = ({ id, name, description, categories, socialLinks }: Creator
               className={`rounded-xl duration-700 ease-in-out ${
                 isLoading ? 'grayscale blur-2xl scale-110' : 'grayscale-0 blur-0 scale-100'
               }`}
-              src={`https://unavatar.io/github/${id}`}
+              src={profileUrl}
               width='256'
               height='256'
               alt={name}
