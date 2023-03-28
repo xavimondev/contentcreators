@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { useSession } from '@supabase/auth-helpers-react'
 
 import { getRelativeTime } from 'utils/getRelativeTime'
 
 import { MAX_CHARACTERS_ALLOWED } from 'global/constants'
 
-import { Comment } from 'types'
+import type { Comment } from 'types'
 
 import { PencilIc, SaveIc, TrashIc, CancelIc } from './icons'
 
@@ -20,6 +21,8 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
   const [commentEditingValue, setCommentEditingValue] = useState<string>(commentInfo.message)
   const { id, author, authorAvatar, authorUsername, createdAt } = commentInfo
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  const session = useSession()
+  const userSessionId = session?.user.id
 
   useEffect(() => {
     if (inputRef) {
@@ -35,31 +38,33 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
         <h3 className='text-sm text-gray-500 font-semibold'>
           {getRelativeTime(new Date(createdAt!))}
         </h3>
-        <div className='space-x-4'>
-          <button aria-label='Delete' onClick={() => handleDelete(id)}>
-            <TrashIc className='text-red-300 h-4 w-4' />
-          </button>
-          {commentEditingId === commentInfo.id ? (
-            <>
-              <button
-                aria-label='Save'
-                onClick={() => {
-                  updateComment(commentEditingId, commentEditingValue)
-                  setCommentEditingId(undefined)
-                }}
-              >
-                <SaveIc className='text-red-300 h-4 w-4' />
-              </button>
-              <button aria-label='Cancel' onClick={() => setCommentEditingId(undefined)}>
-                <CancelIc className='text-red-300 h-4 w-4' />
-              </button>
-            </>
-          ) : (
-            <button aria-label='Edit' onClick={() => setCommentEditingId(id)}>
-              <PencilIc className='text-red-300 h-4 w-4' />
+        {userSessionId === commentInfo.authorId && (
+          <div className='space-x-4'>
+            <button aria-label='Delete' onClick={() => handleDelete(id)}>
+              <TrashIc className='text-red-300 h-4 w-4' />
             </button>
-          )}
-        </div>
+            {commentEditingId === commentInfo.id ? (
+              <>
+                <button
+                  aria-label='Save'
+                  onClick={() => {
+                    updateComment(commentEditingId, commentEditingValue)
+                    setCommentEditingId(undefined)
+                  }}
+                >
+                  <SaveIc className='text-red-300 h-4 w-4' />
+                </button>
+                <button aria-label='Cancel' onClick={() => setCommentEditingId(undefined)}>
+                  <CancelIc className='text-red-300 h-4 w-4' />
+                </button>
+              </>
+            ) : (
+              <button aria-label='Edit' onClick={() => setCommentEditingId(id)}>
+                <PencilIc className='text-red-300 h-4 w-4' />
+              </button>
+            )}
+          </div>
+        )}
       </div>
       {commentEditingId === commentInfo.id ? (
         <textarea
