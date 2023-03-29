@@ -8,6 +8,7 @@ export type Creator = {
   categories: Category[]
   social: Social[]
   twitchId?: string // you can get from url
+  username: string
 }
 
 export type Social = {
