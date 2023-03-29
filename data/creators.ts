@@ -1,9 +1,10 @@
-import { Creator } from 'types'
+import type { Creator } from 'types'
 
 export const CREATORS_DATA: Creator[] = [
   {
     id: 'midudev',
     twitchId: 'midudev',
+    username: 'midudev',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/midudev.jpeg',
     name: 'Miguel Angel Durán García',
@@ -44,6 +45,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'goncy',
     twitchId: 'goncypozzo',
+    username: 'goncy',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/goncy.jpeg',
     name: 'Goncy Pozzo',
@@ -79,6 +81,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'fazt',
     twitchId: 'fazttech',
+    username: 'fazt',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/fazt.png',
     name: 'Fazt',
@@ -118,6 +121,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'mouredev',
     twitchId: 'mouredev',
+    username: 'mouredev',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/mouredev.jpeg',
     name: 'Brais Moure',
@@ -156,7 +160,8 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'fernandoherrera',
+    id: 'Klerith',
+    username: 'fernandoherrera',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/fernandoherrera.jpeg',
     name: 'Fernando Herrera',
@@ -189,6 +194,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'carlosazaustre',
     twitchId: 'carlosazaustre',
+    username: 'carlosazaustre',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/carlosazaustre.jpg',
     name: 'Carlos Azaustre',
@@ -227,8 +233,9 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'manzdev',
+    id: 'ManzDev',
     twitchId: 'manzdev',
+    username: 'manzdev',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/manzdev.png',
     name: 'Manz',
@@ -268,6 +275,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'teffcode',
+    username: 'estefanyaguilar',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/teffcode.jpeg',
     name: 'Estefany Aguilar',
@@ -285,8 +293,9 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'oscarbarajas',
+    id: 'gndx',
     twitchId: 'gndxdev',
+    username: 'oscarbarajas',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/oscarbarajas.jpeg',
     name: 'Oscar Barajas Tavares',
@@ -327,6 +336,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 's4vitar',
     twitchId: 's4vitaar',
+    username: 's4vitaar',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/savitar.jpeg',
     name: 'S4vitar',
@@ -364,10 +374,11 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'vamoacodear',
+    id: 'nsdonato',
     twitchId: 'vamoacodear',
+    username: 'vamoacodear',
     profileUrl:
-      'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/teffcode.jpeg',
+      'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/vamoacodear.jpeg',
     name: 'Noelia',
     description:
       '🎯 • Ayudo a los que inician en programación 👩🏻‍💻 • Desarrolladora Frontend 🟣 • Aprendemos tecnologías en Twitch 💬 • Sumate a la comunidad en Discord.',
@@ -401,6 +412,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'jonmircha',
+    username: 'jonmircha',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/jonmircha.jpeg',
     name: 'Jonathan Mircha',
@@ -437,6 +449,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'powerhdeleon',
     twitchId: 'hdeleonnet',
+    username: 'hectordeleon',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/hectordeleon.jpeg',
     name: 'Héctor de León',
@@ -469,6 +482,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'bluuweb',
     twitchId: 'bluuweb',
+    username: 'bluuweb',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/bluuweb.png',
     name: 'bluuweb',
@@ -507,8 +521,9 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'doriandesings',
+    id: 'DorianDesings',
     twitchId: 'doriandesings',
+    username: 'doriandesings',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/doriandesigns.jpeg',
     name: 'DorianDesings',
@@ -539,8 +554,9 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'guillermorodas',
+    id: 'glrodasz',
     twitchId: 'guillermorodas',
+    username: 'guillermorodas',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/guillermorodas.jpeg',
     name: 'Guillermo Rodas',
@@ -580,6 +596,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'baumannzone',
     twitchId: 'baumannzone',
+    username: 'jorgebaumann',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/baumannzone.jpeg',
     name: 'Jorge Baumann',
@@ -615,6 +632,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'miriamgonp',
+    username: 'miriamgonp',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/miriamgonp.jpeg',
     name: 'Miriam Gonzalez',
@@ -637,7 +655,8 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'veronicamoreno',
+    id: 'VeroMoreno',
+    username: 'veronicamoreno',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/veromoreno.jpeg',
     name: 'Verónica Moreno',
@@ -669,6 +688,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'pablokbs',
+    username: 'pablofredrikson',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/pablokbs.jpeg',
     name: 'Pablo Fredrikson',
@@ -700,6 +720,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'marcosrivasr',
+    username: 'marcosrivasr',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/marcosrivasr.jpeg',
     name: 'Marcos Rivas',
@@ -726,7 +747,8 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'naviscode',
+    id: 'Navis-code',
+    username: 'naviscode',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/naviscode.jpeg',
     name: 'Navis Code',
@@ -752,7 +774,8 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'leonidasesteban',
+    id: 'LeonidasEsteban',
+    username: 'leonidasesteban',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/leonidasesteban.jpeg',
     name: 'Leonidas Esteban',
@@ -780,6 +803,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'pablosirera',
     twitchId: 'pablosirera',
+    username: 'pablosirera',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/pablosirera.jpeg',
     name: 'Pablo Sirera',
@@ -814,6 +838,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'alexanyernas',
+    username: 'alexanyernaranjo',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/alexanyernas.jpeg',
     name: 'Alexanyer Naranjo',
@@ -839,7 +864,8 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'acadeller',
+    id: 'Acadeller',
+    username: 'acadeller',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/acadeller.png',
     name: 'Acadeller',
@@ -867,6 +893,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'jvelezmagic',
+    username: 'jesusvelezs',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/jesusvelez.jpeg',
     name: 'Jesús Vélez Santiago',
@@ -890,6 +917,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'codificandobits',
+    username: 'codificandobits',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/codificandobits.png',
     name: 'Codificando Bits',
@@ -913,6 +941,7 @@ export const CREATORS_DATA: Creator[] = [
   },
   {
     id: 'gonzalezgouveia',
+    username: 'gonzalezgouveia',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/rafaelgonzalezgouveia.jpg',
     name: 'Rafael Gonzalez Gouveia',
@@ -930,7 +959,7 @@ export const CREATORS_DATA: Creator[] = [
       },
       {
         id: 'youtube',
-        url: 'https://www.youtube.com/c/RafaGonzalezGouveia'
+        url: 'https://www.youtube.com/RafaGonzalezGouveia'
       },
       {
         id: 'instagram',
@@ -939,8 +968,9 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'todocode',
+    id: 'todocodeacademy',
     twitchId: 'todocode',
+    username: 'todocode',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/todocode.jpeg',
     name: 'Luisina de Paula',
@@ -951,6 +981,10 @@ export const CREATORS_DATA: Creator[] = [
       {
         id: 'twitter',
         url: 'https://twitter.com/todo_code'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/todocodeacademy'
       },
       {
         id: 'twitch',
@@ -977,6 +1011,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'ikurotime',
     twitchId: 'ikurotime',
+    username: 'ikurotime',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/ikurotime.jpg',
     name: 'David Huertas',
@@ -1012,6 +1047,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'matiasbaldanza',
     twitchId: 'matiasbaldanza',
+    username: 'matiasbaldanza',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/matiasbaldanza.jpeg',
     name: 'Matias Baldanza',
@@ -1042,8 +1078,9 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'afordigital',
+    id: 'Aforina',
     twitchId: 'afor_digital',
+    username: 'afordigital',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/afordigital.jpg',
     name: 'Sara Montagud',
@@ -1076,6 +1113,7 @@ export const CREATORS_DATA: Creator[] = [
   {
     id: 'altaskur',
     twitchId: 'altaskur',
+    username: 'altaskur',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/altaskur.jpeg',
     name: 'Altaskur',
@@ -1098,8 +1136,9 @@ export const CREATORS_DATA: Creator[] = [
     ]
   },
   {
-    id: 'chrisvdev',
+    id: 'chrisvill2312',
     twitchId: 'chrisvdev',
+    username: 'chrisvdev',
     profileUrl:
       'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/chrisvdev.jpg',
     name: 'Christian Villegas',
