@@ -937,5 +937,187 @@ export const CREATORS_DATA: Creator[] = [
         url: 'https://www.instagram.com/gonzalezgouveia/'
       }
     ]
+  },
+  {
+    id: 'todocode',
+    twitchId: 'todocode',
+    profileUrl:
+      'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/todocode.jpeg',
+    name: 'Luisina de Paula',
+    description:
+      'Soy Ingeniera, profe de Informática y apasionada por las nuevas tecnologías y los videojuegos ❤️. Además de la principal protagonista y cara visible de TodoCode.',
+    categories: ['backend', 'frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/todo_code'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/todocode'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/TodoCode'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.gg/MqVqXD2MfR'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/todo_code'
+      },
+      {
+        id: 'blog',
+        url: 'https://todocodeacademy.com/blog/'
+      }
+    ]
+  },
+  {
+    id: 'ikurotime',
+    twitchId: 'ikurotime',
+    profileUrl:
+      'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/ikurotime.jpg',
+    name: 'David Huertas',
+    description: 'FrontEnd Developer 🧑🏻‍💻💛 Comparto mi conocimiento y aprendizaje 🚀✨.',
+    categories: ['backend', 'frontend', 'cloud', 'database'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/ikurotime'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/ikurotime'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/ikurotime'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/@ikurotime'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.gg/3sWGgBzXQd'
+      },
+      {
+        id: 'instagram',
+        url: 'https://www.instagram.com/ikurotime'
+      }
+    ]
+  },
+  {
+    id: 'matiasbaldanza',
+    twitchId: 'matiasbaldanza',
+    profileUrl:
+      'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/matiasbaldanza.jpeg',
+    name: 'Matias Baldanza',
+    description:
+      '(Re) aprendiendo a programar en público. Mi meta: Ser desarrollador front-end en 2023. Aprendiendo en público.',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/matiasbaldanza'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/matiasbaldanza'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/matiasbaldanza'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/@MatiasBaldanza_dev'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.gg/QR8hQ3WN57'
+      }
+    ]
+  },
+  {
+    id: 'afordigital',
+    twitchId: 'afor_digital',
+    profileUrl:
+      'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/afordigital.jpg',
+    name: 'Sara Montagud',
+    description:
+      'Hola soy Afor de apellido Digital. Estudié videojuegos, trabajé en 3D y ahora soy Front-end.',
+    categories: ['frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/afordigital'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/Aforina'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/afor_digital'
+      },
+      {
+        id: 'youtube',
+        url: 'https://www.youtube.com/@afordigital'
+      },
+      {
+        id: 'discord',
+        url: 'https://discord.gg/sCwsn83paW'
+      }
+    ]
+  },
+  {
+    id: 'altaskur',
+    twitchId: 'altaskur',
+    profileUrl:
+      'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/altaskur.jpeg',
+    name: 'Altaskur',
+    description:
+      'Bienvenida/o a mí pequeño espacio, suelo hacer streams de programación ¡Pásate y aprende conmigo!',
+    categories: ['backend', 'frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/altaskur'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/altaskur'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/altaskur'
+      }
+    ]
+  },
+  {
+    id: 'chrisvdev',
+    twitchId: 'chrisvdev',
+    profileUrl:
+      'https://jugfuygudbzdsogjcbwa.supabase.co/storage/v1/object/public/creators-avatars/chrisvdev.jpg',
+    name: 'Christian Villegas',
+    description: 'Hola! Si te gusta el Desarrollo Full Stack y DevOps este es tu canal.',
+    categories: ['backend', 'frontend'],
+    social: [
+      {
+        id: 'twitter',
+        url: 'https://twitter.com/chrisvillmdq'
+      },
+      {
+        id: 'github',
+        url: 'https://github.com/chrisvill2312'
+      },
+      {
+        id: 'twitch',
+        url: 'https://www.twitch.tv/chrisvdev'
+      }
+    ]
   }
 ]
