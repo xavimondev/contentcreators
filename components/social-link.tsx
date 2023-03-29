@@ -1,4 +1,4 @@
-import { SocialLink, SocialMedia } from 'types'
+import type { SocialLink, SocialMedia } from 'types'
 
 import CustomLink from './custom-link'
 import { BlogIc, DiscordIc, GitHubIc, InstagramIc, TwitchIc, TwitterIc, YoutubeIc } from './icons'

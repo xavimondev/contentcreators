@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { StreamerLive } from 'types'
+import type { StreamerLive } from 'types'
 
 import CustomLink from 'components/custom-link'
 import Tooltip from 'components/tooltip'

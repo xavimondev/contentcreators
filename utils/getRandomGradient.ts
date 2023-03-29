@@ -1,4 +1,4 @@
-import { GradientColor } from 'types'
+import type { GradientColor } from 'types'
 
 import { LIST_BACKGROUNDS_GRADIENTS } from 'global/constants'
 

@@ -4,7 +4,7 @@ import { useSession } from '@supabase/auth-helpers-react'
 
 import { getMillisecondsFromTimestamp } from 'utils/getMillisecondsFromTimestamp'
 
-import { Comment } from 'types'
+import type { Comment } from 'types'
 
 import { useStore } from 'state/store'
 

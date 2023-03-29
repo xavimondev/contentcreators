@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { StreamerLive } from 'types'
+import type { StreamerLive } from 'types'
 
 const useLiveStreamers = () => {
   const [streamers, setStreamers] = useState<StreamerLive[]>([])

@@ -11,7 +11,7 @@ import { useStore } from 'state/store'
 import useOnClickOutside from 'hooks/useOnClickOutside'
 import useComments from 'hooks/useComments'
 
-import { User } from 'types'
+import type { User } from 'types'
 
 import { CREATORS_DATA } from 'data/creators'
 

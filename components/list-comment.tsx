@@ -1,4 +1,4 @@
-import { Comment } from 'types'
+import type { Comment } from 'types'
 
 import CommentCard from './comment-card'
 

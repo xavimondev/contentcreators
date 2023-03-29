@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { Category } from 'types'
+import type { Category } from 'types'
 
 import Layout from 'components/layout'
 import { LeftArrowIc } from 'components/icons'

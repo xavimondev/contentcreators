@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { CreatorStory } from 'types'
+import type { CreatorStory } from 'types'
 import type { Story } from 'react-insta-stories/dist/interfaces'
 
 import { useStore } from 'state/store'

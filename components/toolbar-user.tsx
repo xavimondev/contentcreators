@@ -2,7 +2,7 @@ import { Dispatch, RefObject, SetStateAction, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Session } from '@supabase/supabase-js'
 
-import { User } from 'types'
+import type { User } from 'types'
 
 import { getDataFromUser } from 'utils/getDataFromUser'
 

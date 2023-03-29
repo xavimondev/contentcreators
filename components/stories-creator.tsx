@@ -3,7 +3,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import { useRouter } from 'next/router'
 import type { Story } from 'react-insta-stories/dist/interfaces'
 
-import { GradientColor } from 'types'
+import type { GradientColor } from 'types'
 
 import { saveLastStoryIndexSeen } from 'services/story'
 

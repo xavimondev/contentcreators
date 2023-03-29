@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { StreamerLive } from 'types'
+import type { StreamerLive } from 'types'
 
 import { URL_TWITCH_GENERATE_TOKEN } from 'global/constants'
 
