@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 import type { Story } from 'react-insta-stories/dist/interfaces'
-import type { Comment, Creator } from 'types'
+import type { Comment, Creator, User } from 'types'
 
 type AppGeneralStore = {
   isModalStoryOpen: boolean
@@ -18,6 +18,8 @@ type AppGeneralStore = {
   removeCommentFromList: (commentId: number) => void
   listCreators: Creator[]
   setListCreators: (creators: Creator[]) => void
+  userSession: User | null
+  setUserSession: (user: User | null) => void
 }
 
 export const useStore = create<AppGeneralStore>()((set, get) => ({
@@ -39,5 +41,7 @@ export const useStore = create<AppGeneralStore>()((set, get) => ({
     set({ listComments: comments })
   },
   listCreators: [],
-  setListCreators: (listCreators: Creator[]) => set({ listCreators })
+  setListCreators: (listCreators: Creator[]) => set({ listCreators }),
+  userSession: null,
+  setUserSession: (user: User | null) => set({ userSession: user })
 }))
