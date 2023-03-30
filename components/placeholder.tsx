@@ -63,13 +63,26 @@ const PlaceHolderItemAvatar = () => {
   )
 }
 
+const PlaceHolderToolbarAuth = () => {
+  return (
+    <div className='w-full'>
+      <div className='flex items-center gap-2'>
+        <div className='h-6 w-full bg-gray-500 rounded-full'></div>
+        <div className='rounded-full bg-gray-500 w-8 h-6' />
+        <div className='rounded-full bg-gray-500 w-8 h-6' />
+      </div>
+    </div>
+  )
+}
+
 type PlaceholderProps = {
   length: number
-  type: 'card' | 'avatar'
+  type: 'card' | 'avatar' | 'toolbar'
 }
 
 const Placeholder = ({ length, type }: PlaceholderProps) => {
   if (type === 'card') return <PlaceholderCard length={length} />
+  else if (type === 'toolbar') return <PlaceHolderToolbarAuth />
   else return <PlaceHolderAvatar length={length} />
 }
 
