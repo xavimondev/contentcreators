@@ -124,3 +124,18 @@ export const listCommentsFromCache = async (username: string) => {
   const result = await response.json()
   return result
 }
+
+export const updateCommentInCache = async (
+  commentId: number,
+  commentValue: string
+): Promise<string> => {
+  const response = await fetch(`/api/uptash/${commentId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ commentValue }),
+    headers: {
+      'Content-type': 'application/json'
+    }
+  })
+  const result = await response.json()
+  return result
+}

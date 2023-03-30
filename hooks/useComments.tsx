@@ -8,7 +8,13 @@ import type { Comment } from 'types'
 
 import { useStore } from 'state/store'
 
-import { saveComment, removeComment, editComment, saveCommentInCache } from 'services/comment'
+import {
+  saveComment,
+  removeComment,
+  editComment,
+  saveCommentInCache,
+  updateCommentInCache
+} from 'services/comment'
 
 const useComments = (username: string) => {
   const listComments = useStore((state) => state.listComments)
@@ -137,8 +143,9 @@ const useComments = (username: string) => {
       commentPromise,
       {
         loading: 'Guardando...',
-        success: ({ error }: any) => {
+        success: ({ error }) => {
           if (!error) {
+            updateCommentInCache(commentId, commentValue).then((response) => console.log(response))
             return <b>Mensaje Actualizado.</b>
           }
           return <b>No se pudo actualizar tu mensaje. Intentalo nuevamente.</b>
