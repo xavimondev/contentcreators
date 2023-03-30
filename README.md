@@ -29,14 +29,3 @@ git commit -am "Nuevos creadores de contenido."
 git push origin main
 ```
 4. Finalmente, creas una pull request(PR) con tus cambios.
- 
-## Siguiente pasos
-
-Al ser un MVP, seguramente encontrarás mucho por mejorar. Aquí dejo una lista de lo que tengo pensado hacer después del primer release.
-
-- [ ] Pruebas E2E con Playwright.
-- [x] Refactorizar componentes.
-- [ ] Reacciones (🎉 ❤️ 🚀) por cada creador de contenido. Usar como referencia las reacciones de Facebook.
-- [x] Dejar comentarios por cada creador de contenido.
-- [ ] Mostrar en un dashboard, los creadores de contenido que estén transmitiendo en vivo desde plataformas como twitch, youtube, etc.
-- [ ] Agregar i18n.
