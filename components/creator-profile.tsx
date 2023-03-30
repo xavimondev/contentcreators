@@ -15,10 +15,11 @@ const CreatorProfile = () => {
   const { id } = router.query
   const { listStories } = useStory(id as string)
   const setIsModalStoryOpen = useStore((state) => state.setIsModalStoryOpen)
+  const userSession = useStore((state) => state.userSession)
   const hasStories = listStories.length
+  const isContentCreator = id === userSession?.username
 
   let creatorInfo = null
-
   if (id) {
     creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
   }
@@ -28,9 +29,11 @@ const CreatorProfile = () => {
       <div className='bg-[#1E1C26] rounded-xl p-4'>
         <div className='flex flex-col md:flex-row gap-2 md:gap-4 items-center'>
           <div
-            className='object-cover w-24 md:w-32 h-auto cursor-pointer'
+            className={`object-cover w-24 md:w-32 h-auto ${
+              isContentCreator ? 'cursor-pointer' : ''
+            } `}
             onClick={() => {
-              hasStories && setIsModalStoryOpen(true)
+              hasStories && isContentCreator && setIsModalStoryOpen(true)
             }}
           >
             <Image
