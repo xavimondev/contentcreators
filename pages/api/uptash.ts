@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const values = await redis.mget(...keys)
     const data = keys.map((key, index) => {
       const commentValue = values.at(index)
-      const [creatorUsername, commentAuthor, createdAtMilliseconds] = key.split(':')
+      const [creatorUsername, , commentAuthor, createdAtMilliseconds] = key.split(':')
       return {
         dedicatedTo: creatorUsername,
         author: commentAuthor.replace('-', ' '),
@@ -26,8 +26,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     })
     return res.status(200).json({ data })
   }
-  const { creatorUsername, commentAuthor, commentValue, createdAtMilliseconds } = req.body
-  const key = `${creatorUsername}:${commentAuthor}:${createdAtMilliseconds}`
+  const { commentId, creatorUsername, commentAuthor, commentValue, createdAtMilliseconds } =
+    req.body
+  const key = `${creatorUsername}:${commentId}:${commentAuthor}:${createdAtMilliseconds}`
   const result = await redis.set(key, commentValue, {
     ex: SECONDS_TTL_REDIS
   })

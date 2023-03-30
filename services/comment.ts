@@ -100,6 +100,7 @@ export const editComment = async (comment: { id: number; content: string }) => {
 
 /* Services cache */
 type CacheData = {
+  commentId: string
   creatorUsername: string
   commentAuthor: string
   commentValue: string
