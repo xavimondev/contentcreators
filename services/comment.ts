@@ -139,3 +139,11 @@ export const updateCommentInCache = async (
   const result = await response.json()
   return result
 }
+
+export const deleteCommentInCache = async (commentId: number): Promise<string> => {
+  const response = await fetch(`/api/uptash/${commentId}`, {
+    method: 'DELETE'
+  })
+  const result = await response.json()
+  return result
+}

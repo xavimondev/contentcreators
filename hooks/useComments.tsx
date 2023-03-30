@@ -13,7 +13,8 @@ import {
   removeComment,
   editComment,
   saveCommentInCache,
-  updateCommentInCache
+  updateCommentInCache,
+  deleteCommentInCache
 } from 'services/comment'
 
 const useComments = (username: string) => {
@@ -119,6 +120,7 @@ const useComments = (username: string) => {
     const error = await removeComment(commentId)
 
     if (!error) {
+      await deleteCommentInCache(commentId)
       removeCommentFromList(commentId)
     }
   }
