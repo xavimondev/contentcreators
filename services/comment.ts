@@ -1,84 +1,90 @@
-import { Prisma } from '@prisma/client'
-import { prisma } from './client'
+import type { ResponseData } from 'types'
 import { supabase } from './db'
 
 export const saveComment = async (comment: any) => {
-  const response = await fetch('/api/comment', {
-    method: 'POST',
-    body: JSON.stringify(comment),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+  let creatorId = null
+  const { userId, content, username } = comment
+  const creatorData = await searchCreator(username)
+  if (creatorData!.length > 0) {
+    creatorId = creatorData![0].id
+  } else {
+    // Saving creator into database
+    const { data } = await addCreator(username)
+    creatorId = data![0].id
+  }
 
-  const data = await response.json()
+  const commentData = {
+    userId,
+    content,
+    creatorId
+  }
+
+  const { error, data } = await supabase.from('Comment').insert(commentData).select()
+  return {
+    error,
+    data
+  }
+}
+
+const searchCreator = async (username: string) => {
+  const { data } = await supabase.from('Creator').select('id').eq('username', username)
   return data
 }
 
-export const searchCreator = async (username: string) => {
-  const user = await prisma.creator.findUnique({
-    where: {
+const addCreator = async (username: string) => {
+  const { error, data } = await supabase.from('Creator').insert({ username }).select()
+  return {
+    error,
+    data
+  }
+}
+
+export const listCommentsByCreator = async (username: string): Promise<ResponseData> => {
+  const { data, error } = await supabase
+    .from('Comment')
+    .select(
+      `
+    id,
+    content,
+    createdAt,
+    Creator!inner(
       username
-    },
-    select: {
-      id: true,
-      username: true
+    ),
+    User(
+      id,
+      githubId,
+      name,
+      username,
+      photoUrl
+    )
+  `
+    )
+    .eq('Creator.username', username)
+    .order('createdAt', { ascending: false })
+
+  if (error)
+    return {
+      status: 0,
+      error
+    }
+
+  const listCommentsFormatted = data.map((comment: any) => {
+    const { id, content, User, createdAt } = comment
+    const { id: authorId, name, photoUrl, username } = User
+    return {
+      id,
+      message: content,
+      authorId,
+      author: name,
+      authorAvatar: photoUrl,
+      authorUsername: username,
+      createdAt
     }
   })
-  return user
-}
-
-export const addComment = async (comment: Prisma.CommentCreateInput) => {
-  const res = await prisma.comment.create({
-    data: {
-      ...comment
-    }
-  })
-  return res
-}
-
-export const addCreator = async (username: string) => {
-  const res = await prisma.creator.create({
-    data: {
-      username
-    }
-  })
-  return res
-}
-
-export const listCommentsByCreator = async (username: string) => {
-  const data = await prisma.comment.findMany({
-    select: {
-      id: true,
-      content: true,
-      creator: {
-        select: {
-          id: true,
-          username: true
-        }
-      },
-      user: {
-        select: {
-          id: true,
-          githubId: true,
-          name: true,
-          username: true,
-          photoUrl: true
-        }
-      },
-      createdAt: true
-    },
-    where: {
-      creator: {
-        username
-      }
-    },
-    orderBy: {
-      createdAt: 'desc'
-    }
-  })
-
-  return data
+  return {
+    status: 1,
+    data: listCommentsFormatted
+  }
 }
 
 export const removeComment = async (commentId: number) => {

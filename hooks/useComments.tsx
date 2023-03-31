@@ -14,7 +14,8 @@ import {
   editComment,
   saveCommentInCache,
   updateCommentInCache,
-  deleteCommentInCache
+  deleteCommentInCache,
+  listCommentsByCreator
 } from 'services/comment'
 
 const useComments = (username: string) => {
@@ -29,13 +30,13 @@ const useComments = (username: string) => {
   useEffect(() => {
     if (username) {
       setIsLoadingComments(true)
-      fetch(`/api/comment/?username=${username}`)
-        .then((response) => response.json())
+      listCommentsByCreator(username)
         .then((response) => {
           const { status, data } = response
-          if (status) {
+          if (status === 1) {
             setListComments(data)
           }
+          // TODO: Display error message
         })
         .finally(() => {
           setIsLoadingComments(false)
@@ -69,9 +70,9 @@ const useComments = (username: string) => {
       {
         loading: 'Guardando...',
         success: (dataPromise) => {
-          const { status, data } = dataPromise
-          const { id, createdAt } = data
-          if (status) {
+          const { data, error } = dataPromise!
+          if (!error) {
+            const { id, createdAt } = data![0]
             const newComment: Comment = {
               id,
               message: content,
