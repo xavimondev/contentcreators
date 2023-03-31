@@ -13,7 +13,7 @@ const rtf = new Intl.RelativeTimeFormat('es')
  * Return relative time message from elapsed time
  * @param elapsed  - the elapsed time in milliseconds
  */
-export function relativeTimeFromElapsed(elapsed: number): string {
+function relativeTimeFromElapsed(elapsed: number): string {
   for (const { unit, value } of units) {
     if (Math.abs(elapsed) >= value || unit === 'second') {
       return rtf.format(Math.round(elapsed / value), unit)
