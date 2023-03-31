@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { lazy, Suspense, useRef, useState } from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { Toaster } from 'react-hot-toast'
@@ -17,10 +17,11 @@ import Layout from 'components/layout'
 import DialogComment from 'components/dialog'
 import ToolbarUser from 'components/toolbar-user'
 import StoriesCreator from 'components/stories-creator'
-import Modal from 'components/modal'
 import CreatorComments from 'components/creator-comments'
 import CreatorProfile from 'components/creator-profile'
 import PageHeader from 'components/page-header'
+
+const Modal = lazy(() => import('components/modal'))
 
 const DashboardCreator: NextPage = () => {
   const router = useRouter()
@@ -81,9 +82,11 @@ const DashboardCreator: NextPage = () => {
       </Layout>
       <Toaster />
       {isModalStoryOpen && (
-        <Modal>
-          <StoriesCreator />
-        </Modal>
+        <Suspense fallback='Loading stories'>
+          <Modal>
+            <StoriesCreator />
+          </Modal>
+        </Suspense>
       )}
     </>
   )
