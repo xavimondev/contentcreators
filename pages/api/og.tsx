@@ -6,18 +6,23 @@ export const config = {
   runtime: 'edge'
 }
 
-const fontMerriweather = fetch(new URL('../../assets/Merriweather.ttf', import.meta.url)).then(
-  (res) => res.arrayBuffer()
+const interMedium = fetch(new URL('../../assets/Inter-Medium.ttf', import.meta.url)).then((res) =>
+  res.arrayBuffer()
+)
+
+const interBold = fetch(new URL('../../assets/Inter-Bold.ttf', import.meta.url)).then((res) =>
+  res.arrayBuffer()
 )
 
 export default async function handler(req: NextRequest) {
-  const fontData = await fontMerriweather
+  const fontDataMedium = await interMedium
+  const fontDataBold = await interBold
   try {
     const { searchParams } = req.nextUrl
 
     const hasUsername = searchParams.has('username')
     const username = hasUsername ? searchParams.get('username') : ''
-    const creatorInfo = CREATORS_DATA.find((creator) => creator.id === username)
+    const creatorInfo = CREATORS_DATA.find((creator) => creator.username === username)
 
     if (!creatorInfo) {
       return new ImageResponse(
@@ -25,7 +30,7 @@ export default async function handler(req: NextRequest) {
           <div
             style={{
               display: 'flex',
-              backgroundImage: 'linear-gradient(to left, #39497e, #1d184e)',
+              backgroundColor: '#13111a',
               height: '100%'
             }}
           >
@@ -67,65 +72,77 @@ export default async function handler(req: NextRequest) {
         }
       )
     }
-    const { name, description, id } = creatorInfo
+    const { name, description } = creatorInfo
     return new ImageResponse(
       (
         <div
           style={{
             display: 'flex',
-            backgroundImage: 'linear-gradient(to left, #39497e, #1d184e)',
-            height: '100%'
+            backgroundColor: '#13111a',
+            width: '100%',
+            height: '100%',
+            position: 'relative'
           }}
         >
           <div
             style={{
               display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              margin: 'auto',
-              maxWidth: '40rem',
-              width: '100%'
+              backgroundImage: 'linear-gradient(135deg, #ffffff14 -1px, #13111a 7%)',
+              backgroundSize: '13px 13px',
+              width: '100%',
+              height: '100%',
+              position: 'absolute'
             }}
           >
-            <img
-              alt={name}
-              width='210'
-              height='210'
-              src={`https://github.com/${id}.png`}
-              style={{
-                borderRadius: '50%'
-              }}
-            />
             <div
               style={{
                 display: 'flex',
-                flexDirection: 'column',
-                gap: '20px',
-                marginLeft: '40px'
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                margin: 'auto',
+                maxWidth: '40rem',
+                width: '100%'
               }}
             >
-              <h1
+              <img
+                alt={name}
+                width='340'
+                height='340'
+                src={creatorInfo.profileUrl}
                 style={{
-                  fontSize: '60px',
-                  fontWeight: 'bold',
-                  backgroundImage: 'linear-gradient(to right, #d770b2, #e4ad7a)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent'
+                  borderRadius: '50%'
+                }}
+              />
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '18px',
+                  marginLeft: '38px'
                 }}
               >
-                {name}
-              </h1>
-              <p
-                style={{
-                  fontSize: '26px',
-                  fontWeight: 'bold',
-                  color: 'white'
-                }}
-              >
-                {description}
-              </p>
+                <h1
+                  style={{
+                    fontSize: '60px',
+                    fontWeight: 'bold',
+                    backgroundImage: 'linear-gradient(to right, #d770b2, #e4ad7a)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    color: 'transparent'
+                  }}
+                >
+                  {name}
+                </h1>
+                <p
+                  style={{
+                    fontSize: '24px',
+                    color: 'white'
+                  }}
+                >
+                  {description}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -135,9 +152,14 @@ export default async function handler(req: NextRequest) {
         height: 630,
         fonts: [
           {
-            name: 'Merriweather',
-            data: fontData,
-            style: 'normal'
+            name: 'Inter',
+            data: fontDataMedium,
+            weight: 500
+          },
+          {
+            name: 'Inter',
+            data: fontDataBold,
+            weight: 700
           }
         ]
       }
