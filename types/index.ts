@@ -77,3 +77,9 @@ export type StreamerLive = {
   viewerCount: number
   avatarUrl: string
 }
+
+export type ResponseData = {
+  status: number
+  error?: any
+  data?: any
+}
