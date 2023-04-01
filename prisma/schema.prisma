@@ -34,6 +34,5 @@ model Comment {
   creator Creator @relation(fields: [creatorId], references: [id])
   creatorId   Int
   content String @db.Text
-  isVisibleInHistories Boolean @default(true)
   createdAt DateTime @default(now())
 }
