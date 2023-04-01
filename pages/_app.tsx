@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
+import { Analytics } from '@vercel/analytics/react'
 
 function MyApp({
   Component,
@@ -46,6 +47,7 @@ function MyApp({
       >
         <Component {...pageProps} />
       </SessionContextProvider>
+      <Analytics />
     </>
   )
 }
