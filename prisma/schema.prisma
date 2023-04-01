@@ -34,5 +34,5 @@ model Comment {
   creator Creator @relation(fields: [creatorId], references: [id])
   creatorId   Int
   content String @db.Text
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
 }
