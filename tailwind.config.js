@@ -8,7 +8,8 @@ module.exports = {
         'bounce-in-up': 'bounce-in-up 0.5s ease-out',
         pulse: 'pulse 0.5s ease-out',
         'spin-slow': 'spin 20s linear infinite',
-        'zoomIn': 'zoomIn 0.3s'
+        'zoomIn': 'zoomIn 0.3s',
+        'fadeIn': 'fadeIn 0.7s'
       },
       keyframes: {
         'text-clip': {
@@ -32,6 +33,10 @@ module.exports = {
         'zoomIn': {
           from: { opacity: 0, transform: 'scale3d(0.3, 0.3, 0.3)' },
           '50%': { opacity: 1 }
+        },
+        'fadeIn': {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
         }
       }
     }
