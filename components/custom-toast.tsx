@@ -7,11 +7,7 @@ type ConfirmToastProps = {
 
 export const ConfirmToast = ({ customToast, acceptFunction }: ConfirmToastProps) => {
   return (
-    <div
-      className={`flex flex-col gap-1 bg-white p-4 shadow-md rounded-md ${
-        customToast.visible ? 'animate-slideInUp' : 'animate-slideInUp'
-      }`}
-    >
+    <div className='flex flex-col gap-1 bg-white p-4 shadow-md rounded-md'>
       <span>🤔 ¿Seguro que deseas eliminar tu comentario?</span>
       <div className='flex gap-2 justify-center'>
         <button
