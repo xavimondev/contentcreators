@@ -44,7 +44,7 @@ const useComments = (username: string) => {
           setIsLoadingComments(false)
         })
     }
-  }, [])
+  }, [username])
 
   const addComment = async (content: string) => {
     if (content === '') {
