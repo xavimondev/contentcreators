@@ -18,6 +18,8 @@ import {
   listCommentsByCreator
 } from 'services/comment'
 
+import { ConfirmToast } from 'components/custom-toast'
+
 const useComments = (username: string) => {
   const listComments = useStore((state) => state.listComments)
   const setListComments = useStore((state) => state.setListComments)
@@ -118,12 +120,47 @@ const useComments = (username: string) => {
   }
 
   const deleteComment = async (commentId: number) => {
-    const error = await removeComment(commentId)
-
-    if (!error) {
-      await deleteCommentInCache(commentId)
-      removeCommentFromList(commentId)
-    }
+    toast.custom((t) => (
+      <ConfirmToast
+        customToast={t}
+        acceptFunction={() => {
+          // Remove toast confirmation from viewport
+          toast.remove(t.id)
+          const commentPromise = removeComment(commentId)
+          toast.promise(
+            commentPromise,
+            {
+              loading: 'Eliminando...',
+              success: (error) => {
+                if (!error) {
+                  // Remove comment from stories
+                  deleteCommentInCache(commentId).then(console.log)
+                  // Remove comments from list
+                  removeCommentFromList(commentId)
+                }
+                return <b>Comentario eliminado.</b>
+              },
+              error: () => {
+                return <b>Se ha detectado un error en el servidor. Intentalo nuevamente.</b>
+              }
+            },
+            {
+              style: {
+                minWidth: '315px'
+              },
+              success: {
+                duration: 1000,
+                icon: '😊'
+              },
+              error: {
+                duration: 4000,
+                icon: '😱'
+              }
+            }
+          )
+        }}
+      />
+    ))
   }
 
   const updateComment = async (commentId: number, commentValue: string) => {
