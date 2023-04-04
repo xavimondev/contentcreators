@@ -1,5 +1,5 @@
 import { lazy, Suspense, useRef, useState } from 'react'
-import { NextPage } from 'next'
+import { NextPage, GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { Toaster } from 'react-hot-toast'
 import { DefaultSeo } from 'next-seo'
@@ -9,6 +9,8 @@ import { useStore } from 'state/store'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
 import useComments from 'hooks/useComments'
+
+import type { Creator } from 'types'
 
 import { CREATORS_DATA } from 'data/creators'
 
@@ -23,7 +25,11 @@ import PageHeader from 'components/page-header'
 
 const Modal = lazy(() => import('components/modal'))
 
-const DashboardCreator: NextPage = () => {
+type DashboardCreatorProps = {
+  creatorInfo: Creator
+}
+
+const DashboardCreator: NextPage<DashboardCreatorProps> = ({ creatorInfo }) => {
   const router = useRouter()
   const { id } = router.query
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -35,19 +41,14 @@ const DashboardCreator: NextPage = () => {
 
   const { addComment } = useComments(id as string)
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
-  let creatorInfo = null,
-    title = ''
 
-  if (id) {
-    creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
-    title = `content.[creators] | ${creatorInfo?.name}`
-  }
+  const title = `content.[creators] | ${creatorInfo.name}`
 
   return (
     <>
       <DefaultSeo
         title={title}
-        description={`Déjale un mensaje a ${creatorInfo?.name} 🙂`}
+        description={`Déjale un mensaje a ${creatorInfo.name} 🙂`}
         openGraph={{
           type: 'website',
           url: `https://contentcreators.vercel.app/creator/${id}`,
@@ -70,8 +71,8 @@ const DashboardCreator: NextPage = () => {
         </button>
       </PageHeader>
       <Layout>
-        <CreatorProfile />
-        <CreatorComments creatorInfoName={creatorInfo?.name} />
+        <CreatorProfile creatorInfo={creatorInfo} />
+        <CreatorComments creatorInfoName={creatorInfo.name} />
         <ToolbarUser
           creatorId={id as string}
           buttonCommentRef={buttonCommentRef}
@@ -90,6 +91,25 @@ const DashboardCreator: NextPage = () => {
       )}
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps<{ creatorInfo: Creator }> = async (context) => {
+  const { id } = context.query
+  const creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
+  if (!creatorInfo) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: '/404'
+      }
+    }
+  }
+
+  return {
+    props: {
+      creatorInfo
+    }
+  }
 }
 
 export default DashboardCreator

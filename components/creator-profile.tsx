@@ -1,28 +1,24 @@
 import Image from 'next/image'
-import { useRouter } from 'next/router'
+
+import type { Creator } from 'types'
 
 import { useStore } from 'state/store'
 
 import useStory from 'hooks/useStory'
 
-import { CREATORS_DATA } from 'data/creators'
-
 import { SOCIAL_LINKS } from 'components/social-link'
 import CustomLink from 'components/custom-link'
 
-const CreatorProfile = () => {
-  const router = useRouter()
-  const { id } = router.query
-  const { listStories } = useStory(id as string)
+type CreatorProfileProps = {
+  creatorInfo: Creator
+}
+
+const CreatorProfile = ({ creatorInfo }: CreatorProfileProps) => {
+  const { listStories } = useStory(creatorInfo.id as string)
   const setIsModalStoryOpen = useStore((state) => state.setIsModalStoryOpen)
   const userSession = useStore((state) => state.userSession)
   const hasStories = listStories.length
-  const isContentCreator = id === userSession?.username
-
-  let creatorInfo = null
-  if (id) {
-    creatorInfo = CREATORS_DATA.find((creator) => creator.id === id)
-  }
+  const isContentCreator = creatorInfo.id === userSession?.username
 
   return (
     <section className='p-0.5 flex flex-col gap-2 md:gap-4 rounded-xl bg-gradient-to-r from-indigo-500 to-[#d5578f]'>
@@ -38,23 +34,23 @@ const CreatorProfile = () => {
           >
             <Image
               className={`rounded-full ${hasStories ? 'border-4 border-purple-800' : ''}`}
-              src={creatorInfo!.profileUrl}
+              src={creatorInfo.profileUrl}
               width='256'
               height='256'
-              alt={creatorInfo!.name}
+              alt={creatorInfo.name}
             />
           </div>
           <div className='flex flex-col gap-2 md:gap-4'>
             <h2 className='text-white font-bold tracking-wide text-xl sm:text-2xl lg:text-5xl'>
-              {creatorInfo?.name}
+              {creatorInfo.name}
             </h2>
             <p className='text-base sm:text-lg lg:text-xl dark:text-gray-400'>
-              {creatorInfo?.description}
+              {creatorInfo.description}
             </p>
           </div>
         </div>
         <div className='flex gap-1 md:gap-3 flex-wrap md:flex-row mt-4 sm:mt-2'>
-          {creatorInfo?.social.map((item) => {
+          {creatorInfo.social.map((item) => {
             const Component = SOCIAL_LINKS.find((link) => link.id === item.id)?.Component
             return (
               <CustomLink href={item.url} key={item.id} rel='noopener noreferrer' target='_blank'>
