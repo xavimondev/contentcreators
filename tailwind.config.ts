@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss'
+
+export default {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -16,8 +17,8 @@ module.exports = {
           to: { 'background-position': '200% center' }
         },
         'bounce-in-up': {
-          '0%': { opacity: 0, transform: 'translate3d(0, 20px, 0)' },
-          '60%': { opacity: 1, transform: 'translate3d(0, -25px, 0)' },
+          '0%': { opacity: '0', transform: 'translate3d(0, 20px, 0)' },
+          '60%': { opacity: '1', transform: 'translate3d(0, -25px, 0)' },
           '75%': { transform: 'translate3d(0, 5px, 0)' },
           '90%': { transform: 'translate3d(0, -5px, 0)' },
           '100%': { transform: 'translateZ(0)' }
@@ -31,15 +32,16 @@ module.exports = {
           '100%': { transform: 'rotate(1turn)' }
         },
         'zoomIn': {
-          from: { opacity: 0, transform: 'scale3d(0.3, 0.3, 0.3)' },
-          '50%': { opacity: 1 }
+          from: { opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)' },
+          '50%': { opacity: '1' }
         },
         'fadeIn': {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         }
       }
     }
   },
-  plugins: [require('@tailwindcss/line-clamp')]
-}
+  plugins: []
+} satisfies Config
+
