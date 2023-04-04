@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.27.1",
+    "@tailwindcss/line-clamp": "0.4.4",
     "@types/node": "18.8.4",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
