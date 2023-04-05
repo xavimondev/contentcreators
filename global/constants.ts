@@ -69,3 +69,7 @@ export const TOAST_PROMISE_DEFAULT_OPTIONS: DefaultToastOptions | undefined = {
     icon: '😱'
   }
 }
+export const AUTH_REDIRECT =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000'
+    : 'https://contentcreators.vercel.app'

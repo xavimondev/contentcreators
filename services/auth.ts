@@ -1,6 +1,6 @@
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 
-import { authRedirectTo } from 'lib'
+import { AUTH_REDIRECT } from 'global/constants'
 
 const supabaseClient = createBrowserSupabaseClient()
 
@@ -9,7 +9,7 @@ export const signInWithGitHub = async (creatorId: string) => {
     const { data, error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'github',
       options: {
-        redirectTo: `${authRedirectTo}/creator/${creatorId}`
+        redirectTo: `${AUTH_REDIRECT}/creator/${creatorId}`
       }
     })
     if (error) throw new Error('An error ocurred during authentication')
