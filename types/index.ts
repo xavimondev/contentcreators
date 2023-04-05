@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import type { Renderable, ValueOrFunction } from 'react-hot-toast'
 
 export type Creator = {
   id: string
@@ -82,4 +83,10 @@ export type ResponseData = {
   status: number
   error?: any
   data?: any
+}
+
+export type ToastMsgs = {
+  loading: Renderable
+  success: ValueOrFunction<Renderable, unknown>
+  error: ValueOrFunction<Renderable, any>
 }
