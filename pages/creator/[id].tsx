@@ -8,7 +8,7 @@ import { useSession } from '@supabase/auth-helpers-react'
 import { useStore } from 'state/store'
 
 import useOnClickOutside from 'hooks/useOnClickOutside'
-import useComments from 'hooks/useComments'
+import useComment from 'hooks/useComment'
 
 import type { Creator } from 'types'
 
@@ -36,7 +36,7 @@ const DashboardCreator: NextPage<DashboardCreatorProps> = ({ creatorInfo }) => {
   const dialogRef = useRef<HTMLDivElement>(null)
   const isModalStoryOpen = useStore((state) => state.isModalStoryOpen)
   const session = useSession()
-  const { addComment } = useComments(creatorInfo.id)
+  const { addComment } = useComment()
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
 
   const title = `content.[creators] | ${creatorInfo.name}`

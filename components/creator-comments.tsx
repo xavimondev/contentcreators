@@ -1,31 +1,21 @@
-import { useRouter } from 'next/router'
-
-import useComments from 'hooks/useComments'
+import useListComments from 'hooks/useListComments'
 
 import ListComment from 'components/list-comment'
 import NoCommentsFound from 'components/no-comments-found'
 import FallBackLoader from 'components/fallback'
 
 type CreatorCommentsProps = {
-  creatorInfoName: string | undefined
+  creatorInfoName: string
 }
 
 const CreatorComments = ({ creatorInfoName }: CreatorCommentsProps) => {
-  const router = useRouter()
-  const { id } = router.query
-  const { listComments, isLoadingComments, deleteComment, updateComment } = useComments(
-    id as string
-  )
+  const { listComments, isLoadingComments } = useListComments()
 
   return (
     <section className='mt-6'>
       {isLoadingComments && <FallBackLoader msg='Cargando resultados' />}
       {listComments && listComments.length > 0 && !isLoadingComments && (
-        <ListComment
-          listComments={listComments}
-          deleteComment={deleteComment}
-          updateComment={updateComment}
-        />
+        <ListComment listComments={listComments} />
       )}
       {!isLoadingComments && listComments.length === 0 && (
         <NoCommentsFound data={creatorInfoName} />

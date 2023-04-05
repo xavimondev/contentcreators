@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { useSession } from '@supabase/auth-helpers-react'
 
@@ -15,37 +14,18 @@ import {
   editComment,
   saveCommentInCache,
   updateCommentInCache,
-  deleteCommentInCache,
-  listCommentsByCreator
+  deleteCommentInCache
 } from 'services/comment'
 
 import { ConfirmToast } from 'components/custom-toast'
+import { useRouter } from 'next/router'
 
-const useComments = (username: string) => {
-  const listComments = useStore((state) => state.listComments)
-  const setListComments = useStore((state) => state.setListComments)
+const useComment = () => {
   const addNewCommentToList = useStore((state) => state.addNewCommentToList)
   const removeCommentFromList = useStore((state) => state.removeCommentFromList)
-  const isLoadingComments = useStore((state) => state.isLoadingComments)
-  const setIsLoadingComments = useStore((state) => state.setIsLoadingComments)
   const session = useSession()
-
-  useEffect(() => {
-    if (username) {
-      setIsLoadingComments(true)
-      listCommentsByCreator(username)
-        .then((response) => {
-          const { status, data } = response
-          if (status === 1) {
-            setListComments(data)
-          }
-          // TODO: Display error message
-        })
-        .finally(() => {
-          setIsLoadingComments(false)
-        })
-    }
-  }, [username])
+  const router = useRouter()
+  const username = String(router.query.id)
 
   const addComment = async (content: string) => {
     if (content === '') {
@@ -138,7 +118,7 @@ const useComments = (username: string) => {
     toastPromise(commentPromise, {
       loading: 'Guardando...',
       success: () => {
-        updateCommentInCache(commentId, commentValue).then((response) => console.log(response))
+        updateCommentInCache(commentId, commentValue).then(console.log)
         return <b>Mensaje Actualizado.</b>
       },
       error: () => <b>Se ha detectado un error en el servidor. Intentalo nuevamente.</b>
@@ -146,12 +126,10 @@ const useComments = (username: string) => {
   }
 
   return {
-    listComments,
-    isLoadingComments,
     addComment,
     deleteComment,
     updateComment
   }
 }
 
-export default useComments
+export default useComment
