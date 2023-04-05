@@ -1,3 +1,4 @@
+import type { DefaultToastOptions } from 'react-hot-toast'
 import type { GradientColor } from 'types'
 
 export const MAX_CHARACTERS_ALLOWED = 150
@@ -51,3 +52,20 @@ export const LIST_BACKGROUNDS_GRADIENTS: GradientColor[] = [
 ]
 export const URL_TWITCH_GENERATE_TOKEN = 'https://id.twitch.tv/oauth2/token'
 export const URL_TWITCH_LIST_STREAMS = 'https://api.twitch.tv/helix/streams'
+export const TOAST_ERROR_DEFAULT_OPTIONS: DefaultToastOptions = {
+  duration: 2000,
+  position: 'top-center'
+}
+export const TOAST_PROMISE_DEFAULT_OPTIONS: DefaultToastOptions | undefined = {
+  style: {
+    minWidth: '315px'
+  },
+  success: {
+    duration: 2000,
+    icon: '😊'
+  },
+  error: {
+    duration: 4000,
+    icon: '😱'
+  }
+}
