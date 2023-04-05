@@ -31,15 +31,12 @@ type DashboardCreatorProps = {
 
 const DashboardCreator: NextPage<DashboardCreatorProps> = ({ creatorInfo }) => {
   const router = useRouter()
-  const { id } = router.query
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const buttonCommentRef = useRef<HTMLButtonElement>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
   const isModalStoryOpen = useStore((state) => state.isModalStoryOpen)
-
   const session = useSession()
-
-  const { addComment } = useComments(id as string)
+  const { addComment } = useComments(creatorInfo.id)
   useOnClickOutside(buttonCommentRef, dialogRef, () => setIsOpen(false))
 
   const title = `content.[creators] | ${creatorInfo.name}`
@@ -51,11 +48,11 @@ const DashboardCreator: NextPage<DashboardCreatorProps> = ({ creatorInfo }) => {
         description={`Déjale un mensaje a ${creatorInfo.name} 🙂`}
         openGraph={{
           type: 'website',
-          url: `https://contentcreators.vercel.app/creator/${id}`,
+          url: `https://contentcreators.vercel.app/creator/${creatorInfo.id}`,
           locale: 'es_ES',
           images: [
             {
-              url: `https://contentcreators.vercel.app/api/og?username=${id}`,
+              url: `https://contentcreators.vercel.app/api/og?username=${creatorInfo.id}`,
               type: 'image/png'
             }
           ]
@@ -74,7 +71,7 @@ const DashboardCreator: NextPage<DashboardCreatorProps> = ({ creatorInfo }) => {
         <CreatorProfile creatorInfo={creatorInfo} />
         <CreatorComments creatorInfoName={creatorInfo.name} />
         <ToolbarUser
-          creatorId={id as string}
+          creatorId={creatorInfo.id}
           buttonCommentRef={buttonCommentRef}
           setIsOpen={setIsOpen}
           session={session}
