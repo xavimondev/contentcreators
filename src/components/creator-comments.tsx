@@ -1,0 +1,27 @@
+'use client'
+import useListComments from '@/hooks/useListComments'
+import ListComment from './list-comment'
+import NoCommentsFound from './no-comments-found'
+import FallBackLoader from './fallback'
+
+type CreatorCommentsProps = {
+  creatorInfoName: string
+}
+
+const CreatorComments = ({ creatorInfoName }: CreatorCommentsProps) => {
+  const { listComments, isLoadingComments } = useListComments()
+
+  return (
+    <section className='mt-6'>
+      {isLoadingComments && <FallBackLoader msg='Cargando resultados' />}
+      {listComments && listComments.length > 0 && !isLoadingComments && (
+        <ListComment listComments={listComments} />
+      )}
+      {!isLoadingComments && listComments.length === 0 && (
+        <NoCommentsFound data={creatorInfoName} />
+      )}
+    </section>
+  )
+}
+
+export default CreatorComments
