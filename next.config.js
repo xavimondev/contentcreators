@@ -7,10 +7,6 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['jugfuygudbzdsogjcbwa.supabase.co', 'avatars.githubusercontent.com']
-  },
-  i18n: {
-    locales: ['es'],
-    defaultLocale: 'es'
   }
 }
 
