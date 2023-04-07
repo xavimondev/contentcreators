@@ -1,11 +1,10 @@
 'use client'
 import { Dispatch, RefObject, SetStateAction, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { Session } from '@supabase/supabase-js'
 import { getDataFromUser } from 'utils/getDataFromUser'
 import { useStore } from 'state/store'
 import { signInWithGitHub, signout } from 'services/auth'
+import { useSupabase } from '@/provider/supabase-provider'
 import { CommentIc, GitHubIc, LogoutIc } from './icons'
 import Placeholder from './placeholder'
 
@@ -13,23 +12,27 @@ type ToolbarUserProps = {
   creatorId: string
   buttonCommentRef: RefObject<HTMLButtonElement>
   setIsOpen: Dispatch<SetStateAction<boolean>>
-  session: Session | null
 }
 
-const ToolbarUser = ({ creatorId, buttonCommentRef, setIsOpen, session }: ToolbarUserProps) => {
+const ToolbarUser = ({ creatorId, buttonCommentRef, setIsOpen }: ToolbarUserProps) => {
   const userSession = useStore((store) => store.userSession)
   const setUserSession = useStore((store) => store.setUserSession)
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const router = useRouter()
-  const { id } = router.query
+  const { supabase } = useSupabase()
 
   useEffect(() => {
-    if (session) {
-      const userInfo = getDataFromUser(session)
-      setUserSession(userInfo)
+    const getSession = async () => {
+      const result = await supabase.auth.getSession()
+      const session = result.data.session
+      if (session) {
+        const userInfo = getDataFromUser(session)
+        // console.log(userInfo)
+        setUserSession(userInfo)
+      }
+      setIsLoading(false)
     }
-    setIsLoading(false)
-  }, [session])
+    getSession()
+  }, [])
 
   return (
     <div
@@ -63,9 +66,8 @@ const ToolbarUser = ({ creatorId, buttonCommentRef, setIsOpen, session }: Toolba
               />
             </div>
             <span className='text-base font-semibold text-white'>{userSession.username}</span>
-
             <div className='flex flex-row gap-4 sm:gap-3'>
-              {id !== userSession.username && (
+              {creatorId !== userSession.username && (
                 <button
                   aria-label='Open Dialog'
                   ref={buttonCommentRef}
@@ -77,8 +79,7 @@ const ToolbarUser = ({ creatorId, buttonCommentRef, setIsOpen, session }: Toolba
               <button
                 aria-label='Logout'
                 onClick={() => {
-                  setUserSession(null)
-                  signout()
+                  signout(supabase)
                 }}
               >
                 <LogoutIc className='w-6 h-6 text-white' />
@@ -90,7 +91,7 @@ const ToolbarUser = ({ creatorId, buttonCommentRef, setIsOpen, session }: Toolba
           <button
             aria-label='Login'
             className='flex flex-row items-center justify-center gap-3 sm:gap-2 w-full'
-            onClick={() => signInWithGitHub(creatorId)}
+            onClick={() => signInWithGitHub(supabase, creatorId)}
           >
             <span className='text-base font-semibold text-white'>Iniciar Sesión</span>
             <GitHubIc className='w-6 h-6 text-white' />
