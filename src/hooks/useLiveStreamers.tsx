@@ -7,7 +7,7 @@ const useLiveStreamers = () => {
 
   useEffect(() => {
     const getLiveStreamers = async () => {
-      const response = await fetch('/api/streamers')
+      const response = await fetch('/api/streamer')
       const { data } = await response.json()
       setStreamers(data)
       setIsLoading(false)
