@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import { CREATORS_DATA } from 'data/creators'
 import { LeftArrowIc } from '@/components/icons'
 import PageHeader from '@/components/page-header'
@@ -10,7 +11,9 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const creatorInfo = CREATORS_DATA.find((creator) => creator.id === params.id)
-  const { name, id } = creatorInfo!
+  if (!creatorInfo) notFound()
+
+  const { name, id } = creatorInfo
 
   return {
     title: `content.[creators] | ${name}`,
@@ -31,6 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const CreatorPage = ({ params }: Props) => {
   const creatorInfo = CREATORS_DATA.find((creator) => creator.id === params.id)
+  if (!creatorInfo) {
+    notFound()
+  }
 
   return (
     <>
@@ -40,7 +46,7 @@ const CreatorPage = ({ params }: Props) => {
           <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Regresar</span>
         </button>
       </PageHeader>
-      <CreatorDashboard creatorInfo={creatorInfo!} />
+      <CreatorDashboard creatorInfo={creatorInfo} />
     </>
   )
 }
