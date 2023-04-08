@@ -3,13 +3,13 @@ import { supabase } from './db'
 
 export const saveComment = async (comment: any) => {
   let creatorId = null
-  const { userId, content, username } = comment
-  const creatorData = await searchCreator(username)
+  const { userId, content, creatorUsername } = comment
+  const creatorData = await searchCreator(creatorUsername)
   if (creatorData!.length > 0) {
     creatorId = creatorData![0].id
   } else {
     // Saving creator into database
-    const { data } = await addCreator(username)
+    const { data } = await addCreator(creatorUsername)
     creatorId = data![0].id
   }
 

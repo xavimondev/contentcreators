@@ -1,6 +1,5 @@
 import toast from 'react-hot-toast'
-import { useSession } from '@supabase/auth-helpers-react'
-import type { Comment } from 'types'
+import type { Comment, User } from 'types'
 import { toastError, toastPromise } from 'utils/showToast'
 import { getMillisecondsFromTimestamp } from 'utils/getMillisecondsFromTimestamp'
 import { useStore } from 'state/store'
@@ -15,14 +14,11 @@ import {
 } from 'services/comment'
 
 import { ConfirmToast } from 'pagess/components/custom-toast'
-// import { useRouter } from 'next/navigation'
 
-const useComment = () => {
+const useComment = (creatorUsername: string) => {
   const addNewCommentToList = useStore((state) => state.addNewCommentToList)
   const removeCommentFromList = useStore((state) => state.removeCommentFromList)
-  const session = useSession()
-  // const router = useRouter()
-  // const username = String(router.query.id)
+  const userSession = useStore((store) => store.userSession)
 
   const addComment = async (content: string) => {
     if (content === '') {
@@ -30,14 +26,11 @@ const useComment = () => {
       return
     }
     // I used non null assertion since users will use addComment when they are authenticated
-    const { user } = session!
-    const {
-      user_metadata: { avatar_url: avatarUrl, user_name: authorUsername, full_name: fullName }
-    } = user
+    const { userId, avatarUrl, username, fullName } = userSession as User
     const newCommentDB = {
-      userId: user.id,
+      userId: userId,
       content,
-      username: ''
+      creatorUsername
     }
     // Save comments on database
     const commentPromise = saveComment(newCommentDB)
@@ -50,10 +43,10 @@ const useComment = () => {
         const newComment: Comment = {
           id,
           message: content,
-          authorId: user.id,
+          authorId: userId,
           author: fullName,
           authorAvatar: avatarUrl,
-          authorUsername,
+          authorUsername: username,
           createdAt
         }
         addNewCommentToList(newComment)
@@ -61,7 +54,7 @@ const useComment = () => {
         // Saving in cache
         const cacheData = {
           commentId: id,
-          creatorUsername: '',
+          creatorUsername,
           commentAuthor: fullName.replace(' ', '-'),
           commentValue: content,
           createdAtMilliseconds: getMillisecondsFromTimestamp(createdAt)

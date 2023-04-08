@@ -1,10 +1,10 @@
 'use client'
 import Image from 'next/image'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
-import { useSession } from '@supabase/auth-helpers-react'
 import type { Comment } from 'types'
 import { getRelativeTime } from 'utils/getRelativeTime'
 import { MAX_CHARACTERS_ALLOWED } from 'global/constants'
+import { useStore } from 'state/store'
 import { PencilIc, SaveIc, TrashIc, CancelIc } from './icons'
 
 type CommentProps = {
@@ -18,8 +18,8 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
   const [commentEditingValue, setCommentEditingValue] = useState<string>(commentInfo.message)
   const { id, author, authorAvatar, authorUsername, createdAt } = commentInfo
   const inputRef = useRef<HTMLTextAreaElement>(null)
-  const session = useSession()
-  const userSessionId = session?.user.id
+  const userSession = useStore((store) => store.userSession)
+  const userSessionId = userSession?.userId
 
   useEffect(() => {
     if (inputRef) {
