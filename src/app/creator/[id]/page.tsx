@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: 'es_ES',
       images: [
         {
-          url: `https://contentcreators.vercel.app/api/og?username=${id}`,
+          url: `https://contentcreators.vercel.app/creator/${id}/opengraph-image`,
           type: 'image/png'
         }
       ]
