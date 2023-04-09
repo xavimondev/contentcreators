@@ -13,7 +13,7 @@ import {
   deleteCommentInCache
 } from 'services/comment'
 
-import { ConfirmToast } from 'pagess/components/custom-toast'
+import { ConfirmToast } from '@/components/custom-toast'
 
 const useComment = (creatorUsername: string) => {
   const addNewCommentToList = useStore((state) => state.addNewCommentToList)
