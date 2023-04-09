@@ -4,6 +4,7 @@ import { CREATORS_DATA } from 'data/creators'
 import { LeftArrowIc } from '@/components/icons'
 import PageHeader from '@/components/page-header'
 import CreatorDashboard from '@/components/creator-dashboard'
+import CustomLink from '@/components/custom-link'
 
 type Props = {
   params: { id: string }
@@ -41,10 +42,12 @@ const CreatorPage = ({ params }: Props) => {
   return (
     <>
       <PageHeader>
-        <button className='flex flex-row gap-2 items-center'>
+        <CustomLink classes='flex flex-row gap-2 items-center' href='/category/all'>
           <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
-          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Regresar</span>
-        </button>
+          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
+            Todas las categorías
+          </span>
+        </CustomLink>
       </PageHeader>
       <CreatorDashboard creatorInfo={creatorInfo} />
     </>
