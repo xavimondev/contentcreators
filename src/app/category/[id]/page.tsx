@@ -19,9 +19,7 @@ const DashboardCategory = ({ params }: { params: { id: string } }) => {
       <PageHeader>
         <CustomLink classes='flex flex-row gap-2 items-center' href='/#categories'>
           <LeftArrowIc className='h-6 w-6 lg:h-8 lg:w-8 text-white' />
-          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>
-            Todas las categorías
-          </span>
+          <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Inicio</span>
         </CustomLink>
       </PageHeader>
       <main className='p-6 min-h-screen h-full w-full'>
