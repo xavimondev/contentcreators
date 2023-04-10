@@ -18,11 +18,12 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
   const [commentEditingValue, setCommentEditingValue] = useState<string>(commentInfo.message)
   const { id, author, authorAvatar, authorUsername, createdAt } = commentInfo
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  const previousCommentValue = useRef<string>('')
   const userSession = useStore((store) => store.userSession)
   const userSessionId = userSession?.userId
 
   useEffect(() => {
-    if (inputRef) {
+    if (inputRef && commentEditingId) {
       const lengthComment = commentEditingValue.length
       inputRef.current?.setSelectionRange(lengthComment, lengthComment)
       inputRef.current?.focus()
@@ -45,18 +46,39 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
                 <button
                   aria-label='Save'
                   onClick={() => {
+                    if (commentEditingValue === '') {
+                      inputRef.current?.focus()
+                      return
+                    }
                     updateComment(commentEditingId, commentEditingValue)
                     setCommentEditingId(undefined)
                   }}
                 >
                   <SaveIc className='text-red-300 h-4 w-4' />
                 </button>
-                <button aria-label='Cancel' onClick={() => setCommentEditingId(undefined)}>
+                <button
+                  aria-label='Cancel'
+                  onClick={() => {
+                    setCommentEditingId(undefined)
+                    if (commentEditingValue === '') {
+                      console.log(previousCommentValue.current)
+                      // Set state using previous value
+                      setCommentEditingValue(previousCommentValue.current)
+                    }
+                  }}
+                >
                   <CancelIc className='text-red-300 h-4 w-4' />
                 </button>
               </>
             ) : (
-              <button aria-label='Edit' onClick={() => setCommentEditingId(id)}>
+              <button
+                aria-label='Edit'
+                onClick={() => {
+                  // In case of user cancels the editing and there is no value in the input, I'll show the previous value
+                  previousCommentValue.current = commentEditingValue
+                  setCommentEditingId(id)
+                }}
+              >
                 <PencilIc className='text-red-300 h-4 w-4' />
               </button>
             )}
