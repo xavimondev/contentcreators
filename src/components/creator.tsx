@@ -45,7 +45,7 @@ const CreatorCard = ({
           <div className='flex flex-row gap-2 flex-wrap w-full'>
             {categories.map((cat) => (
               <CustomLink key={cat} href={`/category/${cat}`}>
-                <span className='bg-blue-100 text-blue-800 text-sm font-medium px-2 py-1 rounded dark:bg-purple-500/25 dark:text-purple-300'>
+                <span className='text-sm font-medium px-2 py-1 rounded bg-purple-500/25 text-purple-300'>
                   {cat}
                 </span>
               </CustomLink>
