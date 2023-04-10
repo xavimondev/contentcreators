@@ -61,7 +61,6 @@ const CommentCard = ({ commentInfo, handleDelete, updateComment }: CommentProps)
                   onClick={() => {
                     setCommentEditingId(undefined)
                     if (commentEditingValue === '') {
-                      console.log(previousCommentValue.current)
                       // Set state using previous value
                       setCommentEditingValue(previousCommentValue.current)
                     }

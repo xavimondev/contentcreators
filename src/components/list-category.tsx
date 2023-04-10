@@ -49,7 +49,6 @@ export const NavListCategories = () => {
           {LIST_CATEGORIES.map((category) => {
             const param = params.id
             const isSelected = category.id === param
-            console.log(isSelected)
             return (
               <CategoryLink
                 key={category.id}
