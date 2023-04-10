@@ -31,17 +31,15 @@ const Home: NextPage = () => {
           <h1 className='text-transparent bg-clip-text bg-gradient-to-r from-[#ff8b42] to-[#8b36bb] font-bold tracking-wide text-3xl sm:text-5xl lg:text-6xl'>
             content.[creators]
           </h1>
-          <p className='mt-10 mx-auto max-w-2xl font-semibold text-base sm:text-xl lg:text-2xl text-white'>
-            Hay diversos{' '}
+          <p className='mt-16 mx-auto max-w-3xl font-semibold text-base sm:text-xl lg:text-3xl text-white'>
+            Aquí encontrarás a los{' '}
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-[#f38948] to-[#ed68dd]'>
-              creadores de contenido
+              mejores creadores de contenido en español
             </span>{' '}
-            en internet y es difícil encontrar a los mejores. Aquí encontrarás a los que te ayudarán
-            en tu crecimiento como profesional, además están agrupados en categorías para que te
-            enfoques en lo que realmente necesites.
+            que te ayudarán en tu crecimiento como profesional.
           </p>
         </section>
-        <section className='max-w-6xl mx-auto flex justify-center flex-col mt-24' id='categories'>
+        <section className='max-w-6xl mx-auto flex justify-center flex-col mt-20' id='categories'>
           <h2 className='text-white font-bold tracking-wide text-2xl sm:text-3xl lg:text-5xl text-center'>
             Categorías
           </h2>
