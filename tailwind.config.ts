@@ -10,7 +10,9 @@ export default {
         pulse: 'pulse 0.5s ease-out',
         'spin-slow': 'spin 20s linear infinite',
         'zoomIn': 'zoomIn 0.3s',
-        'fadeIn': 'fadeIn 0.7s'
+        'fadeIn': 'fadeIn 0.7s',
+        enter: 'enter 200ms ease-out',
+        leave: 'leave 150ms ease-in forwards'
       },
       keyframes: {
         'text-clip': {
@@ -38,6 +40,14 @@ export default {
         'fadeIn': {
           from: { opacity: '0' },
           to: { opacity: '1' },
+        },
+        enter: {
+          '0%': { transform: 'scale(0.9)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 }
+        },
+        leave: {
+          '0%': { transform: 'scale(1)', opacity: 1 },
+          '100%': { transform: 'scale(0.9)', opacity: 0 }
         }
       }
     }
