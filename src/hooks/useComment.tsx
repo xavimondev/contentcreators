@@ -72,7 +72,7 @@ const useComment = (creatorUsername: string) => {
         customToast={t}
         acceptFunction={() => {
           // Remove toast confirmation from viewport
-          toast.remove(t.id)
+          toast.dismiss(t.id)
           const commentPromise = removeComment(commentId)
           toastPromise(commentPromise, {
             loading: 'Eliminando...',
