@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { LIST_CATEGORIES } from 'data/categories'
 import { LeftArrowIc } from '@/components/icons'
 import CustomLink from '@/components/custom-link'
-import ListCategory from '@/components/list-category'
+import ListCategory, { NavListCategories } from '@/components/list-category'
 import CategoryDetail from '@/components/category-detail'
 import PageHeader from '@/components/page-header'
 
@@ -22,8 +22,9 @@ const DashboardCategory = ({ params }: { params: { id: string } }) => {
           <span className='text-center text-base sm:text-lg lg:text-xl text-white'>Inicio</span>
         </CustomLink>
       </PageHeader>
-      <main className='p-6 min-h-screen h-full w-full'>
-        <div className='flex flex-col gap-4'>
+      <main className='flex p-6 min-h-screen h-full w-full'>
+        <NavListCategories />
+        <div className='flex flex-col gap-4 w-full'>
           <ListCategory listType='colorful' />
           <CategoryDetail categoryId={categoryId} />
         </div>

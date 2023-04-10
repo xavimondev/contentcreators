@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import CustomLink from './custom-link'
 
 type CategoryProps = {
@@ -53,5 +54,26 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
         </CustomLink>
       </li>
     </>
+  )
+}
+
+export const CategoryLink = ({
+  id,
+  name,
+  isSelected
+}: {
+  id: string
+  name: string
+  isSelected: boolean
+}) => {
+  return (
+    <Link
+      href={`/category/${id}`}
+      className={`flex w-full p-2 items-center rounded-md transition-none duration-100 hover:bg-purple-500/20 hover:text-purple-200 ${
+        isSelected ? 'bg-purple-500/30 text-purple-300' : 'text-white'
+      }`}
+    >
+      {name}
+    </Link>
   )
 }
