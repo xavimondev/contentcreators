@@ -2,7 +2,7 @@ import Image from 'next/image'
 import type { Category, Social } from 'types'
 import CustomLink from './custom-link'
 import { ShareIc } from './icons'
-import SocialLink from './social-link'
+import SocialResourceLink from './social-link'
 
 type CreatorCardProps = {
   id: string
@@ -57,7 +57,7 @@ const CreatorCard = ({
           <h5 className='text-base text-white font-semibold'>Sígueme en:</h5>
           <ul className='flex gap-4 flex-wrap'>
             {socialLinks.map(({ id, url }) => (
-              <SocialLink key={id} id={id} url={url} />
+              <SocialResourceLink key={id} id={id} url={url} />
             ))}
           </ul>
         </div>

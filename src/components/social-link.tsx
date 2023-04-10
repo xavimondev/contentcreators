@@ -38,7 +38,7 @@ type SocialLinkProps = {
   url: string
 }
 
-const SocialLink = ({ url, id }: SocialLinkProps) => {
+const SocialResourceLink = ({ url, id }: SocialLinkProps) => {
   const data = SOCIAL_LINKS.find((social) => social.id === id)
 
   if (!data) return null
@@ -53,4 +53,4 @@ const SocialLink = ({ url, id }: SocialLinkProps) => {
   )
 }
 
-export default SocialLink
+export default SocialResourceLink
