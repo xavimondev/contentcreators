@@ -13,7 +13,7 @@ const ListCreator = () => {
       <BlobListCreators />
       {/* Section */}
       <ResponsiveMasonry
-        columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 4, 1200: 5 }}
+        columnsCountBreakPoints={{ 320: 1, 450: 2, 900: 3, 1286: 4, 1500: 5 }}
         className='animate-fadeIn'
       >
         <Masonry gutter='10px'>
