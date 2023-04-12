@@ -49,9 +49,7 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
                 />
               </div>
             </div>
-            <span className='text-center text-white font-semibold text-sm whitespace-nowrap'>
-              {name}
-            </span>
+            <span className='text-center text-white text-sm max-w-[80px] truncate'>{name}</span>
           </div>
         </CustomLink>
       </li>
