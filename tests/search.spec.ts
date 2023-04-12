@@ -1,31 +1,34 @@
 import { test, expect } from '@playwright/test'
-import { api } from 'data/api'
-import { getLocator } from './utils'
+import { api } from '../data/api'
+import { getLocator, MOCK_LIST_CATEGORIES } from './utils'
 
 const { describe, beforeEach } = test
 
-const PAGE = 'frontend'
+const PAGE_NAME = 'frontend'
 
 describe('tests for category page', () => {
   beforeEach(async ({ page }) => {
-    await page.goto(`http://localhost:3000/category/${PAGE}`)
+    await page.goto(`http://localhost:3000/category/${PAGE_NAME}`)
   })
 
-  test('should display title with search form and categories', async ({ page }) => {
-    // TODO: Get this from categories file
-    const TOTAL_CATEGORIES = 8
-    // Display correct title
-    const title = getLocator(page, 'h1')
-    await expect(title).toHaveText(`${PAGE}`)
-    // Checking if there are all categories
-    const categoriesList = getLocator(page, 'ul:first-child > li')
-    await expect(categoriesList).toHaveCount(TOTAL_CATEGORIES)
+  test('should display search form', async ({ page }) => {
     // Checking whether there is a search form
     const inputLocator = getLocator(page, 'input[type="search"]')
     await expect(inputLocator).toBeVisible()
   })
 
-  test('fill input with wrong query and should display there is no results', async ({ page }) => {
+  test('should display nav with categories', async ({ page }) => {
+    const TOTAL_CATEGORIES = MOCK_LIST_CATEGORIES.length
+    // Checking if nav is visible
+    const nav = getLocator(page, 'nav')
+    await expect(nav).toBeVisible()
+    // Checking if there are all categories
+    const listCategories = getLocator(page, 'nav > div > div:nth-child(2) > a')
+    const totalCategories = await listCategories.count()
+    expect(totalCategories).toBe(TOTAL_CATEGORIES)
+  })
+
+  test('fill input with wrong query and should display there are no results', async ({ page }) => {
     const QUERY = 'whateverquery'
     const ERROR_MESSAGE = `No se encontraron resultados para ${QUERY}. Sin embargo, puedes agregarlos contribuyendo al 🚀 repositorio 😊.`
 
@@ -48,7 +51,7 @@ describe('tests for category page', () => {
     await inputLocator.fill(queryId)
 
     // Fetching data
-    const response = await api.search(PAGE, queryId)
+    const response = await api.search(PAGE_NAME, queryId)
 
     // Checking the results with their names and descriptions
     let nameSelector = null,
