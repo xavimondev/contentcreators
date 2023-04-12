@@ -30,11 +30,11 @@ export const CategoryCard = ({ id, name }: CategoryProps) => {
 export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryProps) => {
   return (
     <>
-      <li>
+      <li className='w-full'>
         <CustomLink href={`/category/${id}`}>
           <div className='flex flex-col gap-1.5 items-center'>
             <div
-              className={`w-14 h-14 p-1 rounded-full`}
+              className={`w-12 h-12 p-1 rounded-full`}
               style={{
                 background: `linear-gradient(90deg, ${colorFrom}, ${colorTo})`
               }}
@@ -44,12 +44,14 @@ export const CategoryItem = ({ id, name, colorFrom, colorTo, image }: CategoryPr
                   className='rounded-full w-full h-full'
                   src={image}
                   alt='frontend'
-                  width='100'
-                  height='100'
+                  width='130'
+                  height='130'
                 />
               </div>
             </div>
-            <span className='text-center text-white font-semibold'>{name}</span>
+            <span className='text-center text-white font-semibold text-sm whitespace-nowrap'>
+              {name}
+            </span>
           </div>
         </CustomLink>
       </li>
