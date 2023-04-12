@@ -7,7 +7,7 @@ const Footer = () => {
       <div className='py-10'>
         <div className='flex justify-center'>
           <CustomLink
-            href='https://github.com/d3vcloud/content-creators'
+            href='https://github.com/xavimondev/content-creators'
             rel='noopener noreferrer'
             target='_blank'
             aria-label='Go to Repository'

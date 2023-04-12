@@ -15,7 +15,7 @@ const NoDataFound = ({ message, keyword }: NoDataFoundProps) => {
         agregarlos contribuyendo al{' '}
         <CustomLink
           classes='text-cyan-500'
-          href='https://github.com/d3vcloud/social-creators'
+          href='https://github.com/xavimondev/content-creators'
           target='_blank'
         >
           🚀 repositorio 😊
