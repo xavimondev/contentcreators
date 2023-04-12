@@ -14,20 +14,13 @@
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "4.6.1",
     "@radix-ui/react-tooltip": "1.0.5",
-    "@supabase/auth-helpers-nextjs": "0.6.0",
-    "@supabase/auth-helpers-react": "0.3.1",
-    "@supabase/supabase-js": "2.15.0",
-    "@upstash/redis": "1.20.1",
     "@vercel/analytics": "0.1.11",
     "just-debounce-it": "3.2.0",
     "next": "13.3.0",
     "prettier": "2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hot-toast": "2.4.0",
-    "react-insta-stories": "2.5.4",
     "react-responsive-masonry": "2.1.7",
     "zustand": "4.3.6"
   },
