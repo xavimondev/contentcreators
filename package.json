@@ -1,6 +1,6 @@
 {
   "name": "content.creators",
-  "description": "Plataforma que reune a los mejores creadores de contenido en un solo lugar.",
+  "description": "Es una plataforma web en donde encontrarás los mejores creadores de contenido en español.",
   "version": "2.0.0",
   "license": "MIT",
   "private": true,
