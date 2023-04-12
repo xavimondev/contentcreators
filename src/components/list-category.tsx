@@ -42,7 +42,7 @@ export const NavListCategories = () => {
   return (
     <nav className='sm:w-48 mr-6 hidden md:block' aria-label='Left Navigation'>
       <div className='flex flex-col'>
-        <div className='p-2 mb-5'>
+        <div className='p-2 mb-7'>
           <p className='text-gray-200 font-semibold text-lg'>Categorías</p>
         </div>
         <div className='flex flex-col gap-4 items-center w-full'>
