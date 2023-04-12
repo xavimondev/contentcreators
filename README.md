@@ -6,13 +6,34 @@
 
 # content.[creators] ⭐️
 
-Es una plataforma web que reune a los mejores creadores de contenido en español.
+Es una plataforma web en donde encontrarás los mejores creadores de contenido en español.
 
 ## Ejecutando localmente
 
-1. Clona el repositorio.
-2. Instala las dependencias con `npm install`.
-3. Ejecuta el proyecto con `npm run dev`.
+1. Clona este repositorio.
+2. Instala las dependencias usando:
+```bash
+# pnpm:
+pnpm install
+
+# or npm:
+npm install
+
+# or yarn:
+yarn install
+```
+
+3. Ejecuta el proyecto usando:
+```bash
+# pnpm:
+pnpm run dev
+
+# or npm:
+npm run dev
+
+# or yarn:
+yarn dev
+```
 4. En tu navegador, ingresa [localhost:3000](http://localhost:3000) en la barra de direcciones para ver la web.
 
 ## Deseo contribuir
