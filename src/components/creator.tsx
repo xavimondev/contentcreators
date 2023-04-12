@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import type { Category, Social } from 'types'
 import CustomLink from './custom-link'
-import { ShareIc } from './icons'
 import SocialResourceLink from './social-link'
 
 type CreatorCardProps = {
-  id: string
   name: string
   description: string
   categories: Category[]
@@ -14,7 +12,6 @@ type CreatorCardProps = {
 }
 
 const CreatorCard = ({
-  id,
   name,
   description,
   categories,
@@ -29,9 +26,6 @@ const CreatorCard = ({
           <div className='object-cover w-24 md:w-32 h-auto'>
             <Image className='rounded-xl' src={profileUrl} width='256' height='256' alt={name} />
           </div>
-          <CustomLink href={`/creator/${id}`}>
-            <ShareIc className='text-white' />
-          </CustomLink>
         </div>
         {/* Description section */}
         <div className='flex flex-col gap-2'>

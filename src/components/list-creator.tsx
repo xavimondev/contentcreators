@@ -21,7 +21,6 @@ const ListCreator = () => {
             ({ id, name, description, categories, social, profileUrl }) => (
               <CreatorCard
                 key={id}
-                id={id}
                 name={name}
                 description={description}
                 categories={categories}
