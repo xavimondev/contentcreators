@@ -17,7 +17,7 @@ export const CategoryCard = ({ id, name }: CategoryProps) => {
         key={id}
         className='border border-white border-opacity-10 hover:border-opacity-30 shadow-md w-full rounded-xl transition duration-200 ease-in-out group hover:-translate-y-1 z-10 bg-[#13111a] text-gray-400 hover:text-white'
       >
-        <CustomLink href={`category/${id}`}>
+        <CustomLink href={`/category/${id}`}>
           <div className='w-full rounded-xl h-auto flex flex-col gap-8 py-7 px-4'>
             <p className='max-w-xl font-semibold'>{name}</p>
           </div>
