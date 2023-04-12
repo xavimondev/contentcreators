@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import type { Renderable, ValueOrFunction } from 'react-hot-toast'
 
 export type Creator = {
   id: string
@@ -41,35 +40,6 @@ export type Category =
   | 'uiux'
   | 'ciberseguridad'
 
-export type Comment = {
-  id: number
-  message: string
-  authorId?: string
-  author: string
-  authorAvatar: string
-  authorUsername: string
-  createdAt?: string
-}
-
-export type User = {
-  userId: string
-  fullName: string
-  username: string
-  avatarUrl: string
-}
-
-export type GradientColor = {
-  colorFrom: string
-  colorTo: string
-}
-
-export type CreatorStory = {
-  dedicatedTo: string // content creator username
-  author: string
-  message: string
-  date: number //milliseconds
-}
-
 export type StreamerLive = {
   id: string
   titleStream: string
@@ -77,16 +47,4 @@ export type StreamerLive = {
   streamerLogin: string
   viewerCount: number
   avatarUrl: string
-}
-
-export type ResponseData = {
-  status: number
-  error?: any
-  data?: any
-}
-
-export type ToastMsgs = {
-  loading: Renderable
-  success: ValueOrFunction<Renderable, unknown>
-  error: ValueOrFunction<Renderable, any>
 }
