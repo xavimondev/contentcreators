@@ -39,21 +39,21 @@ export const LIST_CATEGORIES = [
   },
   {
     id: 'mobile',
-    name: 'Mobile',
+    name: 'Móvil',
     image: MobileImg,
     colorFrom: '#7debf2',
     colorTo: '#85b5f6'
   },
   {
     id: 'database',
-    name: 'Database',
+    name: 'Base Datos',
     image: DatabaseImg,
     colorFrom: '#a887f5',
     colorTo: '#efb67b'
   },
   {
     id: 'datascience',
-    name: 'Data Science',
+    name: 'Ciencia Datos',
     image: DataScienceImg,
     colorFrom: '#637dc6',
     colorTo: '#44afd0'
