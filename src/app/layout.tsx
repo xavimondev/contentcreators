@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(AUTH_REDIRECT),
   title: 'content.[creators]',
   description:
-    'Aquí encontrarás a los mejores creadores de contenido que impulsarán tu carrera en tecnología.',
+    'Aquí encontrarás a los mejores creadores de contenido en español que te ayudarán en tu crecimiento como profesional.',
   openGraph: {
     title: 'content.[creators]',
     description:
-      'Aquí encontrarás a los mejores creadores de contenido que impulsarán tu carrera en tecnología.',
+      'Aquí encontrarás a los mejores creadores de contenido en español que te ayudarán en tu crecimiento como profesional.',
     url: 'https://contentcreators.vercel.app/',
     siteName: 'content.[creators]',
     locale: 'es_ES',
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/img/banner.png',
-        width: 1920,
-        height: 1080,
+        width: 1578,
+        height: 849,
         type: 'image/png'
       }
     ]
