@@ -1,20 +1,8 @@
-import { UserIc } from './icons'
-
 const PlaceholderCard = ({ length }: { length: number }) => {
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 justify-center'>
       {Array.from({ length }, (_, index) => index + 1).map((item) => (
         <PlaceHolderItem key={item} />
-      ))}
-    </div>
-  )
-}
-
-const PlaceHolderAvatar = ({ length }: { length: number }) => {
-  return (
-    <div className='flex -space-x-4 items-center'>
-      {Array.from({ length }, (_, index) => index + 1).map((item) => (
-        <PlaceHolderItemAvatar key={item} />
       ))}
     </div>
   )
@@ -55,14 +43,6 @@ const PlaceHolderItem = () => {
   )
 }
 
-const PlaceHolderItemAvatar = () => {
-  return (
-    <div className='animate-pulse'>
-      <UserIc className='w-8 h-8 text-gray-700' />
-    </div>
-  )
-}
-
 const PlaceHolderToolbarAuth = () => {
   return (
     <div className='w-full'>
@@ -83,7 +63,6 @@ type PlaceholderProps = {
 const Placeholder = ({ length, type }: PlaceholderProps) => {
   if (type === 'card') return <PlaceholderCard length={length} />
   else if (type === 'toolbar') return <PlaceHolderToolbarAuth />
-  else return <PlaceHolderAvatar length={length} />
 }
 
 export default Placeholder
