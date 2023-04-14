@@ -1,5 +1,4 @@
-import type { NextPage } from 'next'
-
+import { getLiveStreamers } from 'utils/twitch'
 import CustomLink from '@/components/custom-link'
 import { BlobHome } from '@/components/blob'
 import ListCategory from '@/components/list-category'
@@ -7,7 +6,13 @@ import PageHeader from '@/components/page-header'
 import LiveStreamers from '@/components/live-streamers'
 import Footer from '@/components/footer'
 
-const Home: NextPage = () => {
+const getDataLiveStreamers = async () => {
+  const liveStreamers = await getLiveStreamers()
+  return liveStreamers
+}
+
+const Home = async () => {
+  const streamers = await getDataLiveStreamers()
   return (
     <>
       <PageHeader>
@@ -23,7 +28,7 @@ const Home: NextPage = () => {
             </li>
           </ul>
         </nav>
-        <LiveStreamers />
+        <LiveStreamers streamers={streamers} />
       </PageHeader>
       <main className='p-6 min-h-screen h-full w-full'>
         <section className='relative max-w-6xl mx-auto flex justify-center flex-col text-center py-8 sm:py-10 lg:py-14'>
