@@ -6,6 +6,8 @@ import PageHeader from '@/components/page-header'
 import LiveStreamers from '@/components/live-streamers'
 import Footer from '@/components/footer'
 
+// Docs: https://beta.nextjs.org/docs/api-reference/segment-config#dynamic
+export const dynamic = 'force-dynamic'
 const getDataLiveStreamers = async () => {
   const liveStreamers = await getLiveStreamers()
   return liveStreamers
