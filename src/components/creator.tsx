@@ -49,7 +49,7 @@ const CreatorCard = ({
         {/* Social section */}
         <div className='flex flex-col gap-2 md:gap-4'>
           <h5 className='text-base text-white font-semibold'>Sígueme en:</h5>
-          <ul className='flex gap-4 flex-wrap'>
+          <ul className='flex gap-4 flex-wrap items-center'>
             {socialLinks.map(({ id, url }) => (
               <SocialResourceLink key={id} id={id} url={url} />
             ))}

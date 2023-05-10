@@ -5,15 +5,15 @@ import { BlogIc, DiscordIc, GitHubIc, InstagramIc, TwitchIc, TwitterIc, YoutubeI
 export const SOCIAL_LINKS: Array<SocialLink> = [
   {
     id: 'twitter',
-    Component: <TwitterIc className='w-6 h-6' color='white' />
+    Component: <TwitterIc className='w-5 h-5' color='white' />
   },
   {
     id: 'github',
-    Component: <GitHubIc className='w-6 h-6' color='white' />
+    Component: <GitHubIc className='w-5 h-5' color='white' />
   },
   {
     id: 'twitch',
-    Component: <TwitchIc className='w-6 h-6' color='white' />
+    Component: <TwitchIc className='w-5 h-5' color='white' />
   },
   {
     id: 'youtube',
