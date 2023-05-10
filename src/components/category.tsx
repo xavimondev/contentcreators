@@ -15,11 +15,11 @@ export const CategoryCard = ({ id, name }: CategoryProps) => {
     <>
       <article
         key={id}
-        className='border border-white border-opacity-10 hover:border-opacity-30 shadow-md w-full rounded-xl transition duration-200 ease-in-out group hover:-translate-y-1 z-10 bg-[#13111a] text-gray-400 hover:text-white'
+        className='border border-white border-opacity-10 hover:border-opacity-30 shadow-md w-full rounded-xl transition duration-200 ease-in-out group hover:-translate-y-1 z-10 bg-[#13111a] text-[#bac8de] hover:text-white'
       >
         <CustomLink href={`/category/${id}`}>
           <div className='w-full rounded-xl h-auto flex flex-col gap-8 py-7 px-4'>
-            <p className='max-w-xl font-semibold'>{name}</p>
+            <p className='max-w-xl font-semibold '>{name}</p>
           </div>
         </CustomLink>
       </article>
@@ -70,7 +70,7 @@ export const CategoryLink = ({
     <Link
       href={`/category/${id}`}
       className={`flex w-full p-2 items-center rounded-md transition-none duration-100 hover:bg-purple-500/20 hover:text-purple-200 ${
-        isSelected ? 'bg-purple-500/30 text-purple-300' : 'text-white'
+        isSelected ? 'bg-purple-500/30 text-[#e4d1f9]' : 'text-white'
       }`}
     >
       {name}
